@@ -162,7 +162,8 @@ class Apftl_program extends CI_Controller
                 'participant_sum' => set_value('participant_sum', $row->participant_sum),
                 'program_category' => $this->db->get('apftl_c_program')->result(),
                 'distric' => $this->db->get('distric')->result(),
-                'partner' => $this->db->get('apftl_partner')->result()
+                'partner' => $this->db->get('apftl_partner')->result(),
+                'activity' => $this->db->get('apftl_activity')->result()
             );
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);

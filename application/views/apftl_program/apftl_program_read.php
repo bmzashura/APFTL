@@ -3,7 +3,7 @@
     <table class="table">
         <tr>
             <td>Id Category</td>
-            <td><?php echo $id_category; ?></td>
+            <td><?php echo $category; ?></td>
         </tr>
         <tr>
             <td>Activity</td>
@@ -11,7 +11,7 @@
         </tr>
         <tr>
             <td>Id Partner</td>
-            <td><?php echo $id_partner; ?></td>
+            <td><?php echo $partner; ?></td>
         </tr>
         <tr>
             <td>Date</td>
@@ -19,7 +19,7 @@
         </tr>
         <tr>
             <td>Id Distric</td>
-            <td><?php echo $id_distric; ?></td>
+            <td><?php echo $distric; ?></td>
         </tr>
         <tr>
             <td>Description</td>

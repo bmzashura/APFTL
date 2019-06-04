@@ -40,6 +40,18 @@
 
 <!-- Bootstrap core JavaScript-->
 <script src="<?= base_url('assets/') ?>vendor/jquery/jquery.js"></script>
+<script>
+    $('.form-group').on('input', '.prc', function() {
+        var totalSum = 0;
+        $('.form-group .prc').each(function() {
+            var inputVal = $(this).val().replace();
+            if ($.isNumeric(inputVal)) {
+                totalSum += parseFloat(inputVal);
+            }
+        });
+        $('#participant_sum').val(totalSum);
+    });
+</script>
 <script src="<?= base_url('assets/') ?>vendor/bootstrap/js/bootstrap.bundle.js"></script>
 
 <!-- Core plugin JavaScript-->
