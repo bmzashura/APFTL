@@ -14,4 +14,12 @@ class Admin extends CI_Controller
         $this->load->view('admin/index', $data);
         $this->load->view('templates/footer');
     }
+    public function getTotal()
+    {
+        $this->load->model('Apftl_chart');
+        $datatotal = $this->Apftl_chart->get_data_sum();
+        echo json_encode($datatotal);
+        //print_r($cek);
+        //exit();
+    }
 }

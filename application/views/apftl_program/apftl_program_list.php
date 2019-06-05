@@ -43,8 +43,8 @@
             <th>Partner</th>
             <th>Date</th>
             <th>Distric</th>
-            <th>Participant M</th>
-            <th>Participant F</th>
+            <th>Male</th>
+            <th>Female</th>
             <th>Total</th>
             <th>Action</th>
         </tr><?php
