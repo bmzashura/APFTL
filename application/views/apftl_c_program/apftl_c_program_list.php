@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <h2 style="margin-top:0px">Apftl_c_program List</h2>
+    <h2 style="margin-top:0px">Program Category List</h2>
     <div class="row" style="margin-bottom: 10px">
         <div class="col-md-4">
             <?php echo anchor(site_url('apftl_c_program/create'), 'Create', 'class="btn btn-primary"'); ?>

@@ -14,6 +14,7 @@ class Apftl_member extends CI_Controller
 
     public function index()
     {
+        $data['title'] = 'Member |  APFTL';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $data['menu'] = $this->db->get('apftl_menu')->result_array();
@@ -52,6 +53,7 @@ class Apftl_member extends CI_Controller
 
     public function read($id)
     {
+        $data['title'] = 'Member |  APFTL';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $data['menu'] = $this->db->get('apftl_menu')->result_array();
@@ -84,6 +86,7 @@ class Apftl_member extends CI_Controller
 
     public function create()
     {
+        $data['title'] = 'Add Member |  APFTL';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $data['menu'] = $this->db->get('apftl_menu')->result_array();
@@ -139,6 +142,7 @@ class Apftl_member extends CI_Controller
 
     public function update($id)
     {
+        $data['title'] = 'Edit Member |  APFTL';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $data['menu'] = $this->db->get('apftl_menu')->result_array();

@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <h2 style="margin-top:0px">Apftl_partner <?php echo $button ?></h2>
+    <h2 style="margin-top:0px"><?php echo $button ?> Partner</h2>
     <form action="<?php echo $action; ?>" method="post">
         <div class="form-group">
             <label for="varchar">Partner <?php echo form_error('partner') ?></label>

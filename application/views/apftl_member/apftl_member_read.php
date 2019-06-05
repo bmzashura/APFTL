@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <h2 style="margin-top:0px">Apftl_member Read</h2>
+    <h2 style="margin-top:0px">Member Detail </h2>
     <table class="table">
         <tr>
             <td>Photo</td>

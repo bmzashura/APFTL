@@ -14,6 +14,7 @@ class Apftl_partner extends CI_Controller
 
     public function index()
     {
+        $data['title'] = 'Partner |  APFTL';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $data['menu'] = $this->db->get('apftl_menu')->result_array();
@@ -52,6 +53,7 @@ class Apftl_partner extends CI_Controller
 
     public function read($id)
     {
+        $data['title'] = 'Partner |  APFTL';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $data['menu'] = $this->db->get('apftl_menu')->result_array();
@@ -74,6 +76,7 @@ class Apftl_partner extends CI_Controller
 
     public function create()
     {
+        $data['title'] = 'Add Partner |  APFTL';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $data['menu'] = $this->db->get('apftl_menu')->result_array();
@@ -109,6 +112,7 @@ class Apftl_partner extends CI_Controller
 
     public function update($id)
     {
+        $data['title'] = 'Edit Partner |  APFTL';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $data['menu'] = $this->db->get('apftl_menu')->result_array();

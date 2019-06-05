@@ -14,7 +14,7 @@ class Apftl_activity extends CI_Controller
 
     public function index()
     {
-
+        $data['title'] = 'Activity |  APFTL';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['menu'] = $this->db->get('apftl_menu')->result_array();
         $q = urldecode($this->input->get('q', TRUE));
@@ -52,6 +52,7 @@ class Apftl_activity extends CI_Controller
 
     public function read($id)
     {
+        $data['title'] = 'Activity |  APFTL';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['menu'] = $this->db->get('apftl_menu')->result_array();
         $row = $this->Apftl_activity_model->get_by_id($id);
@@ -73,6 +74,7 @@ class Apftl_activity extends CI_Controller
 
     public function create()
     {
+        $data['title'] = 'Add Activity |  APFTL';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['menu'] = $this->db->get('apftl_menu')->result_array();
         $page = array(
@@ -107,6 +109,7 @@ class Apftl_activity extends CI_Controller
 
     public function update($id)
     {
+        $data['title'] = 'Edit Activity |  APFTL';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['menu'] = $this->db->get('apftl_menu')->result_array();
         $row = $this->Apftl_activity_model->get_by_id($id);

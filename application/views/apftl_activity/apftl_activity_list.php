@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <h2 style="margin-top:0px">Apftl_activity List</h2>
+    <h2 style="margin-top:0px">Activity List</h2>
     <div class="row" style="margin-bottom: 10px">
         <div class="col-md-4">
             <?php echo anchor(site_url('apftl_activity/create'), 'Create', 'class="btn btn-primary"'); ?>

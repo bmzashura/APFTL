@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <h2 style="margin-top:0px">Apftl_c_program Read</h2>
+    <h2 style="margin-top:0px">Program Category Detail</h2>
     <table class="table">
         <tr>
             <td>Category</td>

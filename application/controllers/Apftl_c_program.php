@@ -14,7 +14,7 @@ class Apftl_c_program extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'Menu Management';
+        $data['title'] = 'Program Category |  APFTL';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $data['menu'] = $this->db->get('apftl_menu')->result_array();
@@ -53,6 +53,7 @@ class Apftl_c_program extends CI_Controller
 
     public function read($id)
     {
+        $data['title'] = 'Program Category |  APFTL';
         $data['title'] = 'Menu Management';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
@@ -76,6 +77,7 @@ class Apftl_c_program extends CI_Controller
 
     public function create()
     {
+        $data['title'] = 'Add Program Category |  APFTL';
         $data['title'] = 'Menu Management';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
@@ -112,6 +114,7 @@ class Apftl_c_program extends CI_Controller
 
     public function update($id)
     {
+        $data['title'] = 'Edit Program Category |  APFTL';
         $data['title'] = 'Menu Management';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
