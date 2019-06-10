@@ -42,11 +42,11 @@
             </div>
             <div class="form-group">
                 <label for="varchar">Description <?php echo form_error('description') ?></label>
-                <textarea name="message" required class="form-control" name="description" id="description" rows="7" placeholder="Program Description"><?php echo $description; ?></textarea>
+                <textarea class="form-control" name="description" id="description" rows="7" placeholder="Program Description"><?php echo $description; ?></textarea>
             </div>
             <div class="form-group">
                 <label for="varchar">Objective <?php echo form_error('objective') ?></label>
-                <textarea name="message" required class="form-control" name="objective" id="objective" rows="7" placeholder="Program Ojective"><?php echo $objective; ?></textarea>
+                <textarea class="form-control" name="objective" id="objective" rows="7" placeholder="Program Ojective"><?php echo $objective; ?></textarea>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-3 mr-2">

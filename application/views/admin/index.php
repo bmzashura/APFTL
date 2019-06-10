@@ -24,38 +24,43 @@
                                    var ctx = document.getElementById('myChartbar').getContext('2d');
                                    var data_distric = [];
                                    var data_total = [];
+                                   var data_feto = [];
+                                   var data_mane = [];
                                    $.post("<?= base_url('admin/gettotal') ?>",
                                        function(datatotal) {
                                            var obj = JSON.parse(datatotal);
                                            $.each(obj, function(test, item) {
                                                data_distric.push(item.distric);
                                                data_total.push(item.total);
+                                               data_feto.push(item.feto);
+                                               data_mane.push(item.mane);
                                            });
                                            var myChartbar = new Chart(ctx, {
                                                type: 'bar',
                                                data: {
                                                    labels: data_distric,
                                                    datasets: [{
-                                                       label: 'Total Participant',
-                                                       data: data_total,
-                                                       backgroundColor: [
-                                                           'rgba(255, 99, 132, 0.2)',
-                                                           'rgba(54, 162, 235, 0.2)',
-                                                           'rgba(255, 206, 86, 0.2)',
-                                                           'rgba(75, 192, 192, 0.2)',
-                                                           'rgba(153, 102, 255, 0.2)',
-                                                           'rgba(255, 159, 64, 0.2)'
-                                                       ],
-                                                       borderColor: [
-                                                           'rgba(255, 99, 132, 1)',
-                                                           'rgba(54, 162, 235, 1)',
-                                                           'rgba(255, 206, 86, 1)',
-                                                           'rgba(75, 192, 192, 1)',
-                                                           'rgba(153, 102, 255, 1)',
-                                                           'rgba(255, 159, 64, 1)'
-                                                       ],
-                                                       borderWidth: 1
-                                                   }]
+                                                           label: 'Total',
+                                                           data: data_total,
+                                                           backgroundColor: 'rgba(6, 166, 10, 0.2)',
+                                                           borderColor: 'rgba(6, 166, 10, 1)',
+                                                           borderWidth: 1
+                                                       },
+                                                       {
+                                                           label: 'Feto',
+                                                           data: data_feto,
+                                                           backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                                           borderColor: 'rgba(255, 99, 132, 1)',
+                                                           borderWidth: 1
+                                                       },
+                                                       {
+                                                           label: 'Mane',
+                                                           data: data_mane,
+                                                           backgroundColor: 'rgba(7, 98, 150, 0.2)',
+                                                           borderColor: 'rgba(7, 98, 150, 1)',
+                                                           borderWidth: 1
+                                                       }
+                                                   ]
                                                },
                                                options: {
                                                    scales: {
