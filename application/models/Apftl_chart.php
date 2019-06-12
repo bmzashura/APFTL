@@ -6,12 +6,36 @@ if (!defined('BASEPATH'))
 class Apftl_chart extends CI_Model
 {
 
-
     public function get_data_sum()
     {
         $sum = "SELECT b.distric as distric, SUM(a.participant_sum) as total, SUM(a.participant_f) as feto, SUM(a.participant_m) as mane  from apftl_program as a
         left join distric as b on b.id=a.id_distric GROUP BY a.id_distric ORDER BY
         distric ASC";
         return $this->db->query($sum)->result();
+    }
+
+    public function get_total()
+    {
+        $sql = "SELECT SUM(participant_sum) as sum FROM apftl_program";
+        $result = $this->db->query($sql);
+        return $result->row()->sum;
+    }
+    public function get_feto()
+    {
+        $sql = "SELECT SUM(participant_f) as feto FROM apftl_program";
+        $result = $this->db->query($sql);
+        return $result->row()->feto;
+    }
+    public function get_mane()
+    {
+        $sql = "SELECT SUM(participant_m) as mane FROM apftl_program";
+        $result = $this->db->query($sql);
+        return $result->row()->mane;
+    }
+    public function get_program()
+    {
+        $sql = "SELECT COUNT(id) as program FROM apftl_program";
+        $result = $this->db->query($sql);
+        return $result->row()->program;
     }
 }

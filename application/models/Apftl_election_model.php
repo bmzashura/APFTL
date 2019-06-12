@@ -17,16 +17,57 @@ class Apftl_election_model extends CI_Model
 	}
 
 	// get all
-	function get_all()
+	function get_all($limit, $start = 0, $q = NULL)
 	{
+		$this->db->select('apftl_election.*, distric.distric as distric');
+		$this->db->select('apftl_election.*, subdistric.subdistric as subdistric');
+		$this->db->join('distric', 'distric.id = apftl_election.id_distric', 'left');
+		$this->db->join('subdistric', 'subdistric.id = apftl_election.id_subdistric', 'left');
 		$this->db->order_by($this->id, $this->order);
+		$this->db->or_like('distric', $q);
+		$this->db->or_like('subdistric', $q);
+		$this->db->or_like('election_period', $q);
+		$this->db->or_like('female_register', $q);
+		$this->db->or_like('male_register', $q);
+		$this->db->or_like('total_register', $q);
+		$this->db->or_like('female_selected', $q);
+		$this->db->or_like('male_selected', $q);
+		$this->db->or_like('total_selected', $q);
+		$this->db->or_like('female_candidate', $q);
+		$this->db->or_like('male_candidate', $q);
+		$this->db->or_like('total_candidate', $q);
+		$this->db->or_like('photo_male', $q);
+		$this->db->or_like('name_male', $q);
+		$this->db->or_like('birth_p_male', $q);
+		$this->db->or_like('birth_d_male', $q);
+		$this->db->or_like('address_male', $q);
+		$this->db->or_like('mobile_male', $q);
+		$this->db->or_like('email_male', $q);
+		$this->db->or_like('valid_male', $q);
+		$this->db->or_like('unvalid_male', $q);
+		$this->db->or_like('photo_female', $q);
+		$this->db->or_like('name_female', $q);
+		$this->db->or_like('birth_p_female', $q);
+		$this->db->or_like('birth_d_female', $q);
+		$this->db->or_like('address_female', $q);
+		$this->db->or_like('mobile_female', $q);
+		$this->db->or_like('email_female', $q);
+		$this->db->or_like('valid_female', $q);
+		$this->db->or_like('unvalid_female', $q);
+		$this->db->or_like('total_valid', $q);
+		$this->db->or_like('total_unvalid', $q);
+		$this->db->limit($limit, $start);
 		return $this->db->get($this->table)->result();
 	}
 
 	// get data by id
 	function get_by_id($id)
 	{
-		$this->db->where($this->id, $id);
+		$this->db->select('apftl_election.*, distric.distric as distric');
+		$this->db->select('apftl_election.*, subdistric.subdistric as subdistric');
+		$this->db->join('distric', 'distric.id = apftl_election.id_distric', 'left');
+		$this->db->join('subdistric', 'subdistric.id = apftl_election.id_subdistric', 'left');
+		$this->db->where('apftl_election.id', $id);
 		return $this->db->get($this->table)->row();
 	}
 

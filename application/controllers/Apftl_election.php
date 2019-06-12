@@ -31,7 +31,7 @@ class Apftl_election extends CI_Controller
 		$config['per_page'] = 10;
 		$config['page_query_string'] = TRUE;
 		$config['total_rows'] = $this->Apftl_election_model->total_rows($q);
-		$apftl_election = $this->Apftl_election_model->get_limit_data($config['per_page'], $start, $q);
+		$apftl_election = $this->Apftl_election_model->get_all($config['per_page'], $start, $q);
 
 		$this->load->library('pagination');
 		$this->pagination->initialize($config);
@@ -59,8 +59,8 @@ class Apftl_election extends CI_Controller
 		if ($row) {
 			$page = array(
 				'id' => $row->id,
-				'id_distric' => $row->id_distric,
-				'id_subdistric' => $row->id_subdistric,
+				'distric' => $row->distric,
+				'subdistric' => $row->subdistric,
 				'election_period' => $row->election_period,
 				'female_register' => $row->female_register,
 				'male_register' => $row->male_register,
@@ -173,7 +173,7 @@ class Apftl_election extends CI_Controller
 				'female_candidate' => $this->input->post('female_candidate', TRUE),
 				'male_candidate' => $this->input->post('male_candidate', TRUE),
 				'total_candidate' => $this->input->post('total_candidate', TRUE),
-				'photo_male' => $this->input->post('photo_male', TRUE),
+
 				'name_male' => $this->input->post('name_male', TRUE),
 				'birth_p_male' => $this->input->post('birth_p_male', TRUE),
 				'birth_d_male' => $this->input->post('birth_d_male', TRUE),
@@ -182,7 +182,7 @@ class Apftl_election extends CI_Controller
 				'email_male' => $this->input->post('email_male', TRUE),
 				'valid_male' => $this->input->post('valid_male', TRUE),
 				'unvalid_male' => $this->input->post('unvalid_male', TRUE),
-				'photo_female' => $this->input->post('photo_female', TRUE),
+
 				'name_female' => $this->input->post('name_female', TRUE),
 				'birth_p_female' => $this->input->post('birth_p_female', TRUE),
 				'birth_d_female' => $this->input->post('birth_d_female', TRUE),
@@ -194,6 +194,41 @@ class Apftl_election extends CI_Controller
 				'total_valid' => $this->input->post('total_valid', TRUE),
 				'total_unvalid' => $this->input->post('total_unvalid', TRUE),
 			);
+
+			$upload_image_mane = $_FILES['photo_male']['name'];
+			if ($upload_image_mane) {
+				$config['allowed_types'] = 'gif|jpg|png';
+				$config['max_size']      = '2048';
+				$config['upload_path'] = './assets/img/profile/';
+				$this->load->library('upload', $config);
+				if ($this->upload->do_upload('photo_male')) {
+					$old_image = $data['photo_male'];
+					if ($old_image != 'default.jpg') {
+						unlink(FCPATH . 'assets/img/profile/' . $old_image);
+					}
+					$new_image = $this->upload->data('file_name');
+					$this->db->set('photo_male', $new_image);
+				} else {
+					echo $this->upload->dispay_errors();
+				}
+			}
+			$upload_image_feto = $_FILES['photo_female']['name'];
+			if ($upload_image_feto) {
+				$config['allowed_types'] = 'gif|jpg|png';
+				$config['max_size']      = '2048';
+				$config['upload_path'] = './assets/img/profile/';
+				$this->load->library('upload', $config);
+				if ($this->upload->do_upload('photo_female')) {
+					$old_image = $data['photo_female'];
+					if ($old_image != 'default.jpg') {
+						unlink(FCPATH . 'assets/img/profile/' . $old_image);
+					}
+					$new_image = $this->upload->data('file_name');
+					$this->db->set('photo_female', $new_image);
+				} else {
+					echo $this->upload->dispay_errors();
+				}
+			}
 
 			$this->Apftl_election_model->insert($data);
 			$this->session->set_flashdata('message', 'Create Record Success');
@@ -278,7 +313,7 @@ class Apftl_election extends CI_Controller
 				'female_candidate' => $this->input->post('female_candidate', TRUE),
 				'male_candidate' => $this->input->post('male_candidate', TRUE),
 				'total_candidate' => $this->input->post('total_candidate', TRUE),
-				'photo_male' => $this->input->post('photo_male', TRUE),
+
 				'name_male' => $this->input->post('name_male', TRUE),
 				'birth_p_male' => $this->input->post('birth_p_male', TRUE),
 				'birth_d_male' => $this->input->post('birth_d_male', TRUE),
@@ -287,7 +322,7 @@ class Apftl_election extends CI_Controller
 				'email_male' => $this->input->post('email_male', TRUE),
 				'valid_male' => $this->input->post('valid_male', TRUE),
 				'unvalid_male' => $this->input->post('unvalid_male', TRUE),
-				'photo_female' => $this->input->post('photo_female', TRUE),
+
 				'name_female' => $this->input->post('name_female', TRUE),
 				'birth_p_female' => $this->input->post('birth_p_female', TRUE),
 				'birth_d_female' => $this->input->post('birth_d_female', TRUE),
@@ -299,6 +334,42 @@ class Apftl_election extends CI_Controller
 				'total_valid' => $this->input->post('total_valid', TRUE),
 				'total_unvalid' => $this->input->post('total_unvalid', TRUE),
 			);
+
+
+			$upload_image_mane = $_FILES['photo_male']['name'];
+			if ($upload_image_mane) {
+				$config['allowed_types'] = 'gif|jpg|png';
+				$config['max_size']      = '2048';
+				$config['upload_path'] = './assets/img/profile/';
+				$this->load->library('upload', $config);
+				if ($this->upload->do_upload('photo_male')) {
+					$old_image = $data['photo_male'];
+					if ($old_image != 'default.jpg') {
+						unlink(FCPATH . 'assets/img/profile/' . $old_image);
+					}
+					$new_image = $this->upload->data('file_name');
+					$this->db->set('photo_male', $new_image);
+				} else {
+					echo $this->upload->dispay_errors();
+				}
+			}
+			$upload_image_feto = $_FILES['photo_female']['name'];
+			if ($upload_image_feto) {
+				$config['allowed_types'] = 'gif|jpg|png';
+				$config['max_size']      = '2048';
+				$config['upload_path'] = './assets/img/profile/';
+				$this->load->library('upload', $config);
+				if ($this->upload->do_upload('photo_female')) {
+					$old_image = $data['photo_female'];
+					if ($old_image != 'default.jpg') {
+						unlink(FCPATH . 'assets/img/profile/' . $old_image);
+					}
+					$new_image = $this->upload->data('file_name');
+					$this->db->set('photo_female', $new_image);
+				} else {
+					echo $this->upload->dispay_errors();
+				}
+			}
 
 			$this->Apftl_election_model->update($this->input->post('id', TRUE), $data);
 			$this->session->set_flashdata('message', 'Update Record Success');
@@ -334,7 +405,7 @@ class Apftl_election extends CI_Controller
 		$this->form_validation->set_rules('female_candidate', 'female candidate', 'trim|required');
 		$this->form_validation->set_rules('male_candidate', 'male candidate', 'trim|required');
 		$this->form_validation->set_rules('total_candidate', 'total candidate', 'trim|required');
-		$this->form_validation->set_rules('photo_male', 'photo male', 'trim|required');
+
 		$this->form_validation->set_rules('name_male', 'name male', 'trim|required');
 		$this->form_validation->set_rules('birth_p_male', 'birth p male', 'trim|required');
 		$this->form_validation->set_rules('birth_d_male', 'birth d male', 'trim|required');
@@ -343,7 +414,7 @@ class Apftl_election extends CI_Controller
 		$this->form_validation->set_rules('email_male', 'email male', 'trim|required');
 		$this->form_validation->set_rules('valid_male', 'valid male', 'trim|required');
 		$this->form_validation->set_rules('unvalid_male', 'unvalid male', 'trim|required');
-		$this->form_validation->set_rules('photo_female', 'photo female', 'trim|required');
+
 		$this->form_validation->set_rules('name_female', 'name female', 'trim|required');
 		$this->form_validation->set_rules('birth_p_female', 'birth p female', 'trim|required');
 		$this->form_validation->set_rules('birth_d_female', 'birth d female', 'trim|required');

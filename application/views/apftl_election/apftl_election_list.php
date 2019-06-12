@@ -32,8 +32,8 @@
 	<table class="table table-bordered" style="margin-bottom: 10px">
 		<tr>
 			<th>No</th>
-			<th>Id Distric</th>
-			<th>Id Subdistric</th>
+			<th>Distric</th>
+			<th>Subdistric</th>
 			<th>Election Period</th>
 			<th>Female Register</th>
 			<th>Male Register</th>
@@ -47,8 +47,8 @@
 					?>
 			<tr>
 				<td width="80px"><?php echo ++$start ?></td>
-				<td><?php echo $apftl_election->id_distric ?></td>
-				<td><?php echo $apftl_election->id_subdistric ?></td>
+				<td><?php echo $apftl_election->distric ?></td>
+				<td><?php echo $apftl_election->subdistric ?></td>
 				<td><?php echo $apftl_election->election_period ?></td>
 				<td><?php echo $apftl_election->female_register ?></td>
 				<td><?php echo $apftl_election->male_register ?></td>

@@ -3,11 +3,11 @@
 	<table class="table">
 		<tr>
 			<td>Id Distric</td>
-			<td><?php echo $id_distric; ?></td>
+			<td><?php echo $distric; ?></td>
 		</tr>
 		<tr>
 			<td>Id Subdistric</td>
-			<td><?php echo $id_subdistric; ?></td>
+			<td><?php echo $subdistric; ?></td>
 		</tr>
 		<tr>
 			<td>Election Period</td>
@@ -51,7 +51,7 @@
 		</tr>
 		<tr>
 			<td>Photo Male</td>
-			<td><?php echo $photo_male; ?></td>
+			<td><img src="<?= base_url('assets/img/profile/') . $photo_male; ?>" class="img-thumbnail"></td>
 		</tr>
 		<tr>
 			<td>Name Male</td>
@@ -87,7 +87,7 @@
 		</tr>
 		<tr>
 			<td>Photo Female</td>
-			<td><?php echo $photo_female; ?></td>
+			<td><img src="<?= base_url('assets/img/profile/') . $photo_female; ?>" class="img-thumbnail"></td>
 		</tr>
 		<tr>
 			<td>Name Female</td>

@@ -51,6 +51,56 @@
         });
         $('#participant_sum').val(totalSum);
     });
+    $('.form-group').on('input', '.orc', function() {
+        var totalSum = 0;
+        $('.form-group .orc').each(function() {
+            var inputVal = $(this).val().replace();
+            if ($.isNumeric(inputVal)) {
+                totalSum += parseFloat(inputVal);
+            }
+        });
+        $('#total_register').val(totalSum);
+    });
+    $('.form-group').on('input', '.rrc', function() {
+        var totalSum = 0;
+        $('.form-group .rrc').each(function() {
+            var inputVal = $(this).val().replace();
+            if ($.isNumeric(inputVal)) {
+                totalSum += parseFloat(inputVal);
+            }
+        });
+        $('#total_selected').val(totalSum);
+    });
+    $('.form-group').on('input', '.trc', function() {
+        var totalSum = 0;
+        $('.form-group .trc').each(function() {
+            var inputVal = $(this).val().replace();
+            if ($.isNumeric(inputVal)) {
+                totalSum += parseFloat(inputVal);
+            }
+        });
+        $('#total_candidate').val(totalSum);
+    });
+    $('.form-group').on('input', '.valid', function() {
+        var totalSum = 0;
+        $('.form-group .valid').each(function() {
+            var inputVal = $(this).val().replace();
+            if ($.isNumeric(inputVal)) {
+                totalSum += parseFloat(inputVal);
+            }
+        });
+        $('#total_valid').val(totalSum);
+    });
+    $('.form-group').on('input', '.unvalid', function() {
+        var totalSum = 0;
+        $('.form-group .unvalid').each(function() {
+            var inputVal = $(this).val().replace();
+            if ($.isNumeric(inputVal)) {
+                totalSum += parseFloat(inputVal);
+            }
+        });
+        $('#total_unvalid').val(totalSum);
+    });
 </script>
 <script src="<?= base_url('assets/') ?>vendor/bootstrap/js/bootstrap.bundle.js"></script>
 
@@ -60,7 +110,12 @@
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url('assets/') ?>js/bootstrap-datepicker.js"></script>
 <script src="<?= base_url('assets/') ?>js/sb-admin-2.js"></script>
+
 <script>
+    $('.custom-file-input').on('change', function() {
+        let fileName = $(this).val().split('\\').pop();
+        $(this).next('.custom-file-label').addClass("selected").html(fileName);
+    });
     $(function() {
         $('.datepicker').datepicker()
     });
