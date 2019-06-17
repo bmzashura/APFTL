@@ -16,16 +16,35 @@ class Apftl_chart extends CI_Model
 
     public function get_data_dili()
     {
-        $sum = "SELECT b.subdistric as subdistric, SUM(a.total_register) as register, SUM(a.total_selected) as selected, SUM(a.total_candidate) as candidate  from apftl_election as a
+        $sum = "SELECT b.subdistric as dili, SUM(a.total_register) as register1, SUM(a.total_selected) as selected1, SUM(a.total_candidate) as candidate1  from apftl_election as a
         left join subdistric as b on b.id=a.id_subdistric WHERE b.id_distric = 1 GROUP BY a.id_subdistric ORDER BY
         subdistric ASC ";
         return $this->db->query($sum)->result();
     }
 
+
+    
+    public function get_vote_dili()
+    {
+        $sql = "SELECT SUM(total_valid) as dilivalid, SUM(total_unvalid) as diliunvalid FROM apftl_election WHERE id_distric = 1";
+        $result = $this->db->query($sql);
+        return $result->row()->sum;
+        
+    }
+
+
     public function get_data_covalima()
     {
-        $sum = "SELECT b.subdistric as subdistric, SUM(a.total_register) as register, SUM(a.total_selected) as selected, SUM(a.total_candidate) as candidate  from apftl_election as a
+        $sum = "SELECT b.subdistric as covalima, SUM(a.total_register) as register2, SUM(a.total_selected) as selected2, SUM(a.total_candidate) as candidate2  from apftl_election as a
         left join subdistric as b on b.id=a.id_subdistric WHERE b.id_distric = 2 GROUP BY a.id_subdistric ORDER BY
+        subdistric ASC ";
+        return $this->db->query($sum)->result();
+    }
+
+    public function get_data_baucau()
+    {
+        $sum = "SELECT b.subdistric as baucau, SUM(a.total_register) as register3, SUM(a.total_selected) as selected3, SUM(a.total_candidate) as candidate3  from apftl_election as a
+        left join subdistric as b on b.id=a.id_subdistric WHERE b.id_distric = 3 GROUP BY a.id_subdistric ORDER BY
         subdistric ASC ";
         return $this->db->query($sum)->result();
     }

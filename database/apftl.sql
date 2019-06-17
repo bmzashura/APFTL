@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 13, 2019 at 01:16 AM
--- Server version: 10.3.15-MariaDB
--- PHP Version: 7.3.6
+-- Host: localhost:3306
+-- Generation Time: Jun 17, 2019 at 12:49 AM
+-- Server version: 5.6.43
+-- PHP Version: 5.6.40
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -145,7 +145,8 @@ CREATE TABLE `apftl_election` (
 INSERT INTO `apftl_election` (`id`, `id_distric`, `id_subdistric`, `election_period`, `female_register`, `male_register`, `total_register`, `female_selected`, `male_selected`, `total_selected`, `female_candidate`, `male_candidate`, `total_candidate`, `photo_male`, `name_male`, `birth_p_male`, `birth_d_male`, `address_male`, `mobile_male`, `email_male`, `valid_male`, `unvalid_male`, `photo_female`, `name_female`, `birth_p_female`, `birth_d_female`, `address_female`, `mobile_female`, `email_female`, `valid_female`, `unvalid_female`, `total_valid`, `total_unvalid`) VALUES
 (1, 1, 13, '2019', '11', '11', '22', '11', '11', '22', '11', '11', '22', '47364949_2087924327935020_3337975194345013248_o1.jpg', 'Bemis', 'aaa', '0000-00-00', 'aaaaa', 'aaaaa', 'aaaaa', '10', '1', 'Selection_1561.png', 'aaaaa', 'aaaaaaa', '0000-00-00', 'aaaaaa', 'aaaaaaaaa', 'aaaaaaaaaa', '10', '1', '20', '2'),
 (2, 2, 31, '2019', '100', '100', '200', '50', '50', '100', '25', '25', '50', 'portrait-white-man-isolated_53876-403062.jpg', 'Joao da Silva', 'qwerty', '2011-04-25', 'aaaaaaaaaaaaaaaaaaa', '777777', 'mane@mail.com', '65', '5', 'friendly-brunette-looking-camera_23-21477748492.jpg', 'Maria da Costa', 'qwerty', '2012-05-01', 'qwerty', '7888888', 'feto@mail.com', '55', '15', '120', '20'),
-(3, 1, 25, '2019', '190', '121', '311', '70', '21', '91', '11', '24', '35', '', 'qqqqqqqqqq', 'qqqqqqqqqqqqqq', '2019-05-27', 'qqqqqqqqqqqqqqqqqq', '777778', 'mane@mail.com', '90', '23', '', 'uuuuuuuuuuu', 'tttttttttttt', '2019-05-27', 'hhhhhhhhhhhhhhh', '7888888', 'feto@mail.com', '60', '14', '150', '37');
+(3, 1, 25, '2019', '190', '121', '311', '70', '21', '91', '11', '24', '35', '', 'qqqqqqqqqq', 'qqqqqqqqqqqqqq', '2019-05-27', 'qqqqqqqqqqqqqqqqqq', '777778', 'mane@mail.com', '90', '23', '', 'uuuuuuuuuuu', 'tttttttttttt', '2019-05-27', 'hhhhhhhhhhhhhhh', '7888888', 'feto@mail.com', '60', '14', '150', '37'),
+(4, 3, 39, '2019', '290', '60', '350', '100', '45', '145', '91', '40', '131', '', 'ffffffffffffff', 'qfffffffffff', '2019-05-29', 'fffffffffffffffff', '766666', 'mane@mail.com', '98', '9', '', 'rrrrrrrrrrrrrrrrrr', 'rrrrrrrrrrrrrrrr', '2019-06-19', 'qwerty', '78888888', 'feto@mail.com', '40', '67', '138', '76');
 
 -- --------------------------------------------------------
 
@@ -407,8 +408,60 @@ INSERT INTO `subdistric` (`id`, `id_distric`, `subdistric`) VALUES
 (32, 2, 'Fuorém'),
 (33, 2, 'Mape-Zumulai'),
 (34, 2, 'Maucatar\r\n'),
-(35, 1, 'Suai'),
-(36, 2, 'Tilomar');
+(35, 2, 'Suai'),
+(36, 2, 'Tilomar'),
+(37, 3, 'Baucau'),
+(38, 3, 'Baguia '),
+(39, 3, 'Laga '),
+(40, 3, 'Quelicai '),
+(41, 3, 'Vemasse '),
+(42, 3, 'Venilale'),
+(43, 5, 'Atabae'),
+(44, 5, 'Balibó'),
+(45, 5, 'Bobonaro'),
+(46, 5, 'Cailaco'),
+(47, 5, 'Lolotoi\r\n'),
+(48, 5, 'Maliana'),
+(49, 6, 'Bazartete'),
+(50, 6, 'Liquiçá'),
+(51, 6, 'Maubara'),
+(52, 7, 'Barique-Natarbora'),
+(53, 7, 'Laclo'),
+(54, 7, 'Laclubar'),
+(55, 7, 'Laleia'),
+(56, 7, 'Manatuto'),
+(57, 7, 'Soibada'),
+(58, 8, 'Iliomar'),
+(59, 8, 'Lautém'),
+(60, 8, 'Lospalos'),
+(61, 8, 'Luro'),
+(62, 8, 'Tutuala'),
+(63, 9, 'Ainaro'),
+(64, 9, 'Hatudo\r\n'),
+(65, 9, 'Hatu-Builico'),
+(66, 9, 'Maubisse'),
+(67, 10, 'Alas'),
+(68, 10, 'Fatuberliu'),
+(69, 10, 'Same'),
+(70, 10, 'Turiscai'),
+(71, 11, 'Lacluta'),
+(72, 11, 'Ossu'),
+(73, 11, 'Uatolari'),
+(74, 11, 'Uato Carabau'),
+(75, 11, 'Viqueque'),
+(76, 12, 'Atsabe'),
+(77, 12, 'Ermera'),
+(78, 12, 'Hatólia'),
+(79, 12, 'Letefoho'),
+(80, 12, 'Railaco'),
+(81, 13, 'Aileu'),
+(82, 13, 'Laulara'),
+(83, 13, 'Lequidoe'),
+(84, 13, 'Remexio'),
+(85, 14, 'Nitibe'),
+(86, 14, 'Oesilo'),
+(87, 14, 'Pante Macassar'),
+(88, 14, 'Passabe');
 
 -- --------------------------------------------------------
 
@@ -604,7 +657,7 @@ ALTER TABLE `apftl_c_program`
 -- AUTO_INCREMENT for table `apftl_election`
 --
 ALTER TABLE `apftl_election`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `apftl_member`
@@ -676,7 +729,7 @@ ALTER TABLE `member_work_exp`
 -- AUTO_INCREMENT for table `subdistric`
 --
 ALTER TABLE `subdistric`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT for table `user`

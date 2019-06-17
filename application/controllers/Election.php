@@ -14,6 +14,7 @@ class Election extends CI_Controller
         $page['candidate'] = $this->Apftl_chart->get_candidate();
         $page['validu'] = $this->Apftl_chart->get_validu();
         $page['invalidu'] = $this->Apftl_chart->get_invalidu();
+        
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -30,4 +31,23 @@ class Election extends CI_Controller
         //print_r($cek);
         //exit();
     }
+
+    public function getCovalima()
+    {
+        $this->load->model('Apftl_chart');
+        $datacovalima = $this->Apftl_chart->get_data_covalima();
+        echo json_encode($datacovalima);
+        //print_r($cek);
+        //exit();
+    }
+
+    public function getBaucau()
+    {
+        $this->load->model('Apftl_chart');
+        $databaucau = $this->Apftl_chart->get_data_baucau();
+        echo json_encode($databaucau);
+        //print_r($cek);
+        //exit();
+    }
+
 }
