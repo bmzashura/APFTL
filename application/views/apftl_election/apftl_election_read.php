@@ -50,12 +50,12 @@
 			<td><?php echo $total_candidate; ?></td>
 		</tr>
 		<tr>
-			<td>Photo Male</td>
-			<td><img src="<?= base_url('assets/img/profile/') . $photo_male; ?>" class="img-thumbnail"></td>
-		</tr>
-		<tr>
 			<td>Name Male</td>
 			<td><?php echo $name_male; ?></td>
+		</tr>
+		<tr>
+			<td>Eduksaun</td>
+			<td><?php echo $edu_male; ?></td>
 		</tr>
 		<tr>
 			<td>Birth P Male</td>
@@ -86,12 +86,12 @@
 			<td><?php echo $unvalid_male; ?></td>
 		</tr>
 		<tr>
-			<td>Photo Female</td>
-			<td><img src="<?= base_url('assets/img/profile/') . $photo_female; ?>" class="img-thumbnail"></td>
-		</tr>
-		<tr>
 			<td>Name Female</td>
 			<td><?php echo $name_female; ?></td>
+		</tr>
+		<tr>
+			<td>Eduksaun</td>
+			<td><?php echo $edu_female; ?></td>
 		</tr>
 		<tr>
 			<td>Birth P Female</td>

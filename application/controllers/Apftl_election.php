@@ -71,8 +71,8 @@ class Apftl_election extends CI_Controller
 				'female_candidate' => $row->female_candidate,
 				'male_candidate' => $row->male_candidate,
 				'total_candidate' => $row->total_candidate,
-				'photo_male' => $row->photo_male,
 				'name_male' => $row->name_male,
+				'edu_male' => $row->edu_male,
 				'birth_p_male' => $row->birth_p_male,
 				'birth_d_male' => $row->birth_d_male,
 				'address_male' => $row->address_male,
@@ -80,8 +80,8 @@ class Apftl_election extends CI_Controller
 				'email_male' => $row->email_male,
 				'valid_male' => $row->valid_male,
 				'unvalid_male' => $row->unvalid_male,
-				'photo_female' => $row->photo_female,
 				'name_female' => $row->name_female,
+				'edu_female' => $row->edu_female,
 				'birth_p_female' => $row->birth_p_female,
 				'birth_d_female' => $row->birth_d_female,
 				'address_female' => $row->address_female,
@@ -124,8 +124,8 @@ class Apftl_election extends CI_Controller
 			'female_candidate' => set_value('female_candidate'),
 			'male_candidate' => set_value('male_candidate'),
 			'total_candidate' => set_value('total_candidate'),
-			'photo_male' => set_value('photo_male'),
 			'name_male' => set_value('name_male'),
+			'edu_male' => set_value('edu_male'),
 			'birth_p_male' => set_value('birth_p_male'),
 			'birth_d_male' => set_value('birth_d_male'),
 			'address_male' => set_value('address_male'),
@@ -133,8 +133,8 @@ class Apftl_election extends CI_Controller
 			'email_male' => set_value('email_male'),
 			'valid_male' => set_value('valid_male'),
 			'unvalid_male' => set_value('unvalid_male'),
-			'photo_female' => set_value('photo_female'),
 			'name_female' => set_value('name_female'),
+			'edu_female' => set_value('edu_female'),
 			'birth_p_female' => set_value('birth_p_female'),
 			'birth_d_female' => set_value('birth_d_female'),
 			'address_female' => set_value('address_female'),
@@ -173,8 +173,8 @@ class Apftl_election extends CI_Controller
 				'female_candidate' => $this->input->post('female_candidate', TRUE),
 				'male_candidate' => $this->input->post('male_candidate', TRUE),
 				'total_candidate' => $this->input->post('total_candidate', TRUE),
-
 				'name_male' => $this->input->post('name_male', TRUE),
+				'edu_male' => $this->input->post('edu_male', TRUE),
 				'birth_p_male' => $this->input->post('birth_p_male', TRUE),
 				'birth_d_male' => $this->input->post('birth_d_male', TRUE),
 				'address_male' => $this->input->post('address_male', TRUE),
@@ -182,8 +182,8 @@ class Apftl_election extends CI_Controller
 				'email_male' => $this->input->post('email_male', TRUE),
 				'valid_male' => $this->input->post('valid_male', TRUE),
 				'unvalid_male' => $this->input->post('unvalid_male', TRUE),
-
 				'name_female' => $this->input->post('name_female', TRUE),
+				'edu_female' => $this->input->post('edu_female', TRUE),
 				'birth_p_female' => $this->input->post('birth_p_female', TRUE),
 				'birth_d_female' => $this->input->post('birth_d_female', TRUE),
 				'address_female' => $this->input->post('address_female', TRUE),
@@ -194,41 +194,6 @@ class Apftl_election extends CI_Controller
 				'total_valid' => $this->input->post('total_valid', TRUE),
 				'total_unvalid' => $this->input->post('total_unvalid', TRUE),
 			);
-
-			$upload_image_mane = $_FILES['photo_male']['name'];
-			if ($upload_image_mane) {
-				$config['allowed_types'] = 'gif|jpg|png';
-				$config['max_size']      = '2048';
-				$config['upload_path'] = './assets/img/profile/';
-				$this->load->library('upload', $config);
-				if ($this->upload->do_upload('photo_male')) {
-					$old_image = $data['photo_male'];
-					if ($old_image != 'default.jpg') {
-						unlink(FCPATH . 'assets/img/profile/' . $old_image);
-					}
-					$new_image = $this->upload->data('file_name');
-					$this->db->set('photo_male', $new_image);
-				} else {
-					echo $this->upload->dispay_errors();
-				}
-			}
-			$upload_image_feto = $_FILES['photo_female']['name'];
-			if ($upload_image_feto) {
-				$config['allowed_types'] = 'gif|jpg|png';
-				$config['max_size']      = '2048';
-				$config['upload_path'] = './assets/img/profile/';
-				$this->load->library('upload', $config);
-				if ($this->upload->do_upload('photo_female')) {
-					$old_image = $data['photo_female'];
-					if ($old_image != 'default.jpg') {
-						unlink(FCPATH . 'assets/img/profile/' . $old_image);
-					}
-					$new_image = $this->upload->data('file_name');
-					$this->db->set('photo_female', $new_image);
-				} else {
-					echo $this->upload->dispay_errors();
-				}
-			}
 
 			$this->Apftl_election_model->insert($data);
 			$this->session->set_flashdata('message', 'Create Record Success');
@@ -260,8 +225,8 @@ class Apftl_election extends CI_Controller
 				'female_candidate' => set_value('female_candidate', $row->female_candidate),
 				'male_candidate' => set_value('male_candidate', $row->male_candidate),
 				'total_candidate' => set_value('total_candidate', $row->total_candidate),
-				'photo_male' => set_value('photo_male', $row->photo_male),
 				'name_male' => set_value('name_male', $row->name_male),
+				'edu_male' => set_value('edu_male', $row->edu_male),
 				'birth_p_male' => set_value('birth_p_male', $row->birth_p_male),
 				'birth_d_male' => set_value('birth_d_male', $row->birth_d_male),
 				'address_male' => set_value('address_male', $row->address_male),
@@ -269,8 +234,8 @@ class Apftl_election extends CI_Controller
 				'email_male' => set_value('email_male', $row->email_male),
 				'valid_male' => set_value('valid_male', $row->valid_male),
 				'unvalid_male' => set_value('unvalid_male', $row->unvalid_male),
-				'photo_female' => set_value('photo_female', $row->photo_female),
 				'name_female' => set_value('name_female', $row->name_female),
+				'edu_female' => set_value('edu_female', $row->edu_female),
 				'birth_p_female' => set_value('birth_p_female', $row->birth_p_female),
 				'birth_d_female' => set_value('birth_d_female', $row->birth_d_female),
 				'address_female' => set_value('address_female', $row->address_female),
@@ -313,8 +278,8 @@ class Apftl_election extends CI_Controller
 				'female_candidate' => $this->input->post('female_candidate', TRUE),
 				'male_candidate' => $this->input->post('male_candidate', TRUE),
 				'total_candidate' => $this->input->post('total_candidate', TRUE),
-
 				'name_male' => $this->input->post('name_male', TRUE),
+				'edu_female' => $this->input->post('edu_female', TRUE),
 				'birth_p_male' => $this->input->post('birth_p_male', TRUE),
 				'birth_d_male' => $this->input->post('birth_d_male', TRUE),
 				'address_male' => $this->input->post('address_male', TRUE),
@@ -322,8 +287,8 @@ class Apftl_election extends CI_Controller
 				'email_male' => $this->input->post('email_male', TRUE),
 				'valid_male' => $this->input->post('valid_male', TRUE),
 				'unvalid_male' => $this->input->post('unvalid_male', TRUE),
-
 				'name_female' => $this->input->post('name_female', TRUE),
+				'edu_female' => $this->input->post('edu_female', TRUE),
 				'birth_p_female' => $this->input->post('birth_p_female', TRUE),
 				'birth_d_female' => $this->input->post('birth_d_female', TRUE),
 				'address_female' => $this->input->post('address_female', TRUE),
@@ -334,42 +299,6 @@ class Apftl_election extends CI_Controller
 				'total_valid' => $this->input->post('total_valid', TRUE),
 				'total_unvalid' => $this->input->post('total_unvalid', TRUE),
 			);
-
-
-			$upload_image_mane = $_FILES['photo_male']['name'];
-			if ($upload_image_mane) {
-				$config['allowed_types'] = 'gif|jpg|png';
-				$config['max_size']      = '2048';
-				$config['upload_path'] = './assets/img/profile/';
-				$this->load->library('upload', $config);
-				if ($this->upload->do_upload('photo_male')) {
-					$old_image = $data['photo_male'];
-					if ($old_image != 'default.jpg') {
-						unlink(FCPATH . 'assets/img/profile/' . $old_image);
-					}
-					$new_image = $this->upload->data('file_name');
-					$this->db->set('photo_male', $new_image);
-				} else {
-					echo $this->upload->dispay_errors();
-				}
-			}
-			$upload_image_feto = $_FILES['photo_female']['name'];
-			if ($upload_image_feto) {
-				$config['allowed_types'] = 'gif|jpg|png';
-				$config['max_size']      = '2048';
-				$config['upload_path'] = './assets/img/profile/';
-				$this->load->library('upload', $config);
-				if ($this->upload->do_upload('photo_female')) {
-					$old_image = $data['photo_female'];
-					if ($old_image != 'default.jpg') {
-						unlink(FCPATH . 'assets/img/profile/' . $old_image);
-					}
-					$new_image = $this->upload->data('file_name');
-					$this->db->set('photo_female', $new_image);
-				} else {
-					echo $this->upload->dispay_errors();
-				}
-			}
 
 			$this->Apftl_election_model->update($this->input->post('id', TRUE), $data);
 			$this->session->set_flashdata('message', 'Update Record Success');
@@ -405,8 +334,8 @@ class Apftl_election extends CI_Controller
 		$this->form_validation->set_rules('female_candidate', 'female candidate', 'trim|required');
 		$this->form_validation->set_rules('male_candidate', 'male candidate', 'trim|required');
 		$this->form_validation->set_rules('total_candidate', 'total candidate', 'trim|required');
-
 		$this->form_validation->set_rules('name_male', 'name male', 'trim|required');
+		$this->form_validation->set_rules('edu_male', 'edu male', 'trim|required');
 		$this->form_validation->set_rules('birth_p_male', 'birth p male', 'trim|required');
 		$this->form_validation->set_rules('birth_d_male', 'birth d male', 'trim|required');
 		$this->form_validation->set_rules('address_male', 'address male', 'trim|required');
@@ -414,8 +343,8 @@ class Apftl_election extends CI_Controller
 		$this->form_validation->set_rules('email_male', 'email male', 'trim|required');
 		$this->form_validation->set_rules('valid_male', 'valid male', 'trim|required');
 		$this->form_validation->set_rules('unvalid_male', 'unvalid male', 'trim|required');
-
 		$this->form_validation->set_rules('name_female', 'name female', 'trim|required');
+		$this->form_validation->set_rules('edu_female', 'edu female', 'trim|required');
 		$this->form_validation->set_rules('birth_p_female', 'birth p female', 'trim|required');
 		$this->form_validation->set_rules('birth_d_female', 'birth d female', 'trim|required');
 		$this->form_validation->set_rules('address_female', 'address female', 'trim|required');

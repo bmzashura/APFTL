@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 17, 2019 at 12:49 AM
+-- Generation Time: Jun 22, 2019 at 02:44 AM
 -- Server version: 5.6.43
 -- PHP Version: 5.6.40
 
@@ -116,8 +116,8 @@ CREATE TABLE `apftl_election` (
   `female_candidate` varchar(128) NOT NULL,
   `male_candidate` varchar(128) NOT NULL,
   `total_candidate` varchar(128) NOT NULL,
-  `photo_male` varchar(128) NOT NULL,
   `name_male` varchar(128) NOT NULL,
+  `edu_male` varchar(128) NOT NULL,
   `birth_p_male` varchar(128) NOT NULL,
   `birth_d_male` date NOT NULL,
   `address_male` varchar(128) NOT NULL,
@@ -125,8 +125,8 @@ CREATE TABLE `apftl_election` (
   `email_male` varchar(128) NOT NULL,
   `valid_male` varchar(128) NOT NULL,
   `unvalid_male` varchar(128) NOT NULL,
-  `photo_female` varchar(128) NOT NULL,
   `name_female` varchar(128) NOT NULL,
+  `edu_female` varchar(128) NOT NULL,
   `birth_p_female` varchar(128) NOT NULL,
   `birth_d_female` date NOT NULL,
   `address_female` varchar(128) NOT NULL,
@@ -142,11 +142,8 @@ CREATE TABLE `apftl_election` (
 -- Dumping data for table `apftl_election`
 --
 
-INSERT INTO `apftl_election` (`id`, `id_distric`, `id_subdistric`, `election_period`, `female_register`, `male_register`, `total_register`, `female_selected`, `male_selected`, `total_selected`, `female_candidate`, `male_candidate`, `total_candidate`, `photo_male`, `name_male`, `birth_p_male`, `birth_d_male`, `address_male`, `mobile_male`, `email_male`, `valid_male`, `unvalid_male`, `photo_female`, `name_female`, `birth_p_female`, `birth_d_female`, `address_female`, `mobile_female`, `email_female`, `valid_female`, `unvalid_female`, `total_valid`, `total_unvalid`) VALUES
-(1, 1, 13, '2019', '11', '11', '22', '11', '11', '22', '11', '11', '22', '47364949_2087924327935020_3337975194345013248_o1.jpg', 'Bemis', 'aaa', '0000-00-00', 'aaaaa', 'aaaaa', 'aaaaa', '10', '1', 'Selection_1561.png', 'aaaaa', 'aaaaaaa', '0000-00-00', 'aaaaaa', 'aaaaaaaaa', 'aaaaaaaaaa', '10', '1', '20', '2'),
-(2, 2, 31, '2019', '100', '100', '200', '50', '50', '100', '25', '25', '50', 'portrait-white-man-isolated_53876-403062.jpg', 'Joao da Silva', 'qwerty', '2011-04-25', 'aaaaaaaaaaaaaaaaaaa', '777777', 'mane@mail.com', '65', '5', 'friendly-brunette-looking-camera_23-21477748492.jpg', 'Maria da Costa', 'qwerty', '2012-05-01', 'qwerty', '7888888', 'feto@mail.com', '55', '15', '120', '20'),
-(3, 1, 25, '2019', '190', '121', '311', '70', '21', '91', '11', '24', '35', '', 'qqqqqqqqqq', 'qqqqqqqqqqqqqq', '2019-05-27', 'qqqqqqqqqqqqqqqqqq', '777778', 'mane@mail.com', '90', '23', '', 'uuuuuuuuuuu', 'tttttttttttt', '2019-05-27', 'hhhhhhhhhhhhhhh', '7888888', 'feto@mail.com', '60', '14', '150', '37'),
-(4, 3, 39, '2019', '290', '60', '350', '100', '45', '145', '91', '40', '131', '', 'ffffffffffffff', 'qfffffffffff', '2019-05-29', 'fffffffffffffffff', '766666', 'mane@mail.com', '98', '9', '', 'rrrrrrrrrrrrrrrrrr', 'rrrrrrrrrrrrrrrr', '2019-06-19', 'qwerty', '78888888', 'feto@mail.com', '40', '67', '138', '76');
+INSERT INTO `apftl_election` (`id`, `id_distric`, `id_subdistric`, `election_period`, `female_register`, `male_register`, `total_register`, `female_selected`, `male_selected`, `total_selected`, `female_candidate`, `male_candidate`, `total_candidate`, `name_male`, `edu_male`, `birth_p_male`, `birth_d_male`, `address_male`, `mobile_male`, `email_male`, `valid_male`, `unvalid_male`, `name_female`, `edu_female`, `birth_p_female`, `birth_d_female`, `address_female`, `mobile_female`, `email_female`, `valid_female`, `unvalid_female`, `total_valid`, `total_unvalid`) VALUES
+(6, 1, 13, '2019', '30', '20', '50', '20', '15', '35', '10', '10', '20', 'aaaaaaaaaaaaaaa', 'Primaria', 'qwerty', '2019-06-03', 'aaaaaaaaaaaaaaaaaaa', '777777777777', 'mane@mail.com', '5', '1', 'aaaaaaaaa', 'Pre-secundaria', 'tttttttttttt', '2019-05-29', 'qwerty', '7888888', 'feto@mail.com', '10', '1', '15', '2');
 
 -- --------------------------------------------------------
 
@@ -657,7 +654,7 @@ ALTER TABLE `apftl_c_program`
 -- AUTO_INCREMENT for table `apftl_election`
 --
 ALTER TABLE `apftl_election`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `apftl_member`

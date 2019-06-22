@@ -73,23 +73,26 @@
                 </div>
             </div>
             <h4 style="margin-top:0px">Candidatura Eleitu</h4>
-            <div class="row">
-                <div class="form-group col-md-4">
-                    <img src="<?= base_url('assets/img/profile/') . $photo_male; ?>" class="img-thumbnail">
-                </div>
-                <div class="form-group col-md-4">
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="photo_male" name="photo_male" value="<?php echo $photo_male; ?>">
-                        <label class="custom-file-label" for="photo_male">Choose file <?php echo form_error('photo_male') ?></label>
-                    </div>
-
-                </div>
-            </div>
-            <div class="form-group">
+            <div class="form-row">
+                <div class="form-group col-md-8">
                 <label for="varchar">Naran kompletu <?php echo form_error('name_male') ?></label>
                 <input type="text" class="form-control" name="name_male" id="name_male" placeholder="Name Male" value="<?php echo $name_male; ?>" />
             </div>
-            <div class="row">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="varchar">Eduksaun <?php echo form_error('edu_male') ?></label>
+                    <select name="edu_male" id="edu_male" class="form-control">
+                        <option>--select--</option>
+                        <option>La Eskola</option>
+                        <option>Primaria</option>
+                        <option>Pre-secundaria</option>
+                        <option>Secundaria</option>
+                        <option>Universidade</option>
+                    </select>
+                    </div>
+                </div>
+            <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="varchar">Fatin moris <?php echo form_error('birth_p_male') ?></label>
                     <input type="text" class="form-control" name="birth_p_male" id="birth_p_male" placeholder="Birth P Male" value="<?php echo $birth_p_male; ?>" />
@@ -99,11 +102,13 @@
                     <input class="datepicker" name="birth_d_male" readonly id="birth_d_male" data-date-format="yyyy-mm-dd"  value="<?php echo $birth_d_male; ?>">
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-row">
+                <div class="form-group col-md-8">
                 <label for="varchar">Hela fatin <?php echo form_error('address_male') ?></label>
                 <input type="text" class="form-control" name="address_male" id="address_male" placeholder="Address Male" value="<?php echo $address_male; ?>" />
             </div>
-            <div class="row">
+            </div>
+            <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="varchar">Numeru telfone <?php echo form_error('mobile_male') ?></label>
                     <input type="text" class="form-control" name="mobile_male" id="mobile_male" placeholder="Mobile Male" value="<?php echo $mobile_male; ?>" />
@@ -113,7 +118,7 @@
                     <input type="text" class="form-control" name="email_male" id="email_male" placeholder="Email Male" value="<?php echo $email_male; ?>" />
                 </div>
             </div>
-            <div class="row">
+            <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="varchar">Votasaun validu <?php echo form_error('valid_male') ?></label>
                     <input type="number" class="form-control valid" name="valid_male" id="valid_male" placeholder="Valid Male" value="<?php echo $valid_male; ?>" />
@@ -123,22 +128,26 @@
                     <input type="number" class="form-control unvalid" name="unvalid_male" id="unvalid_male" placeholder="Unvalid Male" value="<?php echo $unvalid_male; ?>" />
                 </div>
             </div>
-            <div class="row">
-                <div class="form-group col-md-4">
-                    <img src="<?= base_url('assets/img/profile/') . $photo_female; ?>" class="img-thumbnail">
-                </div>
-                <div class="form-group col-md-4">
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="photo_female" name="photo_female" value="<?php echo $photo_female; ?>">
-                        <label class="custom-file-label" for="photo_female">Choose file <?php echo form_error('photo_female') ?></label>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
+            <div class="form-row">
+                <div class="form-group col-md-8">
                 <label for="varchar">Naran kompletu <?php echo form_error('name_female') ?></label>
                 <input type="text" class="form-control" name="name_female" id="name_female" placeholder="Name Female" value="<?php echo $name_female; ?>" />
             </div>
-            <div class="row">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="varchar">Eduksaun <?php echo form_error('edu_female') ?></label>
+                    <select name="edu_female" id="edu_female" class="form-control">
+                        <option>--select--</option>
+                        <option>La Eskola</option>
+                        <option>Primaria</option>
+                        <option>Pre-secundaria</option>
+                        <option>Secundaria</option>
+                        <option>Universidade</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="varchar">Fatin moris <?php echo form_error('birth_p_female') ?></label>
                     <input type="text" class="form-control" name="birth_p_female" id="birth_p_female" placeholder="Birth P Female" value="<?php echo $birth_p_female; ?>" />
@@ -148,11 +157,13 @@
                     <input class="datepicker" name="birth_d_female" readonly id="birth_d_female" data-date-format="yyyy-mm-dd"  value="<?php echo $birth_d_female; ?>">
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-row">
+                <div class="form-group col-md-8">
                 <label for="varchar">Hela fatin <?php echo form_error('address_female') ?></label>
                 <input type="text" class="form-control" name="address_female" id="address_female" placeholder="Address Female" value="<?php echo $address_female; ?>" />
             </div>
-            <div class="row">
+            </div>
+            <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="varchar">Numeru telfone <?php echo form_error('mobile_female') ?></label>
                     <input type="text" class="form-control" name="mobile_female" id="mobile_female" placeholder="Mobile Female" value="<?php echo $mobile_female; ?>" />
@@ -162,7 +173,7 @@
                     <input type="text" class="form-control" name="email_female" id="email_female" placeholder="Email Female" value="<?php echo $email_female; ?>" />
                 </div>
             </div>
-            <div class="row">
+            <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="varchar">Votasaun validu <?php echo form_error('valid_female') ?></label>
                     <input type="number" class="form-control valid" name="valid_female" id="valid_female" placeholder="Valid Female" value="<?php echo $valid_female; ?>" />
@@ -172,7 +183,7 @@
                     <input type="number" class="form-control unvalid" name="unvalid_female" id="unvalid_female" placeholder="Unvalid Female" value="<?php echo $unvalid_female; ?>" />
                 </div>
             </div>
-            <div class="row">
+            <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="varchar">Total votasaun validu <?php echo form_error('total_valid') ?></label>
                     <input type="text" class="form-control" name="total_valid" readonly id="total_valid" placeholder="Total Valid" value="<?php echo $total_valid; ?>" />
