@@ -6,7 +6,7 @@ class Admin extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'Admin APFTL';
+        $data['title'] = 'Dashboard APFTL';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->model('Apftl_chart');
         $page['sum'] = $this->Apftl_chart->get_total();

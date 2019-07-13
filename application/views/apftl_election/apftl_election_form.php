@@ -8,7 +8,7 @@
                     <select name="id_distric" id="id_distric" class="form-control">
                         <option>--select--</option>
                         <?php foreach ($distric as $d) : ?>
-                            <option value="<?php echo $d->id ?>">
+                            <option value="<?php echo $d->id ?>" <?=$d->id == $id_distric ? "selected" : null ?>>
                                 <?php echo $d->distric ?>
                             </option>
                         <?php endforeach ?>
@@ -72,7 +72,7 @@
                     <input type="text" class="form-control" name="total_candidate" readonly id="total_candidate" placeholder="Total Candidate" value="<?php echo $total_candidate; ?>" />
                 </div>
             </div>
-            <h4 style="margin-top:0px">Candidatura Eleitu</h4>
+            <h4 style="margin-top:0px">Candidatura Eleitu Mane</h4>
             <div class="form-row">
                 <div class="form-group col-md-8">
                 <label for="varchar">Naran kompletu <?php echo form_error('name_male') ?></label>
@@ -128,6 +128,7 @@
                     <input type="number" class="form-control unvalid" name="unvalid_male" id="unvalid_male" placeholder="Unvalid Male" value="<?php echo $unvalid_male; ?>" />
                 </div>
             </div>
+            <h4 style="margin-top:0px">Candidatura Eleitu Feto</h4>
             <div class="form-row">
                 <div class="form-group col-md-8">
                 <label for="varchar">Naran kompletu <?php echo form_error('name_female') ?></label>

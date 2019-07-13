@@ -6,7 +6,7 @@ class Election extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'Admin APFTL';
+        $data['title'] = 'Election Result';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->model('Apftl_chart');
         $page['register'] = $this->Apftl_chart->get_register();
@@ -50,4 +50,21 @@ class Election extends CI_Controller
         //exit();
     }
 
+    public function getBobonaro()
+    {
+        $this->load->model('Apftl_chart');
+        $databobonaro = $this->Apftl_chart->get_data_bobonaro();
+        echo json_encode($databobonaro);
+        //print_r($cek);
+        //exit();
+    }
+
+    public function getLiquica()
+    {
+        $this->load->model('Apftl_chart');
+        $dataliquica = $this->Apftl_chart->get_data_liquica();
+        echo json_encode($dataliquica);
+        //print_r($cek);
+        //exit();
+    }
 }
