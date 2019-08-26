@@ -19,6 +19,11 @@
     <link href="<?= base_url('assets/') ?>css/sb-admin-2.css" rel="stylesheet">
     <link href="<?= base_url('assets/') ?>css/datepicker.css" rel="stylesheet">
 
+    <!-- Chart All -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.2.0"></script>
+
 </head>
 
 <body id="page-top">

@@ -6,6 +6,44 @@
            <!-- Page Heading -->
            <h1 class="h3 mb-2 text-gray-800">Election PFN</h1>
 
+           <a href="#" id="downloadPdf">Download Report Page as PDF</a>
+           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+           <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.debug.js"></script>
+           <script>
+               //add event listener to button
+               document.getElementById('downloadPdf').addEventListener("click", downloadPDF);
+
+               //donwload pdf from original canvas
+               function downloadPDF() {
+                   var total = document.querySelector('#totalselected');
+                   var totalpie = document.querySelector('#totalselectedPie');
+                   var aileu = document.querySelector('#aileuselected');
+                   var aileupie = document.querySelector('#aileuselectedPie');
+                   var ainaro = document.querySelector('#ainaroselected');
+                   var ainaropie = document.querySelector('#ainaroselectedPie');
+
+                   var totalselectedImg = total.toDataURL("image/png", 1.0);
+                   var totalselectedpieImg = totalpie.toDataURL("image/png", 1.0);
+                   var aileuselectedImg = aileu.toDataURL("image/png", 1.0);
+                   var aileuselectedpieImg = aileupie.toDataURL("image/png", 1.0);
+                   var ainaroselectedImg = ainaro.toDataURL("image/png", 1.0);
+                   var ainaroselectedpieImg = ainaropie.toDataURL("image/png", 1.0);
+
+                   //creates PDF from img
+                   var doc = new jsPDF('landscape');
+                   doc.setFontSize(20);
+                   doc.text(15, 15, "Cool Chart");
+                   doc.addImage(totalselectedImg, 'PNG', 10, 30, 140, 75);
+                   doc.addImage(totalselectedpieImg, 'PNG', 170, 30, 75, 65);
+                   doc.addImage(aileuselectedImg, 'PNG', 10, 120, 140, 75);
+                   doc.addImage(aileuselectedpieImg, 'PNG', 170, 120, 75, 65);
+                   doc.addPage()
+                   doc.addImage(ainaroselectedImg, 'PNG', 10, 30, 140, 75);
+                   doc.addImage(ainaroselectedpieImg, 'PNG', 170, 30, 75, 65);
+                   doc.save('all.pdf');
+               }
+           </script>
+
            <!-- Content Row Total -->
            <div class="row">
 
@@ -18,57 +56,8 @@
                        </div>
                        <div class="card-body">
                            <div class="chart-bar">
-                               <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                               <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-                               <canvas id="total"></canvas>
-                               <script>
-                                   var ctx1 = document.getElementById('total').getContext('2d');
-                                   var selected_total = [];
-                                   var selected_femaletotal = [];
-                                   var selected_maletotal = [];
-                                   $.post("<?= base_url('election_selected/selectedtotal') ?>",
-                                       function(selectedtotal) {
-                                           var obj = JSON.parse(selectedtotal);
-                                           $.each(obj, function(test, item) {
-                                               selected_total.push(item.total);
-                                               selected_femaletotal.push(item.femaletotal);
-                                               selected_maletotal.push(item.maletotal);
-                                           });
-                                           var total = new Chart(ctx1, {
-                                               type: 'bar',
-                                               data: {
-                                                   labels: selected_total,
-                                                   datasets: [{
-                                                           label: 'Female',
-                                                           data: selected_femaletotal,
-                                                           backgroundColor: 'rgba(6, 166, 10, 0.2)',
-                                                           borderColor: 'rgba(6, 166, 10, 1)',
-                                                           borderWidth: 1
-                                                       },
-                                                       {
-                                                           label: 'Male',
-                                                           data: selected_maletotal,
-                                                           backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                                                           borderColor: 'rgba(255, 99, 132, 1)',
-                                                           borderWidth: 1
-                                                       }
-                                                   ]
-                                               },
-                                               options: {
-                                                   scales: {
-                                                       yAxes: [{
-                                                           ticks: {
-                                                               beginAtZero: true
-                                                           }
-                                                       }]
-                                                   }
-                                               }
-                                           });
-                                       });
-                               </script>
+                               <canvas id="totalselected"></canvas>
                            </div>
-                           <hr>
-                           Styling for the area chart can be found in the <code>/js/demo/chart-area-demo.js</code> file.
                        </div>
                    </div>
                </div>
@@ -78,272 +67,78 @@
                    <div class="card shadow mb-4">
                        <!-- Card Header - Dropdown -->
                        <div class="card-header py-3">
-                           <h6 class="m-0 font-weight-bold text-primary">example</h6>
+                           <h6 class="m-0 font-weight-bold text-primary">Aplikante Total</h6>
                        </div>
                        <div class="card-body">
                            <div class="chart-pie pt-4">
-                               <canvas id="totalPie"></canvas>
-                               <script>
-                                   var ctz1 = document.getElementById('totalPie').getContext('2d');
-                                   var selected_femaleall = [];
-                                   var selected_maleall = [];
-                                   $.post("<?= base_url('election_selected/selectedall') ?>",
-                                       function(selectedall) {
-                                           var obj = JSON.parse(selectedall);
-                                           $.each(obj, function(test, item) {
-                                               selected_femaleall.push(item.femaleall);
-                                               selected_maleall.push(item.maleall);
-                                           });
-                                           var totalPie = new Chart(ctz1, {
-                                               type: 'pie',
-                                               data: {
-                                                   labels: ["Female", "Male"],
-                                                   datasets: [{
-                                                       data: [selected_femaleall, selected_maleall], // Specify the data values array
-
-                                                       borderColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color border 
-                                                       backgroundColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color background (Points and Fill)
-                                                       borderWidth: 1 // Specify bar border width
-                                                   }]
-                                               },
-                                               options: {
-                                                   responsive: true, // Instruct chart js to respond nicely.
-                                                   maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height 
-                                               }
-                                           });
-                                       });
-                               </script>
+                               <canvas id="totalselectedPie"></canvas>
                            </div>
-                           <hr>
-                           Styling for the bar chart can be found in the <code>/js/demo/chart-bar-demo.js</code> file.
                        </div>
                    </div>
                </div>
            </div>
 
-           <!-- Content Row Dili -->
+           <!-- Content Row Aileu -->
            <div class="row">
 
                <div class="col-xl-8 col-lg-7">
-                   <!-- Bar Chart Dili -->
+                   <!-- Bar Chart Aileu -->
                    <div class="card shadow mb-4">
                        <div class="card-header py-3">
-                           <h6 class="m-0 font-weight-bold text-primary">Chart Dili</h6>
+                           <h6 class="m-0 font-weight-bold text-primary">Chart Aileu</h6>
                        </div>
                        <div class="card-body">
                            <div class="chart-bar">
-                               <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                               <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-                               <canvas id="dili"></canvas>
-                               <script>
-                                   var ctx2 = document.getElementById('dili').getContext('2d');
-                                   var selected_dili = [];
-                                   var selected_femaledili = [];
-                                   var selected_maledili = [];
-                                   $.post("<?= base_url('election_selected/selecteddili') ?>",
-                                       function(selecteddili) {
-                                           var obj = JSON.parse(selecteddili);
-                                           $.each(obj, function(test, item) {
-                                               selected_dili.push(item.dili);
-                                               selected_femaledili.push(item.femaledili);
-                                               selected_maledili.push(item.maledili);
-                                           });
-                                           var dili = new Chart(ctx2, {
-                                               type: 'bar',
-                                               data: {
-                                                   labels: selected_dili,
-                                                   datasets: [{
-                                                           label: 'Female',
-                                                           data: selected_femaledili,
-                                                           backgroundColor: 'rgba(6, 166, 10, 0.2)',
-                                                           borderColor: 'rgba(6, 166, 10, 1)',
-                                                           borderWidth: 1
-                                                       },
-                                                       {
-                                                           label: 'Male',
-                                                           data: selected_maledili,
-                                                           backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                                                           borderColor: 'rgba(255, 99, 132, 1)',
-                                                           borderWidth: 1
-                                                       }
-                                                   ]
-                                               },
-                                               options: {
-                                                   scales: {
-                                                       yAxes: [{
-                                                           ticks: {
-                                                               beginAtZero: true
-                                                           }
-                                                       }]
-                                                   }
-                                               }
-                                           });
-                                       });
-                               </script>
+                               <canvas id="aileuselected"></canvas>
                            </div>
-                           <hr>
-                           Styling for the area chart can be found in the <code>/js/demo/chart-area-demo.js</code> file.
                        </div>
                    </div>
                </div>
-               <!-- Donut Chart Dili -->
+               <!-- Donut Chart Aileu -->
                <div class="col-xl-4 col-lg-5">
                    <div class="card shadow mb-4">
                        <!-- Card Header - Dropdown -->
                        <div class="card-header py-3">
-                           <h6 class="m-0 font-weight-bold text-primary">example</h6>
+                           <h6 class="m-0 font-weight-bold text-primary">Aplikante Aileu</h6>
                        </div>
                        <div class="card-body">
                            <div class="chart-pie pt-4">
-                               <canvas id="diliPie"></canvas>
-                               <script>
-                                   var ctz2 = document.getElementById('diliPie').getContext('2d');
-                                   var selected_femalediliall = [];
-                                   var selected_malediliall = [];
-                                   $.post("<?= base_url('election_selected/selecteddiliall') ?>",
-                                       function(selectedall) {
-                                           var obj = JSON.parse(selectedall);
-                                           $.each(obj, function(test, item) {
-                                               selected_femalediliall.push(item.femalediliall);
-                                               selected_malediliall.push(item.malediliall);
-                                           });
-                                           var diliPie = new Chart(ctz2, {
-                                               type: 'pie',
-                                               data: {
-                                                   labels: ["Female", "Male"],
-                                                   datasets: [{
-                                                       data: [selected_femalediliall, selected_malediliall], // Specify the data values array
-
-                                                       borderColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color border 
-                                                       backgroundColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color background (Points and Fill)
-                                                       borderWidth: 1 // Specify bar border width
-                                                   }]
-                                               },
-                                               options: {
-                                                   responsive: true, // Instruct chart js to respond nicely.
-                                                   maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height 
-                                               }
-                                           });
-                                       });
-                               </script>
+                               <canvas id="aileuselectedPie"></canvas>
                            </div>
-                           <hr>
-                           Styling for the bar chart can be found in the <code>/js/demo/chart-bar-demo.js</code> file.
                        </div>
                    </div>
                </div>
            </div>
 
-           <!-- Content Row Covalima -->
+           <!-- Content Row Ainaro -->
            <div class="row">
 
                <div class="col-xl-8 col-lg-7">
-                   <!-- Bar Chart Covalima -->
+                   <!-- Bar Chart Ainaro -->
                    <div class="card shadow mb-4">
                        <div class="card-header py-3">
-                           <h6 class="m-0 font-weight-bold text-primary">Chart Covalima</h6>
+                           <h6 class="m-0 font-weight-bold text-primary">Chart Ainaro</h6>
                        </div>
                        <div class="card-body">
                            <div class="chart-bar">
-                               <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                               <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-                               <canvas id="covalima"></canvas>
-                               <script>
-                                   var ctx3 = document.getElementById('covalima').getContext('2d');
-                                   var selected_covalima = [];
-                                   var selected_femalecovalima = [];
-                                   var selected_malecovalima = [];
-                                   $.post("<?= base_url('election_selected/selectedcovalima') ?>",
-                                       function(selectedcovalima) {
-                                           var obj = JSON.parse(selectedcovalima);
-                                           $.each(obj, function(test, item) {
-                                               selected_covalima.push(item.covalima);
-                                               selected_femalecovalima.push(item.femalecovalima);
-                                               selected_malecovalima.push(item.malecovalima);
-                                           });
-                                           var covalima = new Chart(ctx3, {
-                                               type: 'bar',
-                                               data: {
-                                                   labels: selected_covalima,
-                                                   datasets: [{
-                                                           label: 'Female',
-                                                           data: selected_femalecovalima,
-                                                           backgroundColor: 'rgba(6, 166, 10, 0.2)',
-                                                           borderColor: 'rgba(6, 166, 10, 1)',
-                                                           borderWidth: 1
-                                                       },
-                                                       {
-                                                           label: 'Male',
-                                                           data: selected_malecovalima,
-                                                           backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                                                           borderColor: 'rgba(255, 99, 132, 1)',
-                                                           borderWidth: 1
-                                                       }
-                                                   ]
-                                               },
-                                               options: {
-                                                   scales: {
-                                                       yAxes: [{
-                                                           ticks: {
-                                                               beginAtZero: true
-                                                           }
-                                                       }]
-                                                   }
-                                               }
-                                           });
-                                       });
-                               </script>
+                               <canvas id="ainaroselected"></canvas>
                            </div>
-                           <hr>
-                           Styling for the area chart can be found in the <code>/js/demo/chart-area-demo.js</code> file.
                        </div>
 
                    </div>
 
                </div>
-               <!-- Donut Chart Covalima -->
+               <!-- Donut Chart ainaro -->
                <div class="col-xl-4 col-lg-5">
                    <div class="card shadow mb-4">
                        <!-- Card Header - Dropdown -->
                        <div class="card-header py-3">
-                           <h6 class="m-0 font-weight-bold text-primary">example</h6>
+                           <h6 class="m-0 font-weight-bold text-primary">Aplikante Ainaro</h6>
                        </div>
                        <div class="card-body">
                            <div class="chart-pie pt-4">
-                               <canvas id="covalimaPie"></canvas>
-                               <script>
-                                   var ctz3 = document.getElementById('covalimaPie').getContext('2d');
-                                   var selected_femalecovalimaall = [];
-                                   var selected_malecovalimaall = [];
-                                   $.post("<?= base_url('election_selected/selectedcovalimaall') ?>",
-                                       function(selectedcovalimaall) {
-                                           var obj = JSON.parse(selectedcovalimaall);
-                                           $.each(obj, function(test, item) {
-                                               selected_femalecovalimaall.push(item.femalecovalimaall);
-                                               selected_malecovalimaall.push(item.malecovalimaall);
-                                           });
-                                           var covalimaPie = new Chart(ctz3, {
-                                               type: 'pie',
-                                               data: {
-                                                   labels: ["Female", "Male"],
-                                                   datasets: [{
-                                                       data: [selected_femalecovalimaall, selected_malecovalimaall], // Specify the data values array
-
-                                                       borderColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color border 
-                                                       backgroundColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color background (Points and Fill)
-                                                       borderWidth: 1 // Specify bar border width
-                                                   }]
-                                               },
-                                               options: {
-                                                   responsive: true, // Instruct chart js to respond nicely.
-                                                   maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height 
-                                               }
-                                           });
-                                       });
-                               </script>
+                               <canvas id="ainaroselectedPie"></canvas>
                            </div>
-                           <hr>
-                           Styling for the bar chart can be found in the <code>/js/demo/chart-bar-demo.js</code> file.
                        </div>
                    </div>
                </div>
@@ -360,57 +155,8 @@
                        </div>
                        <div class="card-body">
                            <div class="chart-bar">
-                               <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                               <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-                               <canvas id="baucau"></canvas>
-                               <script>
-                                   var ctx4 = document.getElementById('baucau').getContext('2d');
-                                   var selected_baucau = [];
-                                   var selected_femalebaucau = [];
-                                   var selected_malebaucau = [];
-                                   $.post("<?= base_url('election_selected/selectedbaucau') ?>",
-                                       function(selectedbaucau) {
-                                           var obj = JSON.parse(selectedbaucau);
-                                           $.each(obj, function(test, item) {
-                                               selected_baucau.push(item.baucau);
-                                               selected_femalebaucau.push(item.femalebaucau);
-                                               selected_malebaucau.push(item.malebaucau);
-                                           });
-                                           var baucau = new Chart(ctx4, {
-                                               type: 'bar',
-                                               data: {
-                                                   labels: selected_baucau,
-                                                   datasets: [{
-                                                           label: 'Female',
-                                                           data: selected_femalebaucau,
-                                                           backgroundColor: 'rgba(6, 166, 10, 0.2)',
-                                                           borderColor: 'rgba(6, 166, 10, 1)',
-                                                           borderWidth: 1
-                                                       },
-                                                       {
-                                                           label: 'Male',
-                                                           data: selected_malebaucau,
-                                                           backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                                                           borderColor: 'rgba(255, 99, 132, 1)',
-                                                           borderWidth: 1
-                                                       }
-                                                   ]
-                                               },
-                                               options: {
-                                                   scales: {
-                                                       yAxes: [{
-                                                           ticks: {
-                                                               beginAtZero: true
-                                                           }
-                                                       }]
-                                                   }
-                                               }
-                                           });
-                                       });
-                               </script>
+                               <canvas id="baucauselected"></canvas>
                            </div>
-                           <hr>
-                           Styling for the area chart can be found in the <code>/js/demo/chart-area-demo.js</code> file.
                        </div>
 
                    </div>
@@ -421,44 +167,12 @@
                    <div class="card shadow mb-4">
                        <!-- Card Header - Dropdown -->
                        <div class="card-header py-3">
-                           <h6 class="m-0 font-weight-bold text-primary">example</h6>
+                           <h6 class="m-0 font-weight-bold text-primary">Aplikante Baucau</h6>
                        </div>
                        <div class="card-body">
                            <div class="chart-pie pt-4">
-                               <canvas id="baucauPie"></canvas>
-                               <script>
-                                   var ctz4 = document.getElementById('baucauPie').getContext('2d');
-                                   var selected_femalebaucauall = [];
-                                   var selected_malebaucauall = [];
-                                   $.post("<?= base_url('election_selected/selectedbaucauall') ?>",
-                                       function(selectedbaucauall) {
-                                           var obj = JSON.parse(selectedbaucauall);
-                                           $.each(obj, function(test, item) {
-                                               selected_femalebaucauall.push(item.femalebaucauall);
-                                               selected_malebaucauall.push(item.malebaucauall);
-                                           });
-                                           var baucauPie = new Chart(ctz4, {
-                                               type: 'pie',
-                                               data: {
-                                                   labels: ["Female", "Male"],
-                                                   datasets: [{
-                                                       data: [selected_femalebaucauall, selected_malebaucauall], // Specify the data values array
-
-                                                       borderColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color border 
-                                                       backgroundColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color background (Points and Fill)
-                                                       borderWidth: 1 // Specify bar border width
-                                                   }]
-                                               },
-                                               options: {
-                                                   responsive: true, // Instruct chart js to respond nicely.
-                                                   maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height 
-                                               }
-                                           });
-                                       });
-                               </script>
+                               <canvas id="baucauselectedPie"></canvas>
                            </div>
-                           <hr>
-                           Styling for the bar chart can be found in the <code>/js/demo/chart-bar-demo.js</code> file.
                        </div>
                    </div>
                </div>
@@ -475,57 +189,8 @@
                        </div>
                        <div class="card-body">
                            <div class="chart-bar">
-                               <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                               <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-                               <canvas id="bobonaro"></canvas>
-                               <script>
-                                   var ctx5 = document.getElementById('bobonaro').getContext('2d');
-                                   var selected_bobonaro = [];
-                                   var selected_femalebobonaro = [];
-                                   var selected_malebobonaro = [];
-                                   $.post("<?= base_url('election_selected/selectedbobonaro') ?>",
-                                       function(selectedbobonaro) {
-                                           var obj = JSON.parse(selectedbobonaro);
-                                           $.each(obj, function(test, item) {
-                                               selected_bobonaro.push(item.bobonaro);
-                                               selected_femalebobonaro.push(item.femalebobonaro);
-                                               selected_malebobonaro.push(item.malebobonaro);
-                                           });
-                                           var bobonaro = new Chart(ctx5, {
-                                               type: 'bar',
-                                               data: {
-                                                   labels: selected_bobonaro,
-                                                   datasets: [{
-                                                           label: 'Female',
-                                                           data: selected_femalebobonaro,
-                                                           backgroundColor: 'rgba(6, 166, 10, 0.2)',
-                                                           borderColor: 'rgba(6, 166, 10, 1)',
-                                                           borderWidth: 1
-                                                       },
-                                                       {
-                                                           label: 'Male',
-                                                           data: selected_malebobonaro,
-                                                           backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                                                           borderColor: 'rgba(255, 99, 132, 1)',
-                                                           borderWidth: 1
-                                                       }
-                                                   ]
-                                               },
-                                               options: {
-                                                   scales: {
-                                                       yAxes: [{
-                                                           ticks: {
-                                                               beginAtZero: true
-                                                           }
-                                                       }]
-                                                   }
-                                               }
-                                           });
-                                       });
-                               </script>
+                               <canvas id="bobonaroselected"></canvas>
                            </div>
-                           <hr>
-                           Styling for the area chart can be found in the <code>/js/demo/chart-area-demo.js</code> file.
                        </div>
 
                    </div>
@@ -536,163 +201,337 @@
                    <div class="card shadow mb-4">
                        <!-- Card Header - Dropdown -->
                        <div class="card-header py-3">
-                           <h6 class="m-0 font-weight-bold text-primary">example</h6>
+                           <h6 class="m-0 font-weight-bold text-primary">Aplikante Bobonaro</h6>
                        </div>
                        <div class="card-body">
                            <div class="chart-pie pt-4">
-                               <canvas id="bobonaroPie"></canvas>
-                               <script>
-                                   var ctz5 = document.getElementById('bobonaroPie').getContext('2d');
-                                   var selected_femalebobonaroall = [];
-                                   var selected_malebobonaroall = [];
-                                   $.post("<?= base_url('election_selected/selectedbobonaroall') ?>",
-                                       function(selectedbobonaroall) {
-                                           var obj = JSON.parse(selectedbobonaroall);
-                                           $.each(obj, function(test, item) {
-                                               selected_femalebobonaroall.push(item.femalebobonaroall);
-                                               selected_malebobonaroall.push(item.malebobonaroall);
-                                           });
-                                           var bobonaroPie = new Chart(ctz5, {
-                                               type: 'pie',
-                                               data: {
-                                                   labels: ["Female", "Male"],
-                                                   datasets: [{
-                                                       data: [selected_femalebobonaroall, selected_malebobonaroall], // Specify the data values array
-
-                                                       borderColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color border 
-                                                       backgroundColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color background (Points and Fill)
-                                                       borderWidth: 1 // Specify bar border width
-                                                   }]
-                                               },
-                                               options: {
-                                                   responsive: true, // Instruct chart js to respond nicely.
-                                                   maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height 
-                                               }
-                                           });
-                                       });
-                               </script>
+                               <canvas id="bobonaroselectedPie"></canvas>
                            </div>
-                           <hr>
-                           Styling for the bar chart can be found in the <code>/js/demo/chart-bar-demo.js</code> file.
                        </div>
                    </div>
                </div>
            </div>
 
-           <!-- Content Row Liquiçá -->
+           <!-- Content Row Covalima -->
            <div class="row">
 
                <div class="col-xl-8 col-lg-7">
-                   <!-- Bar Chart Liquiçá -->
+                   <!-- Bar Chart Covalima -->
                    <div class="card shadow mb-4">
                        <div class="card-header py-3">
-                           <h6 class="m-0 font-weight-bold text-primary">Chart Liquiçá</h6>
+                           <h6 class="m-0 font-weight-bold text-primary">Chart Covalima</h6>
                        </div>
                        <div class="card-body">
                            <div class="chart-bar">
-                               <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                               <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-                               <canvas id="liquica"></canvas>
-                               <script>
-                                   var ctx6 = document.getElementById('liquica').getContext('2d');
-                                   var selected_liquica = [];
-                                   var selected_femaleliquica = [];
-                                   var selected_maleliquica = [];
-                                   $.post("<?= base_url('election_selected/selectedliquica') ?>",
-                                       function(selectedliquica) {
-                                           var obj = JSON.parse(selectedliquica);
-                                           $.each(obj, function(test, item) {
-                                               selected_liquica.push(item.liquica);
-                                               selected_femaleliquica.push(item.femaleliquica);
-                                               selected_maleliquica.push(item.maleliquica);
-                                           });
-                                           var liquica = new Chart(ctx6, {
-                                               type: 'bar',
-                                               data: {
-                                                   labels: selected_liquica,
-                                                   datasets: [{
-                                                           label: 'Female',
-                                                           data: selected_femaleliquica,
-                                                           backgroundColor: 'rgba(6, 166, 10, 0.2)',
-                                                           borderColor: 'rgba(6, 166, 10, 1)',
-                                                           borderWidth: 1
-                                                       },
-                                                       {
-                                                           label: 'Male',
-                                                           data: selected_maleliquica,
-                                                           backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                                                           borderColor: 'rgba(255, 99, 132, 1)',
-                                                           borderWidth: 1
-                                                       }
-                                                   ]
-                                               },
-                                               options: {
-                                                   scales: {
-                                                       yAxes: [{
-                                                           ticks: {
-                                                               beginAtZero: true
-                                                           }
-                                                       }]
-                                                   }
-                                               }
-                                           });
-                                       });
-                               </script>
+                               <canvas id="covalimaselected"></canvas>
                            </div>
-                           <hr>
-                           Styling for the area chart can be found in the <code>/js/demo/chart-area-demo.js</code> file.
                        </div>
 
                    </div>
 
                </div>
-               <!-- Donut Chart Liquiçá -->
+               <!-- Donut Chart Covalima-->
                <div class="col-xl-4 col-lg-5">
                    <div class="card shadow mb-4">
                        <!-- Card Header - Dropdown -->
                        <div class="card-header py-3">
-                           <h6 class="m-0 font-weight-bold text-primary">example</h6>
+                           <h6 class="m-0 font-weight-bold text-primary">Aplikante Covalima</h6>
                        </div>
                        <div class="card-body">
                            <div class="chart-pie pt-4">
-                               <canvas id="liquicaPie"></canvas>
-                               <script>
-                                   var ctz6 = document.getElementById('liquicaPie').getContext('2d');
-                                   var selected_femaleliquicaall = [];
-                                   var selected_maleliquicaall = [];
-                                   $.post("<?= base_url('election_selected/selectedliquicaall') ?>",
-                                       function(selectedliquicaall) {
-                                           var obj = JSON.parse(selectedliquicaall);
-                                           $.each(obj, function(test, item) {
-                                               selected_femaleliquicaall.push(item.femaleliquicaall);
-                                               selected_maleliquicaall.push(item.maleliquicaall);
-                                           });
-                                           var liquicaPie = new Chart(ctz6, {
-                                               type: 'pie',
-                                               data: {
-                                                   labels: ["Female", "Male"],
-                                                   datasets: [{
-                                                       data: [selected_femaleliquicaall, selected_maleliquicaall], // Specify the data values array
-
-                                                       borderColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color border 
-                                                       backgroundColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color background (Points and Fill)
-                                                       borderWidth: 1 // Specify bar border width
-                                                   }]
-                                               },
-                                               options: {
-                                                   responsive: true, // Instruct chart js to respond nicely.
-                                                   maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height 
-                                               }
-                                           });
-                                       });
-                               </script>
+                               <canvas id="covalimaselectedPie"></canvas>
                            </div>
-                           <hr>
-                           Styling for the bar chart can be found in the <code>/js/demo/chart-bar-demo.js</code> file.
                        </div>
                    </div>
                </div>
            </div>
 
+           <!-- Content Row Dili -->
+           <div class="row">
+
+               <div class="col-xl-8 col-lg-7">
+                   <!-- Bar Chart Dili -->
+                   <div class="card shadow mb-4">
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Chart Dili</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="chart-bar">
+                               <canvas id="diliselected"></canvas>
+                           </div>
+                       </div>
+
+                   </div>
+
+               </div>
+               <!-- Donut Chart Dili-->
+               <div class="col-xl-4 col-lg-5">
+                   <div class="card shadow mb-4">
+                       <!-- Card Header - Dropdown -->
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Aplikante Dili</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="chart-pie pt-4">
+                               <canvas id="diliselectedPie"></canvas>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+           <!-- Content Row Ermera -->
+           <div class="row">
+
+               <div class="col-xl-8 col-lg-7">
+                   <!-- Bar Chart Ermera -->
+                   <div class="card shadow mb-4">
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Chart Ermera</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="chart-bar">
+                               <canvas id="ermeraselected"></canvas>
+                           </div>
+                       </div>
+
+                   </div>
+
+               </div>
+               <!-- Donut Chart Ermera-->
+               <div class="col-xl-4 col-lg-5">
+                   <div class="card shadow mb-4">
+                       <!-- Card Header - Dropdown -->
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Aplikante Ermera</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="chart-pie pt-4">
+                               <canvas id="ermeraselectedPie"></canvas>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+           <!-- Content Row Lautem -->
+           <div class="row">
+
+               <div class="col-xl-8 col-lg-7">
+                   <!-- Bar Chart Lautem -->
+                   <div class="card shadow mb-4">
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Chart Lautem</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="chart-bar">
+                               <canvas id="lautemselected"></canvas>
+                           </div>
+                       </div>
+
+                   </div>
+
+               </div>
+               <!-- Donut Chart Lautem-->
+               <div class="col-xl-4 col-lg-5">
+                   <div class="card shadow mb-4">
+                       <!-- Card Header - Dropdown -->
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Aplikante Lautem</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="chart-pie pt-4">
+                               <canvas id="lautemselectedPie"></canvas>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+           <!-- Content Row Liquica -->
+           <div class="row">
+
+               <div class="col-xl-8 col-lg-7">
+                   <!-- Bar Chart Liquica -->
+                   <div class="card shadow mb-4">
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Chart Liquica</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="chart-bar">
+                               <canvas id="liquicaselected"></canvas>
+                           </div>
+                       </div>
+
+                   </div>
+
+               </div>
+               <!-- Donut Chart Liquica-->
+               <div class="col-xl-4 col-lg-5">
+                   <div class="card shadow mb-4">
+                       <!-- Card Header - Liquica -->
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Aplikante Liquica</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="chart-pie pt-4">
+                               <canvas id="liquicaselectedPie"></canvas>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+           <!-- Content Row Manufahi -->
+           <div class="row">
+
+               <div class="col-xl-8 col-lg-7">
+                   <!-- Bar Chart Manufahi -->
+                   <div class="card shadow mb-4">
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Chart Manufahi</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="chart-bar">
+                               <canvas id="manufahiselected"></canvas>
+                           </div>
+                       </div>
+
+                   </div>
+
+               </div>
+               <!-- Donut Chart Manufahi-->
+               <div class="col-xl-4 col-lg-5">
+                   <div class="card shadow mb-4">
+                       <!-- Card Header - Manufahi -->
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Aplikante Manufahi</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="chart-pie pt-4">
+                               <canvas id="manufahiselectedPie"></canvas>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+           <!-- Content Row Manatuto -->
+           <div class="row">
+
+               <div class="col-xl-8 col-lg-7">
+                   <!-- Bar Chart Manatuto -->
+                   <div class="card shadow mb-4">
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Chart Manatuto</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="chart-bar">
+                               <canvas id="manatutoselected"></canvas>
+                           </div>
+                       </div>
+
+                   </div>
+
+               </div>
+               <!-- Donut Chart Manatuto-->
+               <div class="col-xl-4 col-lg-5">
+                   <div class="card shadow mb-4">
+                       <!-- Card Header - Manatuto -->
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Aplikante Manatuto</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="chart-pie pt-4">
+                               <canvas id="manatutoselectedPie"></canvas>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+           <!-- Content Row Raeoa -->
+           <div class="row">
+
+               <div class="col-xl-8 col-lg-7">
+                   <!-- Bar Chart Raeoa -->
+                   <div class="card shadow mb-4">
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Chart Raeoa</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="chart-bar">
+                               <canvas id="raeoaselected"></canvas>
+                           </div>
+                       </div>
+
+                   </div>
+
+               </div>
+               <!-- Donut Chart Raeoa-->
+               <div class="col-xl-4 col-lg-5">
+                   <div class="card shadow mb-4">
+                       <!-- Card Header - Raeoa -->
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Aplikante Raeoa</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="chart-pie pt-4">
+                               <canvas id="raeoaselectedPie"></canvas>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+           <!-- Content Row Viqueque -->
+           <div class="row">
+
+               <div class="col-xl-8 col-lg-7">
+                   <!-- Bar Chart Viqueque -->
+                   <div class="card shadow mb-4">
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Chart Viqueque</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="chart-bar">
+                               <canvas id="viquequeselected"></canvas>
+                           </div>
+                       </div>
+
+                   </div>
+
+               </div>
+               <!-- Donut Chart Viqueque-->
+               <div class="col-xl-4 col-lg-5">
+                   <div class="card shadow mb-4">
+                       <!-- Card Header - Viqueque -->
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Aplikante Viqueque</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="chart-pie pt-4">
+                               <canvas id="viquequeselectedPie"></canvas>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
        </div>
        </div>
+
+       <!--Chart select-->
+       <script src="<?= base_url('assets/') ?>js/election/select/total.js"></script>
+       <script src="<?= base_url('assets/') ?>js/election/select/aileu.js"></script>
+       <script src="<?= base_url('assets/') ?>js/election/select/ainaro.js"></script>
+       <script src="<?= base_url('assets/') ?>js/election/select/baucau.js"></script>
+       <script src="<?= base_url('assets/') ?>js/election/select/bobonaro.js"></script>
+       <script src="<?= base_url('assets/') ?>js/election/select/covalima.js"></script>
+       <script src="<?= base_url('assets/') ?>js/election/select/dili.js"></script>
+       <script src="<?= base_url('assets/') ?>js/election/select/ermera.js"></script>
+       <script src="<?= base_url('assets/') ?>js/election/select/lautem.js"></script>
+       <script src="<?= base_url('assets/') ?>js/election/select/liquica.js"></script>
+       <script src="<?= base_url('assets/') ?>js/election/select/manufahi.js"></script>
+       <script src="<?= base_url('assets/') ?>js/election/select/manatuto.js"></script>
+       <script src="<?= base_url('assets/') ?>js/election/select/raeoa.js"></script>
+       <script src="<?= base_url('assets/') ?>js/election/select/viqueque.js"></script>

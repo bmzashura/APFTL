@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <h2 style="margin-top:0px"><?php echo $button ?> Election</h2>
+    <h2 style="margin-top:0px"><?php echo $button ?> Elisaun</h2>
     <form action="<?php echo $action; ?>" enctype="multipart/form-data" method="post">
         <div class="col-md-10">
             <div class="form-row">
@@ -84,11 +84,9 @@
                     <label for="varchar">Eduksaun <?php echo form_error('edu_male') ?></label>
                     <select name="edu_male" id="edu_male" class="form-control">
                         <option>--select--</option>
-                        <option>La Eskola</option>
-                        <option>Primaria</option>
-                        <option>Pre-secundaria</option>
-                        <option>Secundaria</option>
-                        <option>Universidade</option>
+                        <option>Ensinu Baziku</option>
+                        <option>Ensinu Sekundariu</option>
+                        <option>Ensinu Superior</option>
                     </select>
                     </div>
                 </div>
@@ -118,16 +116,6 @@
                     <input type="text" class="form-control" name="email_male" id="email_male" placeholder="Email Male" value="<?php echo $email_male; ?>" />
                 </div>
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label for="varchar">Votasaun validu <?php echo form_error('valid_male') ?></label>
-                    <input type="number" class="form-control valid" name="valid_male" id="valid_male" placeholder="Valid Male" value="<?php echo $valid_male; ?>" />
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="varchar">Votasaun invalidu <?php echo form_error('unvalid_male') ?></label>
-                    <input type="number" class="form-control unvalid" name="unvalid_male" id="unvalid_male" placeholder="Unvalid Male" value="<?php echo $unvalid_male; ?>" />
-                </div>
-            </div>
             <h4 style="margin-top:0px">Candidatura Eleitu Feto</h4>
             <div class="form-row">
                 <div class="form-group col-md-8">
@@ -140,11 +128,9 @@
                     <label for="varchar">Eduksaun <?php echo form_error('edu_female') ?></label>
                     <select name="edu_female" id="edu_female" class="form-control">
                         <option>--select--</option>
-                        <option>La Eskola</option>
-                        <option>Primaria</option>
-                        <option>Pre-secundaria</option>
-                        <option>Secundaria</option>
-                        <option>Universidade</option>
+                        <option>Ensinu Baziku</option>
+                        <option>Ensinu Sekundariu</option>
+                        <option>Ensinu Superior</option>
                     </select>
                 </div>
             </div>
@@ -174,26 +160,7 @@
                     <input type="text" class="form-control" name="email_female" id="email_female" placeholder="Email Female" value="<?php echo $email_female; ?>" />
                 </div>
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label for="varchar">Votasaun validu <?php echo form_error('valid_female') ?></label>
-                    <input type="number" class="form-control valid" name="valid_female" id="valid_female" placeholder="Valid Female" value="<?php echo $valid_female; ?>" />
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="varchar">Votasaun invalidu <?php echo form_error('unvalid_female') ?></label>
-                    <input type="number" class="form-control unvalid" name="unvalid_female" id="unvalid_female" placeholder="Unvalid Female" value="<?php echo $unvalid_female; ?>" />
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label for="varchar">Total votasaun validu <?php echo form_error('total_valid') ?></label>
-                    <input type="text" class="form-control" name="total_valid" readonly id="total_valid" placeholder="Total Valid" value="<?php echo $total_valid; ?>" />
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="varchar">Total votasaun invalidu<?php echo form_error('total_unvalid') ?></label>
-                    <input type="text" class="form-control" name="total_unvalid" readonly id="total_unvalid" placeholder="Total Unvalid" value="<?php echo $total_unvalid; ?>" />
-                </div>
-            </div>
+
             <input type="hidden" name="id" value="<?php echo $id; ?>" />
             <button type="submit" class="btn btn-primary"><?php echo $button ?></button>
             <a href="<?php echo site_url('apftl_election') ?>" class="btn btn-default">Cancel</a>

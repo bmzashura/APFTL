@@ -43,8 +43,8 @@ class Apftl_election_model extends CI_Model
 		$this->db->or_like('address_male', $q);
 		$this->db->or_like('mobile_male', $q);
 		$this->db->or_like('email_male', $q);
-		$this->db->or_like('valid_male', $q);
-		$this->db->or_like('unvalid_male', $q);
+		//$this->db->or_like('valid_male', $q);
+		//$this->db->or_like('unvalid_male', $q);
 		$this->db->or_like('name_female', $q);
 		$this->db->or_like('edu_female', $q);
 		$this->db->or_like('birth_p_female', $q);
@@ -52,10 +52,10 @@ class Apftl_election_model extends CI_Model
 		$this->db->or_like('address_female', $q);
 		$this->db->or_like('mobile_female', $q);
 		$this->db->or_like('email_female', $q);
-		$this->db->or_like('valid_female', $q);
-		$this->db->or_like('unvalid_female', $q);
-		$this->db->or_like('total_valid', $q);
-		$this->db->or_like('total_unvalid', $q);
+		//$this->db->or_like('valid_female', $q);
+		//$this->db->or_like('unvalid_female', $q);
+		//$this->db->or_like('total_valid', $q);
+		//$this->db->or_like('total_unvalid', $q);
 		$this->db->limit($limit, $start);
 		return $this->db->get($this->table)->result();
 	}
@@ -94,8 +94,8 @@ class Apftl_election_model extends CI_Model
 		$this->db->or_like('address_male', $q);
 		$this->db->or_like('mobile_male', $q);
 		$this->db->or_like('email_male', $q);
-		$this->db->or_like('valid_male', $q);
-		$this->db->or_like('unvalid_male', $q);
+		//$this->db->or_like('valid_male', $q);
+		//$this->db->or_like('unvalid_male', $q);
 		$this->db->or_like('name_female', $q);
 		$this->db->or_like('edu_female', $q);
 		$this->db->or_like('birth_p_female', $q);
@@ -103,10 +103,10 @@ class Apftl_election_model extends CI_Model
 		$this->db->or_like('address_female', $q);
 		$this->db->or_like('mobile_female', $q);
 		$this->db->or_like('email_female', $q);
-		$this->db->or_like('valid_female', $q);
-		$this->db->or_like('unvalid_female', $q);
-		$this->db->or_like('total_valid', $q);
-		$this->db->or_like('total_unvalid', $q);
+		//$this->db->or_like('valid_female', $q);
+		//$this->db->or_like('unvalid_female', $q);
+		//$this->db->or_like('total_valid', $q);
+		//$this->db->or_like('total_unvalid', $q);
 		$this->db->from($this->table);
 		return $this->db->count_all_results();
 	}
@@ -135,8 +135,8 @@ class Apftl_election_model extends CI_Model
 		$this->db->or_like('address_male', $q);
 		$this->db->or_like('mobile_male', $q);
 		$this->db->or_like('email_male', $q);
-		$this->db->or_like('valid_male', $q);
-		$this->db->or_like('unvalid_male', $q);
+		//$this->db->or_like('valid_male', $q);
+		//$this->db->or_like('unvalid_male', $q);
 		$this->db->or_like('name_female', $q);
 		$this->db->or_like('edu_female', $q);
 		$this->db->or_like('birth_p_female', $q);
@@ -144,10 +144,10 @@ class Apftl_election_model extends CI_Model
 		$this->db->or_like('address_female', $q);
 		$this->db->or_like('mobile_female', $q);
 		$this->db->or_like('email_female', $q);
-		$this->db->or_like('valid_female', $q);
-		$this->db->or_like('unvalid_female', $q);
-		$this->db->or_like('total_valid', $q);
-		$this->db->or_like('total_unvalid', $q);
+		//$this->db->or_like('valid_female', $q);
+		//$this->db->or_like('unvalid_female', $q);
+		//$this->db->or_like('total_valid', $q);
+		//$this->db->or_like('total_unvalid', $q);
 		$this->db->limit($limit, $start);
 		return $this->db->get($this->table)->result();
 	}

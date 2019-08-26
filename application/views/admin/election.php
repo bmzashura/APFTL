@@ -4,7 +4,7 @@
        <div class="container-fluid">
 
            <!-- Page Heading -->
-           <h1 class="h3 mb-2 text-gray-800">Election PFN</h1>
+           <h1 class="h3 mb-2 text-gray-800">Elisaun PFN</h1>
            <div class="row">
                <div class="col-xl-3 col-md-6 mb-4">
                    <div class="card border-left-primary shadow h-100 py-2">
@@ -28,7 +28,7 @@
                        <div class="card-body">
                            <div class="row no-gutters align-items-center">
                                <div class="col mr-2">
-                                   <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Ne'ebe Selesaun Dokumentus</div>
+                                   <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Selesaun</div>
                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $selected; ?></div>
                                </div>
                                <div class="col-auto">
@@ -55,21 +55,6 @@
                    </div>
                </div>
 
-               <div class="col-xl-3 col-md-6 mb-4">
-                   <div class="card border-left-success shadow h-100 py-2">
-                       <div class="card-body">
-                           <div class="row no-gutters align-items-center">
-                               <div class="col mr-2">
-                                   <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Votu</div>
-                                   <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $validu + $invalidu; ?></div>
-                               </div>
-                               <div class="col-auto">
-                                   <i class="fas fa-award fa-2x text-gray-300"></i>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-               </div>
 
 
                <!-- Content Row Dili -->
@@ -80,32 +65,32 @@
                        <!-- Bar Chart Dili -->
                        <div class="card shadow mb-4">
                            <div class="card-header py-3">
-                               <h6 class="m-0 font-weight-bold text-primary">Chart Dili</h6>
+                               <h6 class="m-0 font-weight-bold text-primary">Chart Aileu</h6>
                            </div>
                            <div class="card-body">
                                <div class="chart-bar">
                                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
                                    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-                                   <canvas id="dili"></canvas>
+                                   <canvas id="aileu"></canvas>
                                    <script>
-                                       var ctx1 = document.getElementById('dili').getContext('2d');
-                                       var data_dili = [];
+                                       var ctx1 = document.getElementById('aileu').getContext('2d');
+                                       var data_aileu = [];
                                        var data_register1 = [];
                                        var data_selected1 = [];
                                        var data_candidate1 = [];
-                                       $.post("<?= base_url('election/getdili') ?>",
-                                           function(datadili) {
-                                               var obj = JSON.parse(datadili);
+                                       $.post("<?= base_url('election/getaileu') ?>",
+                                           function(dataaileu) {
+                                               var obj = JSON.parse(dataaileu);
                                                $.each(obj, function(test, item) {
-                                                   data_dili.push(item.dili);
+                                                   data_aileu.push(item.aileu);
                                                    data_register1.push(item.register1);
                                                    data_selected1.push(item.selected1);
                                                    data_candidate1.push(item.candidate1);
                                                });
-                                               var dili = new Chart(ctx1, {
+                                               var aileu = new Chart(ctx1, {
                                                    type: 'bar',
                                                    data: {
-                                                       labels: data_dili,
+                                                       labels: data_aileu,
                                                        datasets: [{
                                                                label: 'Register',
                                                                data: data_register1,
@@ -157,10 +142,10 @@
                            </div>
                            <div class="card-body">
                                <div class="chart-pie pt-4">
-                                   <canvas id="diliPie"></canvas>
+                                   <canvas id="aileuPie"></canvas>
                                    <script>
-                                       var ctz1 = document.getElementById('diliPie').getContext('2d');
-                                       var diliPie = new Chart(ctz1, {
+                                       var ctz1 = document.getElementById('aileuPie').getContext('2d');
+                                       var aileuPie = new Chart(ctz1, {
                                            type: 'pie',
                                            data: {
                                                labels: ["Valid", "Unvalid"],

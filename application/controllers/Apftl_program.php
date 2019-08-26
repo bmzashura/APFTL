@@ -8,6 +8,7 @@ class Apftl_program extends CI_Controller
     function __construct()
     {
         parent::__construct();
+        is_logged_in();
         $this->load->model('Apftl_program_model');
         $this->load->library('form_validation');
     }

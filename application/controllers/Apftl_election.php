@@ -8,6 +8,7 @@ class Apftl_election extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
+		is_logged_in();
 		$this->load->model('Apftl_election_model');
 		$this->load->library('form_validation');
 	}
@@ -78,8 +79,6 @@ class Apftl_election extends CI_Controller
 				'address_male' => $row->address_male,
 				'mobile_male' => $row->mobile_male,
 				'email_male' => $row->email_male,
-				'valid_male' => $row->valid_male,
-				'unvalid_male' => $row->unvalid_male,
 				'name_female' => $row->name_female,
 				'edu_female' => $row->edu_female,
 				'birth_p_female' => $row->birth_p_female,
@@ -87,10 +86,6 @@ class Apftl_election extends CI_Controller
 				'address_female' => $row->address_female,
 				'mobile_female' => $row->mobile_female,
 				'email_female' => $row->email_female,
-				'valid_female' => $row->valid_female,
-				'unvalid_female' => $row->unvalid_female,
-				'total_valid' => $row->total_valid,
-				'total_unvalid' => $row->total_unvalid,
 			);
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/sidebar', $data);
@@ -131,8 +126,6 @@ class Apftl_election extends CI_Controller
 			'address_male' => set_value('address_male'),
 			'mobile_male' => set_value('mobile_male'),
 			'email_male' => set_value('email_male'),
-			'valid_male' => set_value('valid_male'),
-			'unvalid_male' => set_value('unvalid_male'),
 			'name_female' => set_value('name_female'),
 			'edu_female' => set_value('edu_female'),
 			'birth_p_female' => set_value('birth_p_female'),
@@ -140,10 +133,6 @@ class Apftl_election extends CI_Controller
 			'address_female' => set_value('address_female'),
 			'mobile_female' => set_value('mobile_female'),
 			'email_female' => set_value('email_female'),
-			'valid_female' => set_value('valid_female'),
-			'unvalid_female' => set_value('unvalid_female'),
-			'total_valid' => set_value('total_valid'),
-			'total_unvalid' => set_value('total_unvalid'),
 		);
 		$page['distric'] = $this->Apftl_election_model->get_distric_query();
 		$this->load->view('templates/header', $data);
@@ -180,8 +169,6 @@ class Apftl_election extends CI_Controller
 				'address_male' => $this->input->post('address_male', TRUE),
 				'mobile_male' => $this->input->post('mobile_male', TRUE),
 				'email_male' => $this->input->post('email_male', TRUE),
-				'valid_male' => $this->input->post('valid_male', TRUE),
-				'unvalid_male' => $this->input->post('unvalid_male', TRUE),
 				'name_female' => $this->input->post('name_female', TRUE),
 				'edu_female' => $this->input->post('edu_female', TRUE),
 				'birth_p_female' => $this->input->post('birth_p_female', TRUE),
@@ -189,10 +176,7 @@ class Apftl_election extends CI_Controller
 				'address_female' => $this->input->post('address_female', TRUE),
 				'mobile_female' => $this->input->post('mobile_female', TRUE),
 				'email_female' => $this->input->post('email_female', TRUE),
-				'valid_female' => $this->input->post('valid_female', TRUE),
-				'unvalid_female' => $this->input->post('unvalid_female', TRUE),
-				'total_valid' => $this->input->post('total_valid', TRUE),
-				'total_unvalid' => $this->input->post('total_unvalid', TRUE),
+
 			);
 
 			$this->Apftl_election_model->insert($data);
@@ -232,8 +216,6 @@ class Apftl_election extends CI_Controller
 				'address_male' => set_value('address_male', $row->address_male),
 				'mobile_male' => set_value('mobile_male', $row->mobile_male),
 				'email_male' => set_value('email_male', $row->email_male),
-				'valid_male' => set_value('valid_male', $row->valid_male),
-				'unvalid_male' => set_value('unvalid_male', $row->unvalid_male),
 				'name_female' => set_value('name_female', $row->name_female),
 				'edu_female' => set_value('edu_female', $row->edu_female),
 				'birth_p_female' => set_value('birth_p_female', $row->birth_p_female),
@@ -241,10 +223,6 @@ class Apftl_election extends CI_Controller
 				'address_female' => set_value('address_female', $row->address_female),
 				'mobile_female' => set_value('mobile_female', $row->mobile_female),
 				'email_female' => set_value('email_female', $row->email_female),
-				'valid_female' => set_value('valid_female', $row->valid_female),
-				'unvalid_female' => set_value('unvalid_female', $row->unvalid_female),
-				'total_valid' => set_value('total_valid', $row->total_valid),
-				'total_unvalid' => set_value('total_unvalid', $row->total_unvalid),
 			);
 			$page['distric'] = $this->Apftl_election_model->get_distric_query();
 			$this->load->view('templates/header', $data);
@@ -279,14 +257,12 @@ class Apftl_election extends CI_Controller
 				'male_candidate' => $this->input->post('male_candidate', TRUE),
 				'total_candidate' => $this->input->post('total_candidate', TRUE),
 				'name_male' => $this->input->post('name_male', TRUE),
-				'edu_female' => $this->input->post('edu_female', TRUE),
+				'edu_male' => $this->input->post('edu_female', TRUE),
 				'birth_p_male' => $this->input->post('birth_p_male', TRUE),
 				'birth_d_male' => $this->input->post('birth_d_male', TRUE),
 				'address_male' => $this->input->post('address_male', TRUE),
 				'mobile_male' => $this->input->post('mobile_male', TRUE),
 				'email_male' => $this->input->post('email_male', TRUE),
-				'valid_male' => $this->input->post('valid_male', TRUE),
-				'unvalid_male' => $this->input->post('unvalid_male', TRUE),
 				'name_female' => $this->input->post('name_female', TRUE),
 				'edu_female' => $this->input->post('edu_female', TRUE),
 				'birth_p_female' => $this->input->post('birth_p_female', TRUE),
@@ -294,10 +270,6 @@ class Apftl_election extends CI_Controller
 				'address_female' => $this->input->post('address_female', TRUE),
 				'mobile_female' => $this->input->post('mobile_female', TRUE),
 				'email_female' => $this->input->post('email_female', TRUE),
-				'valid_female' => $this->input->post('valid_female', TRUE),
-				'unvalid_female' => $this->input->post('unvalid_female', TRUE),
-				'total_valid' => $this->input->post('total_valid', TRUE),
-				'total_unvalid' => $this->input->post('total_unvalid', TRUE),
 			);
 
 			$this->Apftl_election_model->update($this->input->post('id', TRUE), $data);
@@ -322,38 +294,38 @@ class Apftl_election extends CI_Controller
 
 	public function _rules()
 	{
-		$this->form_validation->set_rules('id_distric', 'id distric', 'trim|required');
-		$this->form_validation->set_rules('id_subdistric', 'id subdistric', 'trim|required');
-		$this->form_validation->set_rules('election_period', 'election period', 'trim|required');
-		$this->form_validation->set_rules('female_register', 'female register', 'trim|required');
-		$this->form_validation->set_rules('male_register', 'male register', 'trim|required');
-		$this->form_validation->set_rules('total_register', 'total register', 'trim|required');
-		$this->form_validation->set_rules('female_selected', 'female selected', 'trim|required');
-		$this->form_validation->set_rules('male_selected', 'male selected', 'trim|required');
-		$this->form_validation->set_rules('total_selected', 'total selected', 'trim|required');
-		$this->form_validation->set_rules('female_candidate', 'female candidate', 'trim|required');
-		$this->form_validation->set_rules('male_candidate', 'male candidate', 'trim|required');
-		$this->form_validation->set_rules('total_candidate', 'total candidate', 'trim|required');
-		$this->form_validation->set_rules('name_male', 'name male', 'trim|required');
-		$this->form_validation->set_rules('edu_male', 'edu male', 'trim|required');
-		$this->form_validation->set_rules('birth_p_male', 'birth p male', 'trim|required');
-		$this->form_validation->set_rules('birth_d_male', 'birth d male', 'trim|required');
-		$this->form_validation->set_rules('address_male', 'address male', 'trim|required');
-		$this->form_validation->set_rules('mobile_male', 'mobile male', 'trim|required');
-		$this->form_validation->set_rules('email_male', 'email male', 'trim|required');
-		$this->form_validation->set_rules('valid_male', 'valid male', 'trim|required');
-		$this->form_validation->set_rules('unvalid_male', 'unvalid male', 'trim|required');
-		$this->form_validation->set_rules('name_female', 'name female', 'trim|required');
-		$this->form_validation->set_rules('edu_female', 'edu female', 'trim|required');
-		$this->form_validation->set_rules('birth_p_female', 'birth p female', 'trim|required');
-		$this->form_validation->set_rules('birth_d_female', 'birth d female', 'trim|required');
-		$this->form_validation->set_rules('address_female', 'address female', 'trim|required');
-		$this->form_validation->set_rules('mobile_female', 'mobile female', 'trim|required');
-		$this->form_validation->set_rules('email_female', 'email female', 'trim|required');
-		$this->form_validation->set_rules('valid_female', 'valid female', 'trim|required');
-		$this->form_validation->set_rules('unvalid_female', 'unvalid female', 'trim|required');
-		$this->form_validation->set_rules('total_valid', 'total valid', 'trim|required');
-		$this->form_validation->set_rules('total_unvalid', 'total unvalid', 'trim|required');
+		$this->form_validation->set_rules('id_distric', 'id distric', 'trim');
+		$this->form_validation->set_rules('id_subdistric', 'id subdistric', 'trim');
+		$this->form_validation->set_rules('election_period', 'election period', 'trim');
+		$this->form_validation->set_rules('female_register', 'female register', 'trim');
+		$this->form_validation->set_rules('male_register', 'male register', 'trim');
+		$this->form_validation->set_rules('total_register', 'total register', 'trim');
+		$this->form_validation->set_rules('female_selected', 'female selected', 'trim');
+		$this->form_validation->set_rules('male_selected', 'male selected', 'trim');
+		$this->form_validation->set_rules('total_selected', 'total selected', 'trim');
+		$this->form_validation->set_rules('female_candidate', 'female candidate', 'trim');
+		$this->form_validation->set_rules('male_candidate', 'male candidate', 'trim');
+		$this->form_validation->set_rules('total_candidate', 'total candidate', 'trim');
+		$this->form_validation->set_rules('name_male', 'name male', 'trim');
+		$this->form_validation->set_rules('edu_male', 'edu male', 'trim');
+		$this->form_validation->set_rules('birth_p_male', 'birth p male', 'trim');
+		$this->form_validation->set_rules('birth_d_male', 'birth d male', 'trim');
+		$this->form_validation->set_rules('address_male', 'address male', 'trim');
+		$this->form_validation->set_rules('mobile_male', 'mobile male', 'trim');
+		$this->form_validation->set_rules('email_male', 'email male', 'trim');
+		$this->form_validation->set_rules('valid_male', 'valid male', 'trim');
+		$this->form_validation->set_rules('unvalid_male', 'unvalid male', 'trim');
+		$this->form_validation->set_rules('name_female', 'name female', 'trim');
+		$this->form_validation->set_rules('edu_female', 'edu female', 'trim');
+		$this->form_validation->set_rules('birth_p_female', 'birth p female', 'trim');
+		$this->form_validation->set_rules('birth_d_female', 'birth d female', 'trim');
+		$this->form_validation->set_rules('address_female', 'address female', 'trim');
+		$this->form_validation->set_rules('mobile_female', 'mobile female', 'trim');
+		$this->form_validation->set_rules('email_female', 'email female', 'trim');
+		$this->form_validation->set_rules('valid_female', 'valid female', 'trim');
+		$this->form_validation->set_rules('unvalid_female', 'unvalid female', 'trim');
+		$this->form_validation->set_rules('total_valid', 'total valid', 'trim');
+		$this->form_validation->set_rules('total_unvalid', 'total unvalid', 'trim');
 
 		$this->form_validation->set_rules('id', 'id', 'trim');
 		$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');

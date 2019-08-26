@@ -3,6 +3,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Election_register extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        is_logged_in();
+    }
 
     public function index()
     {
@@ -41,38 +46,38 @@ class Election_register extends CI_Controller
         //exit();
     }
 
-    public function registerDili()
+    public function registerAileu()
     {
         $this->load->model('Apftl_election_register');
-        $registerdili = $this->Apftl_election_register->get_register_dili();
-        echo json_encode($registerdili);
+        $registeraileu = $this->Apftl_election_register->get_register_aileu();
+        echo json_encode($registeraileu);
         //print_r($cek);
         //exit();
     }
 
-    public function registerDiliall()
+    public function registerAileuall()
     {
         $this->load->model('Apftl_election_register');
-        $registerdiliall = $this->Apftl_election_register->get_register_diliall();
-        echo json_encode($registerdiliall);
+        $registeraileuall = $this->Apftl_election_register->get_register_aileuall();
+        echo json_encode($registeraileuall);
         //print_r($cek);
         //exit();
     }
 
-    public function registerCovalima()
+    public function registerAinaro()
     {
         $this->load->model('Apftl_election_register');
-        $registercovalima = $this->Apftl_election_register->get_register_covalima();
-        echo json_encode($registercovalima);
+        $registerainaro = $this->Apftl_election_register->get_register_ainaro();
+        echo json_encode($registerainaro);
         //print_r($cek);
         //exit();
     }
 
-    public function registerCovalimaall()
+    public function registerAinaroall()
     {
         $this->load->model('Apftl_election_register');
-        $registercovalimaall = $this->Apftl_election_register->get_register_covalimaall();
-        echo json_encode($registercovalimaall);
+        $registerainaroall = $this->Apftl_election_register->get_register_ainaroall();
+        echo json_encode($registerainaroall);
         //print_r($cek);
         //exit();
     }
@@ -113,6 +118,78 @@ class Election_register extends CI_Controller
         //exit();
     }
 
+    public function registerCovalima()
+    {
+        $this->load->model('Apftl_election_register');
+        $registercovalima = $this->Apftl_election_register->get_register_covalima();
+        echo json_encode($registercovalima);
+        //print_r($cek);
+        //exit();
+    }
+
+    public function registerCovalimaall()
+    {
+        $this->load->model('Apftl_election_register');
+        $registercovalimaall = $this->Apftl_election_register->get_register_covalimaall();
+        echo json_encode($registercovalimaall);
+        //print_r($cek);
+        //exit();
+    }
+
+    public function registerDili()
+    {
+        $this->load->model('Apftl_election_register');
+        $registerdili = $this->Apftl_election_register->get_register_dili();
+        echo json_encode($registerdili);
+        //print_r($cek);
+        //exit();
+    }
+
+    public function registerDiliall()
+    {
+        $this->load->model('Apftl_election_register');
+        $registerdiliall = $this->Apftl_election_register->get_register_diliall();
+        echo json_encode($registerdiliall);
+        //print_r($cek);
+        //exit();
+    }
+
+    public function registerErmera()
+    {
+        $this->load->model('Apftl_election_register');
+        $registerermera = $this->Apftl_election_register->get_register_ermera();
+        echo json_encode($registerermera);
+        //print_r($cek);
+        //exit();
+    }
+
+    public function registerErmeraall()
+    {
+        $this->load->model('Apftl_election_register');
+        $registerermeraall = $this->Apftl_election_register->get_register_ermeraall();
+        echo json_encode($registerermeraall);
+        //print_r($cek);
+        //exit();
+    }
+
+    public function registerLautem()
+    {
+        $this->load->model('Apftl_election_register');
+        $registerlautem = $this->Apftl_election_register->get_register_lautem();
+        echo json_encode($registerlautem);
+        //print_r($cek);
+        //exit();
+    }
+
+    public function registerLautemall()
+    {
+        $this->load->model('Apftl_election_register');
+        $registerlautemall = $this->Apftl_election_register->get_register_lautemall();
+        echo json_encode($registerlautemall);
+        //print_r($cek);
+        //exit();
+    }
+
     public function registerLiquica()
     {
         $this->load->model('Apftl_election_register');
@@ -127,6 +204,78 @@ class Election_register extends CI_Controller
         $this->load->model('Apftl_election_register');
         $registerliquicaall = $this->Apftl_election_register->get_register_liquicaall();
         echo json_encode($registerliquicaall);
+        //print_r($cek);
+        //exit();
+    }
+
+    public function registerManufahi()
+    {
+        $this->load->model('Apftl_election_register');
+        $registermanufahi = $this->Apftl_election_register->get_register_manufahi();
+        echo json_encode($registermanufahi);
+        //print_r($cek);
+        //exit();
+    }
+
+    public function registerManufahiall()
+    {
+        $this->load->model('Apftl_election_register');
+        $registermanufahiall = $this->Apftl_election_register->get_register_manufahiall();
+        echo json_encode($registermanufahiall);
+        //print_r($cek);
+        //exit();
+    }
+
+    public function registerManatuto()
+    {
+        $this->load->model('Apftl_election_register');
+        $registermanatuto = $this->Apftl_election_register->get_register_manatuto();
+        echo json_encode($registermanatuto);
+        //print_r($cek);
+        //exit();
+    }
+
+    public function registerManatutoall()
+    {
+        $this->load->model('Apftl_election_register');
+        $registermanatutoall = $this->Apftl_election_register->get_register_manatutoall();
+        echo json_encode($registermanatutoall);
+        //print_r($cek);
+        //exit();
+    }
+
+    public function registerRaeoa()
+    {
+        $this->load->model('Apftl_election_register');
+        $registerraeoa = $this->Apftl_election_register->get_register_raeoa();
+        echo json_encode($registerraeoa);
+        //print_r($cek);
+        //exit();
+    }
+
+    public function registerRaeoaall()
+    {
+        $this->load->model('Apftl_election_register');
+        $registerraeoaall = $this->Apftl_election_register->get_register_raeoaall();
+        echo json_encode($registerraeoaall);
+        //print_r($cek);
+        //exit();
+    }
+
+    public function registerViqueque()
+    {
+        $this->load->model('Apftl_election_register');
+        $registerviqueque = $this->Apftl_election_register->get_register_viqueque();
+        echo json_encode($registerviqueque);
+        //print_r($cek);
+        //exit();
+    }
+
+    public function registerViquequeall()
+    {
+        $this->load->model('Apftl_election_register');
+        $registerviquequeall = $this->Apftl_election_register->get_register_viquequeall();
+        echo json_encode($registerviquequeall);
         //print_r($cek);
         //exit();
     }

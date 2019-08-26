@@ -8,6 +8,7 @@ class Apftl_activity extends CI_Controller
     function __construct()
     {
         parent::__construct();
+        is_logged_in();
         $this->load->model('Apftl_activity_model');
         $this->load->library('form_validation');
     }

@@ -111,6 +111,7 @@
 <script src="<?= base_url('assets/') ?>js/bootstrap-datepicker.js"></script>
 <script src="<?= base_url('assets/') ?>js/sb-admin-2.js"></script>
 
+
 <script>
     $('.custom-file-input').on('change', function() {
         let fileName = $(this).val().split('\\').pop();
@@ -121,13 +122,6 @@
     });
 </script>
 
-<!-- Page level plugins -->
-<script src="<?= base_url('assets/') ?>vendor/chart.js/Chart.js"></script>
-
-<!-- Page level custom scripts -->
-<script src="<?= base_url('assets/') ?>js/demo/chart-area-demo.js"></script>
-<script src="<?= base_url('assets/') ?>js/demo/chart-pie-demo.js"></script>
-<script src="<?= base_url('assets/') ?>js/demo/chart-bar-demo.js"></script>
 </body>
 
 </html>

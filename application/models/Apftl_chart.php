@@ -14,10 +14,10 @@ class Apftl_chart extends CI_Model
         return $this->db->query($sum)->result();
     }
 
-    public function get_data_dili()
+    public function get_data_aileu()
     {
-        $sum = "SELECT b.subdistric as dili, SUM(a.total_register) as register1, SUM(a.total_selected) as selected1, SUM(a.total_candidate) as candidate1  from apftl_election as a
-        left join subdistric as b on b.id=a.id_subdistric WHERE b.id_distric = 1 GROUP BY a.id_subdistric ORDER BY
+        $sum = "SELECT b.subdistric as aileu, SUM(a.total_register) as register1, SUM(a.total_selected) as selected1, SUM(a.total_candidate) as candidate1  from apftl_election as a
+        left join subdistric as b on b.id=a.id_subdistric WHERE b.id_distric = 13 GROUP BY a.id_subdistric ORDER BY
         subdistric ASC ";
         return $this->db->query($sum)->result();
     }
@@ -96,17 +96,5 @@ class Apftl_chart extends CI_Model
         $sql = "SELECT SUM(total_candidate) as candidate FROM apftl_election";
         $result = $this->db->query($sql);
         return $result->row()->candidate;
-    }
-    public function get_validu()
-    {
-        $sql = "SELECT SUM(total_valid) as validu FROM apftl_election";
-        $result = $this->db->query($sql);
-        return $result->row()->validu;
-    }
-    public function get_invalidu()
-    {
-        $sql = "SELECT SUM(total_unvalid) as invalidu FROM apftl_election";
-        $result = $this->db->query($sql);
-        return $result->row()->invalidu;
     }
 }
