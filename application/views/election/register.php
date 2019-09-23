@@ -4,14 +4,14 @@
        <div class="container-fluid">
 
            <!-- Page Heading -->
-           <h1 class="h3 mb-2 text-gray-800">Election PFN</h1>
+           <h1 class="h3 mb-2 text-gray-800">Registrasaun  PFN</h1>
 
-           <a href="#" id="downloadPdf">Download Report Page as PDF</a>
+           <a href="#" id="registerPdf" class="btn btn-primary mb-2">Download PDF</a>
            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
            <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.debug.js"></script>
            <script>
                //add event listener to button
-               document.getElementById('downloadPdf').addEventListener("click", downloadPDF);
+               document.getElementById('registerPdf').addEventListener("click", downloadPDF);
 
                //donwload pdf from original canvas
                function downloadPDF() {
@@ -21,6 +21,28 @@
                    var aileupie = document.querySelector('#aileuPie');
                    var ainaro = document.querySelector('#ainaro');
                    var ainaropie = document.querySelector('#ainaroPie');
+                   var baucau = document.querySelector('#baucau');
+                   var baucaupie = document.querySelector('#baucauPie');
+                   var bobonaro = document.querySelector('#bobonaro');
+                   var bobonaropie = document.querySelector('#bobonaroPie');
+                   var covalima = document.querySelector('#covalima');
+                   var covalimapie = document.querySelector('#covalimaPie');
+                   var dili = document.querySelector('#dili');
+                   var dilipie = document.querySelector('#diliPie');
+                   var ermera = document.querySelector('#ermera');
+                   var ermerapie = document.querySelector('#ermeraPie');
+                   var lautem = document.querySelector('#lautem');
+                   var lautempie = document.querySelector('#lautemPie');
+                   var liquica = document.querySelector('#liquica');
+                   var liquicapie = document.querySelector('#liquicaPie');
+                   var manufahi = document.querySelector('#manufahi');
+                   var manufahipie = document.querySelector('#manufahiPie');
+                   var manatuto = document.querySelector('#manatuto');
+                   var manatutopie = document.querySelector('#manatutoPie');
+                   var raeoa = document.querySelector('#raeoa');
+                   var raeoapie = document.querySelector('#raeoaPie');
+                   var viqueque = document.querySelector('#viqueque');
+                   var viquequepie = document.querySelector('#viquequePie');
 
                    var totalImg = total.toDataURL("image/png", 1.0);
                    var totalpieImg = totalpie.toDataURL("image/png", 1.0);
@@ -28,6 +50,28 @@
                    var aileupieImg = aileupie.toDataURL("image/png", 1.0);
                    var ainaroImg = ainaro.toDataURL("image/png", 1.0);
                    var ainaropieImg = ainaropie.toDataURL("image/png", 1.0);
+                   var baucauImg = baucau.toDataURL("image/png", 1.0);
+                   var baucaupieImg = baucaupie.toDataURL("image/png", 1.0);
+                   var bobonaroImg = bobonaro.toDataURL("image/png", 1.0);
+                   var bobonaropieImg = bobonaropie.toDataURL("image/png", 1.0);
+                   var covalimaImg = covalima.toDataURL("image/png", 1.0);
+                   var covalimapieImg = covalimapie.toDataURL("image/png", 1.0);
+                   var diliImg = dili.toDataURL("image/png", 1.0);
+                   var dilipieImg = dilipie.toDataURL("image/png", 1.0);
+                   var ermeraImg = ermera.toDataURL("image/png", 1.0);
+                   var ermerapieImg = ermerapie.toDataURL("image/png", 1.0);
+                   var lautemImg = lautem.toDataURL("image/png", 1.0);
+                   var lautempieImg = lautempie.toDataURL("image/png", 1.0);
+                   var liquicaImg = liquica.toDataURL("image/png", 1.0);
+                   var liquicapieImg = liquicapie.toDataURL("image/png", 1.0);
+                   var manufahiImg = manufahi.toDataURL("image/png", 1.0);
+                   var manufahipieImg = manufahipie.toDataURL("image/png", 1.0);
+                   var manatutoImg = manatuto.toDataURL("image/png", 1.0);
+                   var manatutopieImg = manatutopie.toDataURL("image/png", 1.0);
+                   var raeoaImg = raeoa.toDataURL("image/png", 1.0);
+                   var raeoapieImg = raeoapie.toDataURL("image/png", 1.0);
+                   var viquequeImg = viqueque.toDataURL("image/png", 1.0);
+                   var viquequepieImg = viquequepie.toDataURL("image/png", 1.0);
 
                    //creates PDF from img
                    var doc = new jsPDF('landscape');
@@ -40,7 +84,34 @@
                    doc.addPage()
                    doc.addImage(ainaroImg, 'PNG', 10, 30, 140, 75);
                    doc.addImage(ainaropieImg, 'PNG', 170, 30, 75, 65);
-                   doc.save('all.pdf');
+                   doc.addImage(baucauImg, 'PNG', 10, 120, 140, 75);
+                   doc.addImage(baucaupieImg, 'PNG', 170, 120, 75, 65);
+                   doc.addPage()
+                   doc.addImage(bobonaroImg, 'PNG', 10, 30, 140, 75);
+                   doc.addImage(bobonaropieImg, 'PNG', 170, 30, 75, 65);
+                   doc.addImage(covalimaImg, 'PNG', 10, 120, 140, 75);
+                   doc.addImage(covalimapieImg, 'PNG', 170, 120, 75, 65);
+                   doc.addPage()
+                   doc.addImage(diliImg, 'PNG', 10, 30, 140, 75);
+                   doc.addImage(dilipieImg, 'PNG', 170, 30, 75, 65);
+                   doc.addImage(ermeraImg, 'PNG', 10, 120, 140, 75);
+                   doc.addImage(ermerapieImg, 'PNG', 170, 120, 75, 65);
+                   doc.addPage()
+                   doc.addImage(lautemImg, 'PNG', 10, 30, 140, 75);
+                   doc.addImage(lautempieImg, 'PNG', 170, 30, 75, 65);
+                   doc.addImage(liquicaImg, 'PNG', 10, 120, 140, 75);
+                   doc.addImage(liquicapieImg, 'PNG', 170, 120, 75, 65);
+                   doc.addPage()
+                   doc.addImage(manufahiImg, 'PNG', 10, 30, 140, 75);
+                   doc.addImage(manufahipieImg, 'PNG', 170, 30, 75, 65);
+                   doc.addImage(manatutoImg, 'PNG', 10, 120, 140, 75);
+                   doc.addImage(manatutopieImg, 'PNG', 170, 120, 75, 65);
+                   doc.addPage()
+                   doc.addImage(raeoaImg, 'PNG', 10, 30, 140, 75);
+                   doc.addImage(raeoapieImg, 'PNG', 170, 30, 75, 65);
+                   doc.addImage(viquequeImg, 'PNG', 10, 120, 140, 75);
+                   doc.addImage(viquequepieImg, 'PNG', 170, 120, 75, 65);
+                   doc.save('aplikante.pdf');
                }
            </script>
 

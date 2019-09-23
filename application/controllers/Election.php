@@ -37,11 +37,11 @@ class Election extends CI_Controller
         //exit();
     }
 
-    public function getCovalima()
+    public function getAinaro()
     {
         $this->load->model('Apftl_chart');
-        $datacovalima = $this->Apftl_chart->get_data_covalima();
-        echo json_encode($datacovalima);
+        $dataainaro = $this->Apftl_chart->get_data_ainaro();
+        echo json_encode($dataainaro);
         //print_r($cek);
         //exit();
     }
@@ -64,11 +64,83 @@ class Election extends CI_Controller
         //exit();
     }
 
+    public function getCovalima()
+    {
+        $this->load->model('Apftl_chart');
+        $datacovalima = $this->Apftl_chart->get_data_covalima();
+        echo json_encode($datacovalima);
+        //print_r($cek);
+        //exit();
+    }
+
+    public function getDili()
+    {
+        $this->load->model('Apftl_chart');
+        $datadili = $this->Apftl_chart->get_data_dili();
+        echo json_encode($datadili);
+        //print_r($cek);
+        //exit();
+    }
+
+    public function getErmera()
+    {
+        $this->load->model('Apftl_chart');
+        $dataermera = $this->Apftl_chart->get_data_ermera();
+        echo json_encode($dataermera);
+        //print_r($cek);
+        //exit();
+    }
+
+    public function getLautem()
+    {
+        $this->load->model('Apftl_chart');
+        $datalautem = $this->Apftl_chart->get_data_lautem();
+        echo json_encode($datalautem);
+        //print_r($cek);
+        //exit();
+    }
+
     public function getLiquica()
     {
         $this->load->model('Apftl_chart');
         $dataliquica = $this->Apftl_chart->get_data_liquica();
         echo json_encode($dataliquica);
+        //print_r($cek);
+        //exit();
+    }
+
+    public function getManufahi()
+    {
+        $this->load->model('Apftl_chart');
+        $datamanufahi = $this->Apftl_chart->get_data_manufahi();
+        echo json_encode($datamanufahi);
+        //print_r($cek);
+        //exit();
+    }
+
+    public function getManatuto()
+    {
+        $this->load->model('Apftl_chart');
+        $datamanatuto = $this->Apftl_chart->get_data_manatuto();
+        echo json_encode($datamanatuto);
+        //print_r($cek);
+        //exit();
+    }
+
+    public function getRaeoa()
+    {
+        $this->load->model('Apftl_chart');
+        $dataraeoa = $this->Apftl_chart->get_data_raeoa();
+        echo json_encode($dataraeoa);
+        //print_r($cek);
+        //exit();
+    }
+
+    public function getViqueque()
+    {
+        $this->load->model('Apftl_chart');
+        $dataviqueque = $this->Apftl_chart->get_data_viqueque();
+        echo json_encode($dataviqueque);
         //print_r($cek);
         //exit();
     }

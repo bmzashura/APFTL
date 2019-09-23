@@ -4,7 +4,116 @@
        <div class="container-fluid">
 
            <!-- Page Heading -->
-           <h1 class="h3 mb-2 text-gray-800">Election PFN</h1>
+           <h1 class="h3 mb-2 text-gray-800">Cadidatu/a PFN</h1>
+
+           <a href="#" id="candidatedPdf" class="btn btn-primary mb-2">Download PDF</a>
+           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+           <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.debug.js"></script>
+           <script>
+               //add event listener to button
+               document.getElementById('candidatePdf').addEventListener("click", downloadPDF);
+
+               //donwload pdf from original canvas
+               function downloadPDF() {
+                   var total = document.querySelector('#totalcandidate');
+                   var totalpie = document.querySelector('#totalcandidatePie');
+                   var aileu = document.querySelector('#aileucandidate');
+                   var aileupie = document.querySelector('#aileucandidatePie');
+                   var ainaro = document.querySelector('#ainarocandidate');
+                   var ainaropie = document.querySelector('#ainarocandidatePie');
+                   var baucau = document.querySelector('#baucaucandidate');
+                   var baucaupie = document.querySelector('#baucaucandidatePie');
+                   var bobonaro = document.querySelector('#bobonarocandidate');
+                   var bobonaropie = document.querySelector('#bobonarocandidatePie');
+                   var covalima = document.querySelector('#covalimacandidate');
+                   var covalimapie = document.querySelector('#covalimacandidatePie');
+                   var dili = document.querySelector('#dilicandidate');
+                   var dilipie = document.querySelector('#dilicandidatePie');
+                   var ermera = document.querySelector('#ermeracandidate');
+                   var ermerapie = document.querySelector('#ermeracandidatePie');
+                   var lautem = document.querySelector('#lautemcandidate');
+                   var lautempie = document.querySelector('#lautemcandidatePie');
+                   var liquica = document.querySelector('#liquicacandidate');
+                   var liquicapie = document.querySelector('#liquicacandidatePie');
+                   var manufahi = document.querySelector('#manufahicandidate');
+                   var manufahipie = document.querySelector('#manufahicandidatePie');
+                   var manatuto = document.querySelector('#manatutocandidate');
+                   var manatutopie = document.querySelector('#manatutocandidatePie');
+                   var raeoa = document.querySelector('#raeoacandidate');
+                   var raeoapie = document.querySelector('#raeoacandidatePie');
+                   var viqueque = document.querySelector('#viquequecandidate');
+                   var viquequepie = document.querySelector('#viquequecandidatePie');
+
+                   var totalImg = total.toDataURL("image/png", 1.0);
+                   var totalpieImg = totalpie.toDataURL("image/png", 1.0);
+                   var aileuImg = aileu.toDataURL("image/png", 1.0);
+                   var aileupieImg = aileupie.toDataURL("image/png", 1.0);
+                   var ainaroImg = ainaro.toDataURL("image/png", 1.0);
+                   var ainaropieImg = ainaropie.toDataURL("image/png", 1.0);
+                   var baucauImg = baucau.toDataURL("image/png", 1.0);
+                   var baucaupieImg = baucaupie.toDataURL("image/png", 1.0);
+                   var bobonaroImg = bobonaro.toDataURL("image/png", 1.0);
+                   var bobonaropieImg = bobonaropie.toDataURL("image/png", 1.0);
+                   var covalimaImg = covalima.toDataURL("image/png", 1.0);
+                   var covalimapieImg = covalimapie.toDataURL("image/png", 1.0);
+                   var diliImg = dili.toDataURL("image/png", 1.0);
+                   var dilipieImg = dilipie.toDataURL("image/png", 1.0);
+                   var ermeraImg = ermera.toDataURL("image/png", 1.0);
+                   var ermerapieImg = ermerapie.toDataURL("image/png", 1.0);
+                   var lautemImg = lautem.toDataURL("image/png", 1.0);
+                   var lautempieImg = lautempie.toDataURL("image/png", 1.0);
+                   var liquicaImg = liquica.toDataURL("image/png", 1.0);
+                   var liquicapieImg = liquicapie.toDataURL("image/png", 1.0);
+                   var manufahiImg = manufahi.toDataURL("image/png", 1.0);
+                   var manufahipieImg = manufahipie.toDataURL("image/png", 1.0);
+                   var manatutoImg = manatuto.toDataURL("image/png", 1.0);
+                   var manatutopieImg = manatutopie.toDataURL("image/png", 1.0);
+                   var raeoaImg = raeoa.toDataURL("image/png", 1.0);
+                   var raeoapieImg = raeoapie.toDataURL("image/png", 1.0);
+                   var viquequeImg = viqueque.toDataURL("image/png", 1.0);
+                   var viquequepieImg = viquequepie.toDataURL("image/png", 1.0);
+
+                   //creates PDF from img
+                   var doc = new jsPDF('landscape');
+                   doc.setFontSize(20);
+                   doc.text(15, 15, "Cool Chart");
+                   doc.addImage(totalImg, 'PNG', 10, 30, 140, 75);
+                   doc.addImage(totalpieImg, 'PNG', 170, 30, 75, 65);
+                   doc.addImage(aileuImg, 'PNG', 10, 120, 140, 75);
+                   doc.addImage(aileupieImg, 'PNG', 170, 120, 75, 65);
+                   doc.addPage()
+                   doc.addImage(ainaroImg, 'PNG', 10, 30, 140, 75);
+                   doc.addImage(ainaropieImg, 'PNG', 170, 30, 75, 65);
+                   doc.addImage(baucauImg, 'PNG', 10, 120, 140, 75);
+                   doc.addImage(baucaupieImg, 'PNG', 170, 120, 75, 65);
+                   doc.addPage()
+                   doc.addImage(bobonaroImg, 'PNG', 10, 30, 140, 75);
+                   doc.addImage(bobonaropieImg, 'PNG', 170, 30, 75, 65);
+                   doc.addImage(covalimaImg, 'PNG', 10, 120, 140, 75);
+                   doc.addImage(covalimapieImg, 'PNG', 170, 120, 75, 65);
+                   doc.addPage()
+                   doc.addImage(diliImg, 'PNG', 10, 30, 140, 75);
+                   doc.addImage(dilipieImg, 'PNG', 170, 30, 75, 65);
+                   doc.addImage(ermeraImg, 'PNG', 10, 120, 140, 75);
+                   doc.addImage(ermerapieImg, 'PNG', 170, 120, 75, 65);
+                   doc.addPage()
+                   doc.addImage(lautemImg, 'PNG', 10, 30, 140, 75);
+                   doc.addImage(lautempieImg, 'PNG', 170, 30, 75, 65);
+                   doc.addImage(liquicaImg, 'PNG', 10, 120, 140, 75);
+                   doc.addImage(liquicapieImg, 'PNG', 170, 120, 75, 65);
+                   doc.addPage()
+                   doc.addImage(manufahiImg, 'PNG', 10, 30, 140, 75);
+                   doc.addImage(manufahipieImg, 'PNG', 170, 30, 75, 65);
+                   doc.addImage(manatutoImg, 'PNG', 10, 120, 140, 75);
+                   doc.addImage(manatutopieImg, 'PNG', 170, 120, 75, 65);
+                   doc.addPage()
+                   doc.addImage(raeoaImg, 'PNG', 10, 30, 140, 75);
+                   doc.addImage(raeoapieImg, 'PNG', 170, 30, 75, 65);
+                   doc.addImage(viquequeImg, 'PNG', 10, 120, 140, 75);
+                   doc.addImage(viquequepieImg, 'PNG', 170, 120, 75, 65);
+                   doc.save('aplikante.pdf');
+               }
+           </script>
 
            <!-- Content Row Total -->
            <div class="row">
@@ -18,57 +127,8 @@
                        </div>
                        <div class="card-body">
                            <div class="chart-bar">
-                               <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                               <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-                               <canvas id="total"></canvas>
-                               <script>
-                                   var ctx1 = document.getElementById('total').getContext('2d');
-                                   var candidate_total = [];
-                                   var candidate_femaletotal = [];
-                                   var candidate_maletotal = [];
-                                   $.post("<?= base_url('election_candidate/candidatetotal') ?>",
-                                       function(candidatetotal) {
-                                           var obj = JSON.parse(candidatetotal);
-                                           $.each(obj, function(test, item) {
-                                               candidate_total.push(item.total);
-                                               candidate_femaletotal.push(item.femaletotal);
-                                               candidate_maletotal.push(item.maletotal);
-                                           });
-                                           var total = new Chart(ctx1, {
-                                               type: 'bar',
-                                               data: {
-                                                   labels: candidate_total,
-                                                   datasets: [{
-                                                           label: 'Female',
-                                                           data: candidate_femaletotal,
-                                                           backgroundColor: 'rgba(6, 166, 10, 0.2)',
-                                                           borderColor: 'rgba(6, 166, 10, 1)',
-                                                           borderWidth: 1
-                                                       },
-                                                       {
-                                                           label: 'Male',
-                                                           data: candidate_maletotal,
-                                                           backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                                                           borderColor: 'rgba(255, 99, 132, 1)',
-                                                           borderWidth: 1
-                                                       }
-                                                   ]
-                                               },
-                                               options: {
-                                                   scales: {
-                                                       yAxes: [{
-                                                           ticks: {
-                                                               beginAtZero: true
-                                                           }
-                                                       }]
-                                                   }
-                                               }
-                                           });
-                                       });
-                               </script>
+                               <canvas id="totalcandidate"></canvas>
                            </div>
-                           <hr>
-                           Styling for the area chart can be found in the <code>/js/demo/chart-area-demo.js</code> file.
                        </div>
                    </div>
                </div>
@@ -78,272 +138,78 @@
                    <div class="card shadow mb-4">
                        <!-- Card Header - Dropdown -->
                        <div class="card-header py-3">
-                           <h6 class="m-0 font-weight-bold text-primary">example</h6>
+                           <h6 class="m-0 font-weight-bold text-primary">Aplikante Total</h6>
                        </div>
                        <div class="card-body">
                            <div class="chart-pie pt-4">
-                               <canvas id="totalPie"></canvas>
-                               <script>
-                                   var ctz1 = document.getElementById('totalPie').getContext('2d');
-                                   var candidate_femaleall = [];
-                                   var candidate_maleall = [];
-                                   $.post("<?= base_url('election_candidate/candidateall') ?>",
-                                       function(candidateall) {
-                                           var obj = JSON.parse(candidateall);
-                                           $.each(obj, function(test, item) {
-                                               candidate_femaleall.push(item.femaleall);
-                                               candidate_maleall.push(item.maleall);
-                                           });
-                                           var totalPie = new Chart(ctz1, {
-                                               type: 'pie',
-                                               data: {
-                                                   labels: ["Female", "Male"],
-                                                   datasets: [{
-                                                       data: [candidate_femaleall, candidate_maleall], // Specify the data values array
-
-                                                       borderColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color border 
-                                                       backgroundColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color background (Points and Fill)
-                                                       borderWidth: 1 // Specify bar border width
-                                                   }]
-                                               },
-                                               options: {
-                                                   responsive: true, // Instruct chart js to respond nicely.
-                                                   maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height 
-                                               }
-                                           });
-                                       });
-                               </script>
+                               <canvas id="totalcandidatePie"></canvas>
                            </div>
-                           <hr>
-                           Styling for the bar chart can be found in the <code>/js/demo/chart-bar-demo.js</code> file.
                        </div>
                    </div>
                </div>
            </div>
 
-           <!-- Content Row Dili -->
+           <!-- Content Row Aileu -->
            <div class="row">
 
                <div class="col-xl-8 col-lg-7">
-                   <!-- Bar Chart Dili -->
+                   <!-- Bar Chart Aileu -->
                    <div class="card shadow mb-4">
                        <div class="card-header py-3">
-                           <h6 class="m-0 font-weight-bold text-primary">Chart Dili</h6>
+                           <h6 class="m-0 font-weight-bold text-primary">Chart Aileu</h6>
                        </div>
                        <div class="card-body">
                            <div class="chart-bar">
-                               <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                               <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-                               <canvas id="dili"></canvas>
-                               <script>
-                                   var ctx2 = document.getElementById('dili').getContext('2d');
-                                   var candidate_dili = [];
-                                   var candidate_femaledili = [];
-                                   var candidate_maledili = [];
-                                   $.post("<?= base_url('election_candidate/candidatedili') ?>",
-                                       function(candidatedili) {
-                                           var obj = JSON.parse(candidatedili);
-                                           $.each(obj, function(test, item) {
-                                               candidate_dili.push(item.dili);
-                                               candidate_femaledili.push(item.femaledili);
-                                               candidate_maledili.push(item.maledili);
-                                           });
-                                           var dili = new Chart(ctx2, {
-                                               type: 'bar',
-                                               data: {
-                                                   labels: candidate_dili,
-                                                   datasets: [{
-                                                           label: 'Female',
-                                                           data: candidate_femaledili,
-                                                           backgroundColor: 'rgba(6, 166, 10, 0.2)',
-                                                           borderColor: 'rgba(6, 166, 10, 1)',
-                                                           borderWidth: 1
-                                                       },
-                                                       {
-                                                           label: 'Male',
-                                                           data: candidate_maledili,
-                                                           backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                                                           borderColor: 'rgba(255, 99, 132, 1)',
-                                                           borderWidth: 1
-                                                       }
-                                                   ]
-                                               },
-                                               options: {
-                                                   scales: {
-                                                       yAxes: [{
-                                                           ticks: {
-                                                               beginAtZero: true
-                                                           }
-                                                       }]
-                                                   }
-                                               }
-                                           });
-                                       });
-                               </script>
+                               <canvas id="aileucandidate"></canvas>
                            </div>
-                           <hr>
-                           Styling for the area chart can be found in the <code>/js/demo/chart-area-demo.js</code> file.
                        </div>
                    </div>
                </div>
-               <!-- Donut Chart Dili -->
+               <!-- Donut Chart Aileu -->
                <div class="col-xl-4 col-lg-5">
                    <div class="card shadow mb-4">
                        <!-- Card Header - Dropdown -->
                        <div class="card-header py-3">
-                           <h6 class="m-0 font-weight-bold text-primary">example</h6>
+                           <h6 class="m-0 font-weight-bold text-primary">Aplikante Aileu</h6>
                        </div>
                        <div class="card-body">
                            <div class="chart-pie pt-4">
-                               <canvas id="diliPie"></canvas>
-                               <script>
-                                   var ctz2 = document.getElementById('diliPie').getContext('2d');
-                                   var candidate_femalediliall = [];
-                                   var candidate_malediliall = [];
-                                   $.post("<?= base_url('election_candidate/candidatediliall') ?>",
-                                       function(candidateall) {
-                                           var obj = JSON.parse(candidateall);
-                                           $.each(obj, function(test, item) {
-                                               candidate_femalediliall.push(item.femalediliall);
-                                               candidate_malediliall.push(item.malediliall);
-                                           });
-                                           var diliPie = new Chart(ctz2, {
-                                               type: 'pie',
-                                               data: {
-                                                   labels: ["Female", "Male"],
-                                                   datasets: [{
-                                                       data: [candidate_femalediliall, candidate_malediliall], // Specify the data values array
-
-                                                       borderColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color border 
-                                                       backgroundColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color background (Points and Fill)
-                                                       borderWidth: 1 // Specify bar border width
-                                                   }]
-                                               },
-                                               options: {
-                                                   responsive: true, // Instruct chart js to respond nicely.
-                                                   maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height 
-                                               }
-                                           });
-                                       });
-                               </script>
+                               <canvas id="aileucandidatePie"></canvas>
                            </div>
-                           <hr>
-                           Styling for the bar chart can be found in the <code>/js/demo/chart-bar-demo.js</code> file.
                        </div>
                    </div>
                </div>
            </div>
 
-           <!-- Content Row Covalima -->
+           <!-- Content Row Ainaro -->
            <div class="row">
 
                <div class="col-xl-8 col-lg-7">
-                   <!-- Bar Chart Covalima -->
+                   <!-- Bar Chart Ainaro -->
                    <div class="card shadow mb-4">
                        <div class="card-header py-3">
-                           <h6 class="m-0 font-weight-bold text-primary">Chart Covalima</h6>
+                           <h6 class="m-0 font-weight-bold text-primary">Chart Ainaro</h6>
                        </div>
                        <div class="card-body">
                            <div class="chart-bar">
-                               <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                               <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-                               <canvas id="covalima"></canvas>
-                               <script>
-                                   var ctx3 = document.getElementById('covalima').getContext('2d');
-                                   var candidate_covalima = [];
-                                   var candidate_femalecovalima = [];
-                                   var candidate_malecovalima = [];
-                                   $.post("<?= base_url('election_candidate/candidatecovalima') ?>",
-                                       function(candidatecovalima) {
-                                           var obj = JSON.parse(candidatecovalima);
-                                           $.each(obj, function(test, item) {
-                                               candidate_covalima.push(item.covalima);
-                                               candidate_femalecovalima.push(item.femalecovalima);
-                                               candidate_malecovalima.push(item.malecovalima);
-                                           });
-                                           var covalima = new Chart(ctx3, {
-                                               type: 'bar',
-                                               data: {
-                                                   labels: candidate_covalima,
-                                                   datasets: [{
-                                                           label: 'Female',
-                                                           data: candidate_femalecovalima,
-                                                           backgroundColor: 'rgba(6, 166, 10, 0.2)',
-                                                           borderColor: 'rgba(6, 166, 10, 1)',
-                                                           borderWidth: 1
-                                                       },
-                                                       {
-                                                           label: 'Male',
-                                                           data: candidate_malecovalima,
-                                                           backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                                                           borderColor: 'rgba(255, 99, 132, 1)',
-                                                           borderWidth: 1
-                                                       }
-                                                   ]
-                                               },
-                                               options: {
-                                                   scales: {
-                                                       yAxes: [{
-                                                           ticks: {
-                                                               beginAtZero: true
-                                                           }
-                                                       }]
-                                                   }
-                                               }
-                                           });
-                                       });
-                               </script>
+                               <canvas id="ainarocandidate"></canvas>
                            </div>
-                           <hr>
-                           Styling for the area chart can be found in the <code>/js/demo/chart-area-demo.js</code> file.
                        </div>
 
                    </div>
 
                </div>
-               <!-- Donut Chart Covalima -->
+               <!-- Donut Chart ainaro -->
                <div class="col-xl-4 col-lg-5">
                    <div class="card shadow mb-4">
                        <!-- Card Header - Dropdown -->
                        <div class="card-header py-3">
-                           <h6 class="m-0 font-weight-bold text-primary">example</h6>
+                           <h6 class="m-0 font-weight-bold text-primary">Aplikante Ainaro</h6>
                        </div>
                        <div class="card-body">
                            <div class="chart-pie pt-4">
-                               <canvas id="covalimaPie"></canvas>
-                               <script>
-                                   var ctz3 = document.getElementById('covalimaPie').getContext('2d');
-                                   var candidate_femalecovalimaall = [];
-                                   var candidate_malecovalimaall = [];
-                                   $.post("<?= base_url('election_candidate/candidatecovalimaall') ?>",
-                                       function(candidatecovalimaall) {
-                                           var obj = JSON.parse(candidatecovalimaall);
-                                           $.each(obj, function(test, item) {
-                                               candidate_femalecovalimaall.push(item.femalecovalimaall);
-                                               candidate_malecovalimaall.push(item.malecovalimaall);
-                                           });
-                                           var covalimaPie = new Chart(ctz3, {
-                                               type: 'pie',
-                                               data: {
-                                                   labels: ["Female", "Male"],
-                                                   datasets: [{
-                                                       data: [candidate_femalecovalimaall, candidate_malecovalimaall], // Specify the data values array
-
-                                                       borderColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color border 
-                                                       backgroundColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color background (Points and Fill)
-                                                       borderWidth: 1 // Specify bar border width
-                                                   }]
-                                               },
-                                               options: {
-                                                   responsive: true, // Instruct chart js to respond nicely.
-                                                   maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height 
-                                               }
-                                           });
-                                       });
-                               </script>
+                               <canvas id="ainarocandidatePie"></canvas>
                            </div>
-                           <hr>
-                           Styling for the bar chart can be found in the <code>/js/demo/chart-bar-demo.js</code> file.
                        </div>
                    </div>
                </div>
@@ -360,57 +226,8 @@
                        </div>
                        <div class="card-body">
                            <div class="chart-bar">
-                               <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                               <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-                               <canvas id="baucau"></canvas>
-                               <script>
-                                   var ctx4 = document.getElementById('baucau').getContext('2d');
-                                   var candidate_baucau = [];
-                                   var candidate_femalebaucau = [];
-                                   var candidate_malebaucau = [];
-                                   $.post("<?= base_url('election_candidate/candidatebaucau') ?>",
-                                       function(candidatebaucau) {
-                                           var obj = JSON.parse(candidatebaucau);
-                                           $.each(obj, function(test, item) {
-                                               candidate_baucau.push(item.baucau);
-                                               candidate_femalebaucau.push(item.femalebaucau);
-                                               candidate_malebaucau.push(item.malebaucau);
-                                           });
-                                           var baucau = new Chart(ctx4, {
-                                               type: 'bar',
-                                               data: {
-                                                   labels: candidate_baucau,
-                                                   datasets: [{
-                                                           label: 'Female',
-                                                           data: candidate_femalebaucau,
-                                                           backgroundColor: 'rgba(6, 166, 10, 0.2)',
-                                                           borderColor: 'rgba(6, 166, 10, 1)',
-                                                           borderWidth: 1
-                                                       },
-                                                       {
-                                                           label: 'Male',
-                                                           data: candidate_malebaucau,
-                                                           backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                                                           borderColor: 'rgba(255, 99, 132, 1)',
-                                                           borderWidth: 1
-                                                       }
-                                                   ]
-                                               },
-                                               options: {
-                                                   scales: {
-                                                       yAxes: [{
-                                                           ticks: {
-                                                               beginAtZero: true
-                                                           }
-                                                       }]
-                                                   }
-                                               }
-                                           });
-                                       });
-                               </script>
+                               <canvas id="baucaucandidate"></canvas>
                            </div>
-                           <hr>
-                           Styling for the area chart can be found in the <code>/js/demo/chart-area-demo.js</code> file.
                        </div>
 
                    </div>
@@ -421,44 +238,12 @@
                    <div class="card shadow mb-4">
                        <!-- Card Header - Dropdown -->
                        <div class="card-header py-3">
-                           <h6 class="m-0 font-weight-bold text-primary">example</h6>
+                           <h6 class="m-0 font-weight-bold text-primary">Aplikante Baucau</h6>
                        </div>
                        <div class="card-body">
                            <div class="chart-pie pt-4">
-                               <canvas id="baucauPie"></canvas>
-                               <script>
-                                   var ctz4 = document.getElementById('baucauPie').getContext('2d');
-                                   var candidate_femalebaucauall = [];
-                                   var candidate_malebaucauall = [];
-                                   $.post("<?= base_url('election_candidate/candidatebaucauall') ?>",
-                                       function(candidatebaucauall) {
-                                           var obj = JSON.parse(candidatebaucauall);
-                                           $.each(obj, function(test, item) {
-                                               candidate_femalebaucauall.push(item.femalebaucauall);
-                                               candidate_malebaucauall.push(item.malebaucauall);
-                                           });
-                                           var baucauPie = new Chart(ctz4, {
-                                               type: 'pie',
-                                               data: {
-                                                   labels: ["Female", "Male"],
-                                                   datasets: [{
-                                                       data: [candidate_femalebaucauall, candidate_malebaucauall], // Specify the data values array
-
-                                                       borderColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color border 
-                                                       backgroundColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color background (Points and Fill)
-                                                       borderWidth: 1 // Specify bar border width
-                                                   }]
-                                               },
-                                               options: {
-                                                   responsive: true, // Instruct chart js to respond nicely.
-                                                   maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height 
-                                               }
-                                           });
-                                       });
-                               </script>
+                               <canvas id="baucaucandidatePie"></canvas>
                            </div>
-                           <hr>
-                           Styling for the bar chart can be found in the <code>/js/demo/chart-bar-demo.js</code> file.
                        </div>
                    </div>
                </div>
@@ -475,57 +260,8 @@
                        </div>
                        <div class="card-body">
                            <div class="chart-bar">
-                               <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                               <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-                               <canvas id="bobonaro"></canvas>
-                               <script>
-                                   var ctx5 = document.getElementById('bobonaro').getContext('2d');
-                                   var candidate_bobonaro = [];
-                                   var candidate_femalebobonaro = [];
-                                   var candidate_malebobonaro = [];
-                                   $.post("<?= base_url('election_candidate/candidatebobonaro') ?>",
-                                       function(candidatebobonaro) {
-                                           var obj = JSON.parse(candidatebobonaro);
-                                           $.each(obj, function(test, item) {
-                                               candidate_bobonaro.push(item.bobonaro);
-                                               candidate_femalebobonaro.push(item.femalebobonaro);
-                                               candidate_malebobonaro.push(item.malebobonaro);
-                                           });
-                                           var bobonaro = new Chart(ctx5, {
-                                               type: 'bar',
-                                               data: {
-                                                   labels: candidate_bobonaro,
-                                                   datasets: [{
-                                                           label: 'Female',
-                                                           data: candidate_femalebobonaro,
-                                                           backgroundColor: 'rgba(6, 166, 10, 0.2)',
-                                                           borderColor: 'rgba(6, 166, 10, 1)',
-                                                           borderWidth: 1
-                                                       },
-                                                       {
-                                                           label: 'Male',
-                                                           data: candidate_malebobonaro,
-                                                           backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                                                           borderColor: 'rgba(255, 99, 132, 1)',
-                                                           borderWidth: 1
-                                                       }
-                                                   ]
-                                               },
-                                               options: {
-                                                   scales: {
-                                                       yAxes: [{
-                                                           ticks: {
-                                                               beginAtZero: true
-                                                           }
-                                                       }]
-                                                   }
-                                               }
-                                           });
-                                       });
-                               </script>
+                               <canvas id="bobonarocandidate"></canvas>
                            </div>
-                           <hr>
-                           Styling for the area chart can be found in the <code>/js/demo/chart-area-demo.js</code> file.
                        </div>
 
                    </div>
@@ -536,163 +272,337 @@
                    <div class="card shadow mb-4">
                        <!-- Card Header - Dropdown -->
                        <div class="card-header py-3">
-                           <h6 class="m-0 font-weight-bold text-primary">example</h6>
+                           <h6 class="m-0 font-weight-bold text-primary">Aplikante Bobonaro</h6>
                        </div>
                        <div class="card-body">
                            <div class="chart-pie pt-4">
-                               <canvas id="bobonaroPie"></canvas>
-                               <script>
-                                   var ctz5 = document.getElementById('bobonaroPie').getContext('2d');
-                                   var candidate_femalebobonaroall = [];
-                                   var candidate_malebobonaroall = [];
-                                   $.post("<?= base_url('election_candidate/candidatebobonaroall') ?>",
-                                       function(candidatebobonaroall) {
-                                           var obj = JSON.parse(candidatebobonaroall);
-                                           $.each(obj, function(test, item) {
-                                               candidate_femalebobonaroall.push(item.femalebobonaroall);
-                                               candidate_malebobonaroall.push(item.malebobonaroall);
-                                           });
-                                           var bobonaroPie = new Chart(ctz5, {
-                                               type: 'pie',
-                                               data: {
-                                                   labels: ["Female", "Male"],
-                                                   datasets: [{
-                                                       data: [candidate_femalebobonaroall, candidate_malebobonaroall], // Specify the data values array
-
-                                                       borderColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color border 
-                                                       backgroundColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color background (Points and Fill)
-                                                       borderWidth: 1 // Specify bar border width
-                                                   }]
-                                               },
-                                               options: {
-                                                   responsive: true, // Instruct chart js to respond nicely.
-                                                   maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height 
-                                               }
-                                           });
-                                       });
-                               </script>
+                               <canvas id="bobonarocandidatePie"></canvas>
                            </div>
-                           <hr>
-                           Styling for the bar chart can be found in the <code>/js/demo/chart-bar-demo.js</code> file.
                        </div>
                    </div>
                </div>
            </div>
 
-           <!-- Content Row Liquiçá -->
+           <!-- Content Row Covalima -->
            <div class="row">
 
                <div class="col-xl-8 col-lg-7">
-                   <!-- Bar Chart Liquiçá -->
+                   <!-- Bar Chart Covalima -->
                    <div class="card shadow mb-4">
                        <div class="card-header py-3">
-                           <h6 class="m-0 font-weight-bold text-primary">Chart Liquiçá</h6>
+                           <h6 class="m-0 font-weight-bold text-primary">Chart Covalima</h6>
                        </div>
                        <div class="card-body">
                            <div class="chart-bar">
-                               <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                               <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-                               <canvas id="liquica"></canvas>
-                               <script>
-                                   var ctx6 = document.getElementById('liquica').getContext('2d');
-                                   var candidate_liquica = [];
-                                   var candidate_femaleliquica = [];
-                                   var candidate_maleliquica = [];
-                                   $.post("<?= base_url('election_candidate/candidateliquica') ?>",
-                                       function(candidateliquica) {
-                                           var obj = JSON.parse(candidateliquica);
-                                           $.each(obj, function(test, item) {
-                                               candidate_liquica.push(item.liquica);
-                                               candidate_femaleliquica.push(item.femaleliquica);
-                                               candidate_maleliquica.push(item.maleliquica);
-                                           });
-                                           var liquica = new Chart(ctx6, {
-                                               type: 'bar',
-                                               data: {
-                                                   labels: candidate_liquica,
-                                                   datasets: [{
-                                                           label: 'Female',
-                                                           data: candidate_femaleliquica,
-                                                           backgroundColor: 'rgba(6, 166, 10, 0.2)',
-                                                           borderColor: 'rgba(6, 166, 10, 1)',
-                                                           borderWidth: 1
-                                                       },
-                                                       {
-                                                           label: 'Male',
-                                                           data: candidate_maleliquica,
-                                                           backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                                                           borderColor: 'rgba(255, 99, 132, 1)',
-                                                           borderWidth: 1
-                                                       }
-                                                   ]
-                                               },
-                                               options: {
-                                                   scales: {
-                                                       yAxes: [{
-                                                           ticks: {
-                                                               beginAtZero: true
-                                                           }
-                                                       }]
-                                                   }
-                                               }
-                                           });
-                                       });
-                               </script>
+                               <canvas id="covalimacandidate"></canvas>
                            </div>
-                           <hr>
-                           Styling for the area chart can be found in the <code>/js/demo/chart-area-demo.js</code> file.
                        </div>
 
                    </div>
 
                </div>
-               <!-- Donut Chart Liquiçá -->
+               <!-- Donut Chart Covalima-->
                <div class="col-xl-4 col-lg-5">
                    <div class="card shadow mb-4">
                        <!-- Card Header - Dropdown -->
                        <div class="card-header py-3">
-                           <h6 class="m-0 font-weight-bold text-primary">example</h6>
+                           <h6 class="m-0 font-weight-bold text-primary">Aplikante Covalima</h6>
                        </div>
                        <div class="card-body">
                            <div class="chart-pie pt-4">
-                               <canvas id="liquicaPie"></canvas>
-                               <script>
-                                   var ctz6 = document.getElementById('liquicaPie').getContext('2d');
-                                   var candidate_femaleliquicaall = [];
-                                   var candidate_maleliquicaall = [];
-                                   $.post("<?= base_url('election_candidate/candidateliquicaall') ?>",
-                                       function(candidateliquicaall) {
-                                           var obj = JSON.parse(candidateliquicaall);
-                                           $.each(obj, function(test, item) {
-                                               candidate_femaleliquicaall.push(item.femaleliquicaall);
-                                               candidate_maleliquicaall.push(item.maleliquicaall);
-                                           });
-                                           var liquicaPie = new Chart(ctz6, {
-                                               type: 'pie',
-                                               data: {
-                                                   labels: ["Female", "Male"],
-                                                   datasets: [{
-                                                       data: [candidate_femaleliquicaall, candidate_maleliquicaall], // Specify the data values array
-
-                                                       borderColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color border 
-                                                       backgroundColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color background (Points and Fill)
-                                                       borderWidth: 1 // Specify bar border width
-                                                   }]
-                                               },
-                                               options: {
-                                                   responsive: true, // Instruct chart js to respond nicely.
-                                                   maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height 
-                                               }
-                                           });
-                                       });
-                               </script>
+                               <canvas id="covalimacandidatePie"></canvas>
                            </div>
-                           <hr>
-                           Styling for the bar chart can be found in the <code>/js/demo/chart-bar-demo.js</code> file.
                        </div>
                    </div>
                </div>
            </div>
 
+           <!-- Content Row Dili -->
+           <div class="row">
+
+               <div class="col-xl-8 col-lg-7">
+                   <!-- Bar Chart Dili -->
+                   <div class="card shadow mb-4">
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Chart Dili</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="chart-bar">
+                               <canvas id="dilicandidate"></canvas>
+                           </div>
+                       </div>
+
+                   </div>
+
+               </div>
+               <!-- Donut Chart Dili-->
+               <div class="col-xl-4 col-lg-5">
+                   <div class="card shadow mb-4">
+                       <!-- Card Header - Dropdown -->
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Aplikante Dili</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="chart-pie pt-4">
+                               <canvas id="dilicandidatePie"></canvas>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+           <!-- Content Row Ermera -->
+           <div class="row">
+
+               <div class="col-xl-8 col-lg-7">
+                   <!-- Bar Chart Ermera -->
+                   <div class="card shadow mb-4">
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Chart Ermera</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="chart-bar">
+                               <canvas id="ermeracandidate"></canvas>
+                           </div>
+                       </div>
+
+                   </div>
+
+               </div>
+               <!-- Donut Chart Ermera-->
+               <div class="col-xl-4 col-lg-5">
+                   <div class="card shadow mb-4">
+                       <!-- Card Header - Dropdown -->
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Aplikante Ermera</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="chart-pie pt-4">
+                               <canvas id="ermeracandidatePie"></canvas>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+           <!-- Content Row Lautem -->
+           <div class="row">
+
+               <div class="col-xl-8 col-lg-7">
+                   <!-- Bar Chart Lautem -->
+                   <div class="card shadow mb-4">
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Chart Lautem</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="chart-bar">
+                               <canvas id="lautemcandidate"></canvas>
+                           </div>
+                       </div>
+
+                   </div>
+
+               </div>
+               <!-- Donut Chart Lautem-->
+               <div class="col-xl-4 col-lg-5">
+                   <div class="card shadow mb-4">
+                       <!-- Card Header - Dropdown -->
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Aplikante Lautem</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="chart-pie pt-4">
+                               <canvas id="lautemcandidatePie"></canvas>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+           <!-- Content Row Liquica -->
+           <div class="row">
+
+               <div class="col-xl-8 col-lg-7">
+                   <!-- Bar Chart Liquica -->
+                   <div class="card shadow mb-4">
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Chart Liquica</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="chart-bar">
+                               <canvas id="liquicacandidate"></canvas>
+                           </div>
+                       </div>
+
+                   </div>
+
+               </div>
+               <!-- Donut Chart Liquica-->
+               <div class="col-xl-4 col-lg-5">
+                   <div class="card shadow mb-4">
+                       <!-- Card Header - Liquica -->
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Aplikante Liquica</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="chart-pie pt-4">
+                               <canvas id="liquicacandidatePie"></canvas>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+           <!-- Content Row Manufahi -->
+           <div class="row">
+
+               <div class="col-xl-8 col-lg-7">
+                   <!-- Bar Chart Manufahi -->
+                   <div class="card shadow mb-4">
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Chart Manufahi</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="chart-bar">
+                               <canvas id="manufahicandidate"></canvas>
+                           </div>
+                       </div>
+
+                   </div>
+
+               </div>
+               <!-- Donut Chart Manufahi-->
+               <div class="col-xl-4 col-lg-5">
+                   <div class="card shadow mb-4">
+                       <!-- Card Header - Manufahi -->
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Aplikante Manufahi</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="chart-pie pt-4">
+                               <canvas id="manufahicandidatePie"></canvas>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+           <!-- Content Row Manatuto -->
+           <div class="row">
+
+               <div class="col-xl-8 col-lg-7">
+                   <!-- Bar Chart Manatuto -->
+                   <div class="card shadow mb-4">
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Chart Manatuto</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="chart-bar">
+                               <canvas id="manatutocandidate"></canvas>
+                           </div>
+                       </div>
+
+                   </div>
+
+               </div>
+               <!-- Donut Chart Manatuto-->
+               <div class="col-xl-4 col-lg-5">
+                   <div class="card shadow mb-4">
+                       <!-- Card Header - Manatuto -->
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Aplikante Manatuto</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="chart-pie pt-4">
+                               <canvas id="manatutocandidatePie"></canvas>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+           <!-- Content Row Raeoa -->
+           <div class="row">
+
+               <div class="col-xl-8 col-lg-7">
+                   <!-- Bar Chart Raeoa -->
+                   <div class="card shadow mb-4">
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Chart Raeoa</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="chart-bar">
+                               <canvas id="raeoacandidate"></canvas>
+                           </div>
+                       </div>
+
+                   </div>
+
+               </div>
+               <!-- Donut Chart Raeoa-->
+               <div class="col-xl-4 col-lg-5">
+                   <div class="card shadow mb-4">
+                       <!-- Card Header - Raeoa -->
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Aplikante Raeoa</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="chart-pie pt-4">
+                               <canvas id="raeoacandidatePie"></canvas>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+           <!-- Content Row Viqueque -->
+           <div class="row">
+
+               <div class="col-xl-8 col-lg-7">
+                   <!-- Bar Chart Viqueque -->
+                   <div class="card shadow mb-4">
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Chart Viqueque</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="chart-bar">
+                               <canvas id="viquequecandidate"></canvas>
+                           </div>
+                       </div>
+
+                   </div>
+
+               </div>
+               <!-- Donut Chart Viqueque-->
+               <div class="col-xl-4 col-lg-5">
+                   <div class="card shadow mb-4">
+                       <!-- Card Header - Viqueque -->
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Aplikante Viqueque</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="chart-pie pt-4">
+                               <canvas id="viquequecandidatePie"></canvas>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
        </div>
        </div>
+
+       <!--Chart candidate-->
+       <script src="<?= base_url('assets/') ?>js/election/candidate/total.js"></script>
+       <script src="<?= base_url('assets/') ?>js/election/candidate/aileu.js"></script>
+       <script src="<?= base_url('assets/') ?>js/election/candidate/ainaro.js"></script>
+       <script src="<?= base_url('assets/') ?>js/election/candidate/baucau.js"></script>
+       <script src="<?= base_url('assets/') ?>js/election/candidate/bobonaro.js"></script>
+       <script src="<?= base_url('assets/') ?>js/election/candidate/covalima.js"></script>
+       <script src="<?= base_url('assets/') ?>js/election/candidate/dili.js"></script>
+       <script src="<?= base_url('assets/') ?>js/election/candidate/ermera.js"></script>
+       <script src="<?= base_url('assets/') ?>js/election/candidate/lautem.js"></script>
+       <script src="<?= base_url('assets/') ?>js/election/candidate/liquica.js"></script>
+       <script src="<?= base_url('assets/') ?>js/election/candidate/manufahi.js"></script>
+       <script src="<?= base_url('assets/') ?>js/election/candidate/manatuto.js"></script>
+       <script src="<?= base_url('assets/') ?>js/election/candidate/raeoa.js"></script>
+       <script src="<?= base_url('assets/') ?>js/election/candidate/viqueque.js"></script>

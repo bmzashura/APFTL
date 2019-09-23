@@ -257,7 +257,7 @@ class Apftl_election extends CI_Controller
 				'male_candidate' => $this->input->post('male_candidate', TRUE),
 				'total_candidate' => $this->input->post('total_candidate', TRUE),
 				'name_male' => $this->input->post('name_male', TRUE),
-				'edu_male' => $this->input->post('edu_female', TRUE),
+				'edu_male' => $this->input->post('edu_male', TRUE),
 				'birth_p_male' => $this->input->post('birth_p_male', TRUE),
 				'birth_d_male' => $this->input->post('birth_d_male', TRUE),
 				'address_male' => $this->input->post('address_male', TRUE),
@@ -345,5 +345,216 @@ class Apftl_election extends CI_Controller
 			//print_r($cek);
 			//exit();
 		}
+	}
+	public function export()
+	{
+		// Load plugin PHPExcel 
+		include APPPATH . 'third_party/PHPExcel/PHPExcel.php';
+
+		// Cal class PHPExcel 
+		$excel = new PHPExcel();
+		// Initial setting for Excel file
+		$excel->getProperties()->setCreator('Apftl Admin')
+			->setLastModifiedBy('Apftl Admin')
+			->setTitle("Dadus ELisaun PFN")
+			->setSubject("ELisaun PFN")
+			->setDescription("Relaroiu ELisaun PFN")
+			->setKeywords("Dadus ELisaun PFN");
+		// Variable to store Header Style
+		$style_col = array(
+			'font' => array('bold' => true), 
+			'alignment' => array(
+				'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
+				'vertical' => PHPExcel_Style_Alignment::VERTICAL_CENTER 
+			),
+			'borders' => array(
+				'top' => array('style'  => PHPExcel_Style_Border::BORDER_THIN), 
+				'right' => array('style'  => PHPExcel_Style_Border::BORDER_THIN),  
+				'bottom' => array('style'  => PHPExcel_Style_Border::BORDER_THIN), 
+				'left' => array('style'  => PHPExcel_Style_Border::BORDER_THIN) 
+			)
+		);
+		// Variable to store Table Style
+		$style_row = array(
+			'alignment' => array(
+				'vertical' => PHPExcel_Style_Alignment::VERTICAL_CENTER 
+			),
+			'borders' => array(
+				'top' => array('style'  => PHPExcel_Style_Border::BORDER_THIN), 
+				'right' => array('style'  => PHPExcel_Style_Border::BORDER_THIN),  
+				'bottom' => array('style'  => PHPExcel_Style_Border::BORDER_THIN), 
+				'left' => array('style'  => PHPExcel_Style_Border::BORDER_THIN)
+			)
+		);
+		$excel->setActiveSheetIndex(0)->setCellValue('A1', "Dadus Elisaun PFN "); 
+		$excel->getActiveSheet()->mergeCells('A1:E1'); 
+		$excel->getActiveSheet()->getStyle('A1')->getFont()->setBold(TRUE); 
+		$excel->getActiveSheet()->getStyle('A1')->getFont()->setSize(15); 
+		$excel->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER); 
+
+		$excel->getActiveSheet()->freezePane('C4');
+		// Header row 3
+		$excel->setActiveSheetIndex(0)->setCellValue('A3', "No"); 
+		$excel->setActiveSheetIndex(0)->setCellValue('B3', "Municipu");
+		$excel->setActiveSheetIndex(0)->setCellValue('C3', "Postu"); 
+		$excel->setActiveSheetIndex(0)->setCellValue('D3', "Periodu Elisaun"); 
+		$excel->setActiveSheetIndex(0)->setCellValue('E3', "Aplikante Feto"); 
+		$excel->setActiveSheetIndex(0)->setCellValue('F3', "Aplikante Mane");
+		$excel->setActiveSheetIndex(0)->setCellValue('G3', "Total Aplikante");
+		$excel->setActiveSheetIndex(0)->setCellValue('H3', "Selesiona Feto");
+		$excel->setActiveSheetIndex(0)->setCellValue('I3', "Selesiona Mane");
+		$excel->setActiveSheetIndex(0)->setCellValue('J3', "Total Selesiona");
+		$excel->setActiveSheetIndex(0)->setCellValue('K3', "Candidata"); 
+		$excel->setActiveSheetIndex(0)->setCellValue('L3', "Candidatu");
+		$excel->setActiveSheetIndex(0)->setCellValue('M3', "Total Candidata/u"); 
+		$excel->setActiveSheetIndex(0)->setCellValue('N3', "Naran Kompletu"); 
+		$excel->setActiveSheetIndex(0)->setCellValue('O3', "Edukasaun"); 
+		$excel->setActiveSheetIndex(0)->setCellValue('P3', "Fatin Moris"); 
+		$excel->setActiveSheetIndex(0)->setCellValue('Q3', "Data Moris"); 
+		$excel->setActiveSheetIndex(0)->setCellValue('R3', "Adresu"); 
+		$excel->setActiveSheetIndex(0)->setCellValue('S3', "Mobile"); 
+		$excel->setActiveSheetIndex(0)->setCellValue('T3', "Email"); 
+		$excel->setActiveSheetIndex(0)->setCellValue('U3', "Naran Kompletu"); 
+		$excel->setActiveSheetIndex(0)->setCellValue('V3', "Edukasaun"); 
+		$excel->setActiveSheetIndex(0)->setCellValue('W3', "Fatin Moris"); 
+		$excel->setActiveSheetIndex(0)->setCellValue('X3', "Data Moris"); 
+		$excel->setActiveSheetIndex(0)->setCellValue('Y3', "Adresu"); 
+		$excel->setActiveSheetIndex(0)->setCellValue('Z3', "Mobile");
+		$excel->setActiveSheetIndex(0)->setCellValue('AA3', "Email");
+		// Apply style header 
+		$excel->getActiveSheet()->getStyle('A3')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('B3')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('C3')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('D3')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('E3')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('F3')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('G3')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('H3')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('I3')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('J3')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('K3')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('L3')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('M3')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('N3')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('O3')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('P3')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('Q3')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('R3')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('S3')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('T3')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('U3')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('V3')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('W3')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('X3')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('Y3')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('Z3')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('AA3')->applyFromArray($style_col);
+		// Call function view in Apftl_election_model
+		$elisaun = $this->Apftl_election_model->export();
+		$no = 1; // Start numeration on table
+		$numrow = 4; // First row for table
+		foreach ($elisaun as $data) { // Looping for variable eisaun
+			$excel->setActiveSheetIndex(0)->setCellValue('A' . $numrow, $no);
+			$excel->setActiveSheetIndex(0)->setCellValue('B' . $numrow, $data->distric);
+			$excel->setActiveSheetIndex(0)->setCellValue('C' . $numrow, $data->subdistric);
+			$excel->setActiveSheetIndex(0)->setCellValue('D' . $numrow, $data->election_period);
+			$excel->setActiveSheetIndex(0)->setCellValue('E' . $numrow, $data->female_register);
+			$excel->setActiveSheetIndex(0)->setCellValue('F' . $numrow, $data->male_register);
+			$excel->setActiveSheetIndex(0)->setCellValue('G' . $numrow, $data->total_register);
+			$excel->setActiveSheetIndex(0)->setCellValue('H' . $numrow, $data->female_selected);
+			$excel->setActiveSheetIndex(0)->setCellValue('I' . $numrow, $data->male_selected);
+			$excel->setActiveSheetIndex(0)->setCellValue('J' . $numrow, $data->total_selected);
+			$excel->setActiveSheetIndex(0)->setCellValue('K' . $numrow, $data->female_candidate);
+			$excel->setActiveSheetIndex(0)->setCellValue('L' . $numrow, $data->male_candidate);
+			$excel->setActiveSheetIndex(0)->setCellValue('M' . $numrow, $data->total_candidate);
+			$excel->setActiveSheetIndex(0)->setCellValue('N' . $numrow, $data->name_male);
+			$excel->setActiveSheetIndex(0)->setCellValue('O' . $numrow, $data->edu_male);
+			$excel->setActiveSheetIndex(0)->setCellValue('P' . $numrow, $data->birth_p_male);
+			$excel->setActiveSheetIndex(0)->setCellValue('Q' . $numrow, $data->birth_d_male);
+			$excel->setActiveSheetIndex(0)->setCellValue('R' . $numrow, $data->address_male);
+			$excel->setActiveSheetIndex(0)->setCellValue('S' . $numrow, $data->mobile_male);
+			$excel->setActiveSheetIndex(0)->setCellValue('T' . $numrow, $data->email_male);
+			$excel->setActiveSheetIndex(0)->setCellValue('U' . $numrow, $data->name_female);
+			$excel->setActiveSheetIndex(0)->setCellValue('V' . $numrow, $data->edu_female);
+			$excel->setActiveSheetIndex(0)->setCellValue('W' . $numrow, $data->birth_p_female);
+			$excel->setActiveSheetIndex(0)->setCellValue('X' . $numrow, $data->birth_d_female);
+			$excel->setActiveSheetIndex(0)->setCellValue('Y' . $numrow, $data->address_female);
+			$excel->setActiveSheetIndex(0)->setCellValue('Z' . $numrow, $data->mobile_female);
+			$excel->setActiveSheetIndex(0)->setCellValue('AA' . $numrow, $data->email_female);
+			// Apply style row 
+			$excel->getActiveSheet()->getStyle('A' . $numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('B' . $numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('C' . $numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('D' . $numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('E' . $numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('F' . $numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('G' . $numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('H' . $numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('I' . $numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('J' . $numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('K' . $numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('L' . $numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('M' . $numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('N' . $numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('O' . $numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('P' . $numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('Q' . $numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('R' . $numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('S' . $numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('T' . $numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('U' . $numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('V' . $numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('W' . $numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('X' . $numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('Y' . $numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('Z' . $numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('AA' . $numrow)->applyFromArray($style_row);
+
+			$no++; // add 1 number when looping
+			$numrow++; // add 1 row when looping
+		}
+		// Set width auto
+		$excel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true); 
+		$excel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true); 
+		$excel->getActiveSheet()->getColumnDimension('C')->setAutoSize(true); 
+		$excel->getActiveSheet()->getColumnDimension('D')->setAutoSize(true); 
+		$excel->getActiveSheet()->getColumnDimension('E')->setAutoSize(true); 
+		$excel->getActiveSheet()->getColumnDimension('F')->setAutoSize(true); 
+		$excel->getActiveSheet()->getColumnDimension('G')->setAutoSize(true);
+		$excel->getActiveSheet()->getColumnDimension('H')->setAutoSize(true); 
+		$excel->getActiveSheet()->getColumnDimension('I')->setAutoSize(true); 
+		$excel->getActiveSheet()->getColumnDimension('J')->setAutoSize(true);
+		$excel->getActiveSheet()->getColumnDimension('K')->setAutoSize(true);
+		$excel->getActiveSheet()->getColumnDimension('L')->setAutoSize(true);
+		$excel->getActiveSheet()->getColumnDimension('M')->setAutoSize(true);
+		$excel->getActiveSheet()->getColumnDimension('N')->setAutoSize(true);
+		$excel->getActiveSheet()->getColumnDimension('O')->setAutoSize(true);
+		$excel->getActiveSheet()->getColumnDimension('P')->setAutoSize(true);
+		$excel->getActiveSheet()->getColumnDimension('Q')->setAutoSize(true);
+		$excel->getActiveSheet()->getColumnDimension('R')->setAutoSize(true);
+		$excel->getActiveSheet()->getColumnDimension('S')->setAutoSize(true);
+		$excel->getActiveSheet()->getColumnDimension('T')->setAutoSize(true);
+		$excel->getActiveSheet()->getColumnDimension('U')->setAutoSize(true);
+		$excel->getActiveSheet()->getColumnDimension('V')->setAutoSize(true);
+		$excel->getActiveSheet()->getColumnDimension('W')->setAutoSize(true);
+		$excel->getActiveSheet()->getColumnDimension('X')->setAutoSize(true);
+		$excel->getActiveSheet()->getColumnDimension('Y')->setAutoSize(true);
+		$excel->getActiveSheet()->getColumnDimension('Z')->setAutoSize(true);
+		$excel->getActiveSheet()->getColumnDimension('AA')->setAutoSize(true);
+
+		// Set height auto
+		$excel->getActiveSheet()->getDefaultRowDimension()->setRowHeight(-1);
+		// Set Landscape
+		$excel->getActiveSheet()->getPageSetup()->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);
+		// Set Title file 
+		$excel->getActiveSheet(0)->setTitle("Report Dadus Elisaun PFN");
+		$excel->setActiveSheetIndex(0);
+		// Process file excel
+		$filename="Dadus Elisaun PFN - ".date("d-m-Y").'.xlsx';
+		header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+		header('Content-Disposition: attachment; filename="'.$filename.'"'); // Set nama file excel nya
+		header('Cache-Control: max-age=0');
+		$write = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
+		$write->save('php://output');
 	}
 }

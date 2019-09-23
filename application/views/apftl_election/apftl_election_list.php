@@ -3,6 +3,7 @@
 	<div class="row" style="margin-bottom: 10px">
 		<div class="col-md-4">
 			<?php echo anchor(site_url('apftl_election/create'), 'Aumenta', 'class="btn btn-primary"'); ?>
+			<?php echo anchor(site_url('apftl_election/export'), 'Relatoriu', 'class="btn btn-primary"'); ?>
 		</div>
 		<div class="col-md-4 text-center">
 			<div style="margin-top: 8px" id="message">
@@ -30,50 +31,92 @@
 		</div>
 	</div>
 	<div class="table-responsive">
-	<table class="table table-hover table-bordered" style="margin-bottom: 10px">
-		<thead class="thead-dark">
+		<table class="table table-hover table-bordered " style="margin-bottom: 10px">
+			<thead class="thead-dark">
+				<tr>
+					<th rowspan="2" class="text-nowrap align-middle">No</th>
+					<th rowspan="2" class="text-nowrap align-middle">Municipu</th>
+					<th rowspan="2" class="text-nowrap align-middle">Postu</th>
+					<th rowspan="2" class="text-nowrap align-middle ">Periodu Elisaun</th>
+					<th colspan="3" class="text-nowrap align-middle text-center">Aplikante</th>
+					<th colspan="3" class="text-nowrap align-middle text-center">Selesiona</th>
+					<th colspan="3" class="text-nowrap align-middle text-center">Candidata/u</th>
+					<th colspan="7" class="text-nowrap align-middle text-center">Candidatu Eleitu</th>
+					<th colspan="7" class="text-nowrap align-middle text-center">Candidata Eleitu</th>
+					<th rowspan="2" class="text-nowrap align-middle text-center">Action</th>
+				</tr>
+				<tr>
+					<th class="text-nowrap align-middle text-center">Feto</th>
+					<th class="text-nowrap align-middle text-center">Mane</th>
+					<th class="text-nowrap align-middle text-center">Total</th>
+					<th class="text-nowrap align-middle text-center">Feto</th>
+					<th class="text-nowrap align-middle text-center">Mane</th>
+					<th class="text-nowrap align-middle text-center">Total</th>
+					<th class="text-nowrap align-middle text-center">Feto</th>
+					<th class="text-nowrap align-middle text-center">Mane</th>
+					<th class="text-nowrap align-middle text-center">Total</th>
+					<th class="text-nowrap align-middle text-center">Naran</th>
+					<th class="text-nowrap align-middle text-center">Edukasaun</th>
+					<th class="text-nowrap align-middle text-center">Fatin Moris</th>
+					<th class="text-nowrap align-middle text-center">Data Moris</th>
+					<th class="text-nowrap align-middle text-center">Adresu</th>
+					<th class="text-nowrap align-middle text-center">Mobile</th>
+					<th class="text-nowrap align-middle text-center">Email</th>
+					<th class="text-nowrap align-middle text-center">Naran</th>
+					<th class="text-nowrap align-middle text-center">Edukasaun</th>
+					<th class="text-nowrap align-middle text-center">Fatin Moris</th>
+					<th class="text-nowrap align-middle text-center">Data Moris</th>
+					<th class="text-nowrap align-middle text-center">Adresu</th>
+					<th class="text-nowrap align-middle text-center">Mobile</th>
+					<th class="text-nowrap align-middle text-center">Email</th>
+
+				</tr>
+			</thead>
+			<?php
+			foreach ($apftl_election_data as $apftl_election) {
+				?>
 			<tr>
-				<th>No</th>
-				<th>Municipu</th>
-				<th>Postu</th>
-				<th>Periodu Elisaun</th>
-				<th>Aplikante Feto</th>
-				<th>Aplikante Mane</th>
-				<th>Total Aplikante</th>
-				<th>Candidata</th>
-				<th>Candidatu</th>
-				<th>Total Candidata/u</th>
-				<th>Action</th>
+				<td width="80px"><?php echo ++$start ?></td>
+				<td class="text-nowrap"><?php echo $apftl_election->distric ?></td>
+				<td class="text-nowrap"><?php echo $apftl_election->subdistric ?></td>
+				<td class="text-nowrap text-center"><?php echo $apftl_election->election_period ?></td>
+				<td class="text-nowrap text-center"><?php echo $apftl_election->female_register ?></td>
+				<td class="text-nowrap text-center"><?php echo $apftl_election->male_register ?></td>
+				<td class="text-nowrap text-center"><?php echo $apftl_election->total_register ?></td>
+				<td class="text-nowrap text-center"><?php echo $apftl_election->female_selected ?></td>
+				<td class="text-nowrap text-center"><?php echo $apftl_election->male_selected ?></td>
+				<td class="text-nowrap text-center"><?php echo $apftl_election->total_selected ?></td>
+				<td class="text-nowrap text-center"><?php echo $apftl_election->female_candidate ?></td>
+				<td class="text-nowrap text-center"><?php echo $apftl_election->male_candidate ?></td>
+				<td class="text-nowrap text-center"><?php echo $apftl_election->total_candidate ?></td>
+				<td class="text-nowrap"><?php echo $apftl_election->name_male ?></td>
+				<td class="text-nowrap"><?php echo $apftl_election->edu_male ?></td>
+				<td class="text-nowrap"><?php echo $apftl_election->birth_p_male ?></td>
+				<td class="text-nowrap"><?php echo $apftl_election->birth_d_male ?></td>
+				<td class="text-nowrap"><?php echo $apftl_election->address_male ?></td>
+				<td class="text-nowrap"><?php echo $apftl_election->mobile_male ?></td>
+				<td class="text-nowrap"><?php echo $apftl_election->email_male ?></td>
+				<td class="text-nowrap"><?php echo $apftl_election->name_female ?></td>
+				<td class="text-nowrap"><?php echo $apftl_election->edu_female ?></td>
+				<td class="text-nowrap"><?php echo $apftl_election->birth_p_female ?></td>
+				<td class="text-nowrap"><?php echo $apftl_election->birth_d_female ?></td>
+				<td class="text-nowrap"><?php echo $apftl_election->address_female ?></td>
+				<td class="text-nowrap"><?php echo $apftl_election->mobile_female ?></td>
+				<td class="text-nowrap"><?php echo $apftl_election->email_female ?></td>
+				<td class="text-nowrap " style="text-align:center">
+					<?php
+						echo anchor(site_url('apftl_election/read/' . $apftl_election->id), 'Lee');
+						echo ' | ';
+						echo anchor(site_url('apftl_election/update/' . $apftl_election->id), 'Edit');
+						echo ' | ';
+						echo anchor(site_url('apftl_election/delete/' . $apftl_election->id), 'Hamoos', 'onclick="javasciprt: return confirm(\'Konfirma paa hamoos ?\')"');
+						?>
+				</td>
 			</tr>
-		</thead>
-		<?php
-		foreach ($apftl_election_data as $apftl_election) {
+			<?php
+			}
 			?>
-		<tr>
-			<td width="80px"><?php echo ++$start ?></td>
-			<td><?php echo $apftl_election->distric ?></td>
-			<td><?php echo $apftl_election->subdistric ?></td>
-			<td><?php echo $apftl_election->election_period ?></td>
-			<td><?php echo $apftl_election->female_register ?></td>
-			<td><?php echo $apftl_election->male_register ?></td>
-			<td><?php echo $apftl_election->total_register ?></td>
-			<td><?php echo $apftl_election->female_candidate ?></td>
-			<td><?php echo $apftl_election->male_candidate ?></td>
-			<td><?php echo $apftl_election->total_candidate ?></td>
-			<td style="text-align:center" width="200px">
-				<?php
-					echo anchor(site_url('apftl_election/read/' . $apftl_election->id), 'Lee');
-					echo ' | ';
-					echo anchor(site_url('apftl_election/update/' . $apftl_election->id), 'Edit');
-					echo ' | ';
-					echo anchor(site_url('apftl_election/delete/' . $apftl_election->id), 'Hamoos', 'onclick="javasciprt: return confirm(\'Konfirma paa hamoos ?\')"');
-					?>
-			</td>
-		</tr>
-		<?php
-		}
-		?>
-	</table>
+		</table>
 	</div>
 	<div class="row">
 		<div class="col-md-6">

@@ -18,15 +18,15 @@ $.post("election_register/registerlautem",
                 datasets: [{
                     label: 'Female',
                     data: register_femalelautem,
-                    backgroundColor: 'rgba(255, 138, 89, 1)',
-                    borderColor: 'rgba(255, 138, 89, 1)',
+                    backgroundColor: 'rgba(255, 87, 101, 1)',
+                    borderColor: 'rgba(203, 69, 82, 1)',
                     borderWidth: 1
                 },
                 {
                     label: 'Male',
                     data: register_malelautem,
-                    backgroundColor: 'rgba(182, 232, 81, 1)',
-                    borderColor: 'rgba(182, 232, 81, 1)',
+                    backgroundColor: 'rgba(92, 193, 224, 1)',
+                    borderColor: 'rgba(69, 154, 179, 1)',
                     borderWidth: 1
                 }
                 ]
@@ -87,36 +87,37 @@ $.post("election_register/registerlautemall",
                 datasets: [{
                     data: [register_femalelautemall, register_malelautemall], // Specify the data values array
 
-                    borderColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color border 
-                    backgroundColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color background (Points and Fill)
+                    borderColor: ['#eeeeee', '#eeeeee'],
+                    backgroundColor: ['#ff5765', '#52b6ec'],
                     borderWidth: 1 // Specify bar border width
                 }]
             },
-            options: {                   plugins: {
-                datalabels: {
-                    align: function (context) {
-                        var index = context.dataIndex;
-                        var value = context.dataset.data[index];
-                        var invert = Math.abs(value) <= 1;
-                        return value < 1 ? 'end' : 'start'
-                    },
-                    anchor: 'end',
-                    backgroundColor: null,
-                    borderColor: null,
-                    borderRadius: 4,
-                    borderWidth: 1,
-                    color: '#FFECD9',
-                    font: {
-                        size: 10,
-                        weight: 700
-                    },
-                    offset: 4,
-                    padding: 0,
-                    formatter: function (value) {
-                        return Math.round(value * 10) / 10
+            options: {
+                plugins: {
+                    datalabels: {
+                        align: function (context) {
+                            var index = context.dataIndex;
+                            var value = context.dataset.data[index];
+                            var invert = Math.abs(value) <= 1;
+                            return value < 1 ? 'end' : 'start'
+                        },
+                        anchor: 'end',
+                        backgroundColor: null,
+                        borderColor: null,
+                        borderRadius: 4,
+                        borderWidth: 1,
+                        color: '#FFECD9',
+                        font: {
+                            size: 10,
+                            weight: 700
+                        },
+                        offset: 4,
+                        padding: 0,
+                        formatter: function (value) {
+                            return Math.round(value * 10) / 10
+                        }
                     }
-                }
-            },
+                },
 
                 responsive: true, // Instruct chart js to respond nicely.
                 maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height 

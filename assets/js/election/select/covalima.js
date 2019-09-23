@@ -18,15 +18,15 @@ $.post("election_selected/selectedcovalima",
                 datasets: [{
                     label: 'Female',
                     data: selected_femalecovalima,
-                    backgroundColor: 'rgba(255, 138, 89, 1)',
-                    borderColor: 'rgba(255, 138, 89, 1)',
+                    backgroundColor: 'rgba(255, 87, 101, 1)',
+                    borderColor: 'rgba(203, 69, 82, 1)',
                     borderWidth: 1
                 },
                 {
                     label: 'Male',
                     data: selected_malecovalima,
-                    backgroundColor: 'rgba(182, 232, 81, 1)',
-                    borderColor: 'rgba(182, 232, 81, 1)',
+                    backgroundColor: 'rgba(92, 193, 224, 1)',
+                    borderColor: 'rgba(69, 154, 179, 1)',
                     borderWidth: 1
                 }
                 ]
@@ -88,8 +88,8 @@ $.post("election_selected/selectedcovalimaall",
                 datasets: [{
                     data: [selected_femalecovalimaall, selected_malecovalimaall], // Specify the data values array
 
-                    borderColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color border 
-                    backgroundColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color background (Points and Fill)
+                    borderColor: ['#eeeeee', '#eeeeee'],
+                    backgroundColor: ['#ff5765', '#52b6ec'],
                     borderWidth: 1 // Specify bar border width
                 }]
             },
