@@ -71,7 +71,7 @@ class Auth extends CI_Controller
         }
     }
 
-    public function  registration()
+   /*  public function  registration()
     {
         $this->form_validation->set_rules('name1', 'First Name', 'required|trim');
         $this->form_validation->set_rules('name2', 'Last Name', 'required|trim');
@@ -107,7 +107,7 @@ class Auth extends CI_Controller
             redirect('auth');
         }
     }
-
+ */
     public function logout()
     {
         $this->session->unset_userdata('email');

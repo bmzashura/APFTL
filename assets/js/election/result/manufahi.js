@@ -1,39 +1,41 @@
 
-var ctx1 = document.getElementById('aileu').getContext('2d');
-var data_aileu = [];
-var data_registeraileu = [];
-var data_selectedaileu = [];
-var data_candidateaileu = [];
-$.post("election/getaileu",
-    function(dataaileu) {
-        var obj = JSON.parse(dataaileu);
+var ctx11 = document.getElementById('manufahi').getContext('2d');
+var data_manufahi = [];
+var data_registermanufahi = [];
+var data_selectedmanufahi = [];
+var data_candidatemanufahi = [];
+$.post("election/getmanufahi",
+    function(datamanufahi) {
+        var obj = JSON.parse(datamanufahi);
         $.each(obj, function(test, item) {
-            data_aileu.push(item.aileu);
-            data_registeraileu.push(item.registeraileu);
-            data_selectedaileu.push(item.selectedaileu);
-            data_candidateaileu.push(item.candidateaileu);
+            data_manufahi.push(item.manufahi);
+            data_registermanufahi.push(item.registermanufahi);
+            data_registermanufahi.push(item.registermanufahi);
+            data_selectedmanufahi.push(item.selectedmanufahi);
+            data_candidatemanufahi.push(item.candidatemanufahi);
         });
-        var aileu = new Chart(ctx1, {
+        var manufahi = new Chart(ctx11, {
             type: 'bar',
             data: {
-                labels: data_aileu,
+                labels: data_manufahi,
                 datasets: [{
                         label: 'Register',
-                        data: data_registeraileu,
+                        data: data_registermanufahi,
+                        backgroundColor:'rgba(255, 87, 101, 1)',
                         backgroundColor:'rgba(255, 87, 101, 1)',
                         borderColor:'rgba(203, 69, 82, 1)',
                         borderWidth: 1
                     },
                     {
                         label: 'Selected',
-                        data: data_selectedaileu,
+                        data: data_selectedmanufahi,
                         backgroundColor: 'rgba(92, 193, 224, 1)',
                         borderColor: 'rgba(69, 154, 179, 1)',
                         borderWidth: 1
                     },
                     {
                         label: 'Candidate',
-                        data: data_candidateaileu,
+                        data: data_candidatemanufahi,
                         backgroundColor: 'rgba(255, 255, 47, 1)',
                         borderColor: 'rgba(255, 172, 46, 1)',
                         borderWidth: 1

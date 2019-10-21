@@ -1,39 +1,39 @@
 
-var ctx1 = document.getElementById('aileu').getContext('2d');
-var data_aileu = [];
-var data_registeraileu = [];
-var data_selectedaileu = [];
-var data_candidateaileu = [];
-$.post("election/getaileu",
-    function(dataaileu) {
-        var obj = JSON.parse(dataaileu);
+var ctx5 = document.getElementById('covalima').getContext('2d');
+var data_covalima = [];
+var data_registercovalima = [];
+var data_selectedcovalima = [];
+var data_candidatecovalima = [];
+$.post("election/getcovalima",
+    function(datacovalima) {
+        var obj = JSON.parse(datacovalima);
         $.each(obj, function(test, item) {
-            data_aileu.push(item.aileu);
-            data_registeraileu.push(item.registeraileu);
-            data_selectedaileu.push(item.selectedaileu);
-            data_candidateaileu.push(item.candidateaileu);
+            data_covalima.push(item.covalima);
+            data_registercovalima.push(item.registercovalima);
+            data_selectedcovalima.push(item.selectedcovalima);
+            data_candidatecovalima.push(item.candidatecovalima);
         });
-        var aileu = new Chart(ctx1, {
+        var covalima = new Chart(ctx5, {
             type: 'bar',
             data: {
-                labels: data_aileu,
+                labels: data_covalima,
                 datasets: [{
                         label: 'Register',
-                        data: data_registeraileu,
+                        data: data_registercovalima,
                         backgroundColor:'rgba(255, 87, 101, 1)',
                         borderColor:'rgba(203, 69, 82, 1)',
                         borderWidth: 1
                     },
                     {
                         label: 'Selected',
-                        data: data_selectedaileu,
+                        data: data_selectedcovalima,
                         backgroundColor: 'rgba(92, 193, 224, 1)',
                         borderColor: 'rgba(69, 154, 179, 1)',
                         borderWidth: 1
                     },
                     {
                         label: 'Candidate',
-                        data: data_candidateaileu,
+                        data: data_candidatecovalima,
                         backgroundColor: 'rgba(255, 255, 47, 1)',
                         borderColor: 'rgba(255, 172, 46, 1)',
                         borderWidth: 1

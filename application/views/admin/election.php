@@ -32,7 +32,7 @@
                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $selected; ?></div>
                                </div>
                                <div class="col-auto">
-                                   <i class="fas fa-award fa-2x text-gray-300"></i>
+                                   <i class="fas fa-user-check fa-2x text-gray-300"></i>
                                </div>
                            </div>
                        </div>
@@ -45,7 +45,7 @@
                            <div class="row no-gutters align-items-center">
                                <div class="col mr-2">
                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Candidatu/a</div>
-                                   <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $candidate; ?></div>
+                                   <div class="h5 mb-0 font-weight-bold text-gray-800">On Progress</div>
                                </div>
                                <div class="col-auto">
                                    <i class="fas fa-award fa-2x text-gray-300"></i>
@@ -93,9 +93,9 @@
 
            </div>
 
-           <div class="row">
+           <div class="row mb-2">
 
-               <div class="col-xl-12 col-lg-12">
+               <div class="col-xl-6 col-lg-2">
 
                    <!-- Bar Chart Baucau -->
                    <div class="card shadow mb-4">
@@ -110,11 +110,7 @@
                    </div>
                </div>
 
-           </div>
-
-           <div class="row">
-
-               <div class="col-xl-12 col-lg-7">
+               <div class="col-xl-6 col-lg-2">
 
                    <!-- Bar Chart Bobonaro -->
                    <div class="card shadow mb-4">
@@ -128,12 +124,12 @@
                        </div>
                    </div>
                </div>
-
            </div>
 
-           <div class="row">
 
-               <div class="col-xl-12 col-lg-7">
+           <div class="row mb-2">
+
+               <div class="col-xl-6 col-lg-2">
 
                    <!-- Bar Chart Covalima -->
                    <div class="card shadow mb-4">
@@ -148,11 +144,7 @@
                    </div>
                </div>
 
-           </div>
-
-           <div class="row">
-
-               <div class="col-xl-12 col-lg-7">
+               <div class="col-xl-6 col-lg-2">
 
                    <!-- Bar Chart Dili -->
                    <div class="card shadow mb-4">
@@ -166,12 +158,10 @@
                        </div>
                    </div>
                </div>
-
            </div>
 
-           <div class="row">
-
-               <div class="col-xl-12 col-lg-7">
+           <div class="row mb-2">
+               <div class="col-xl-6 col-lg-2">
 
                    <!-- Bar Chart Ermera -->
                    <div class="card shadow mb-4">
@@ -186,11 +176,7 @@
                    </div>
                </div>
 
-           </div>
-
-           <div class="row">
-
-               <div class="col-xl-12 col-lg-7">
+               <div class="col-xl-6 col-lg-2">
 
                    <!-- Bar Chart Lautem -->
                    <div class="card shadow mb-4">
@@ -204,12 +190,11 @@
                        </div>
                    </div>
                </div>
-
            </div>
 
-           <div class="row">
+           <div class="row mb-2">
 
-               <div class="col-xl-12 col-lg-7">
+               <div class="col-xl-6 col-lg-2">
 
                    <!-- Bar Chart Liquica -->
                    <div class="card shadow mb-4">
@@ -224,11 +209,7 @@
                    </div>
                </div>
 
-           </div>
-
-           <div class="row">
-
-               <div class="col-xl-12 col-lg-7">
+               <div class="col-xl-6 col-lg-2">
 
                    <!-- Bar Chart Manatuto -->
                    <div class="card shadow mb-4">
@@ -245,9 +226,9 @@
 
            </div>
 
-           <div class="row">
+           <div class="row mb-2">
 
-               <div class="col-xl-12 col-lg-7">
+               <div class="col-xl-6 col-lg-2">
 
                    <!-- Bar Chart Manufahi -->
                    <div class="card shadow mb-4">
@@ -262,11 +243,8 @@
                    </div>
                </div>
 
-           </div>
 
-           <div class="row">
-
-               <div class="col-xl-12 col-lg-7">
+               <div class="col-xl-6 col-lg-2">
 
                    <!-- Bar Chart Raeoa -->
                    <div class="card shadow mb-4">
@@ -285,7 +263,7 @@
 
            <div class="row">
 
-               <div class="col-xl-12 col-lg-7">
+               <div class="col-xl-6 col-lg-2">
 
                    <!-- Bar Chart Viqueque -->
                    <div class="card shadow mb-4">

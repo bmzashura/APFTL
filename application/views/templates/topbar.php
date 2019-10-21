@@ -1,16 +1,31 @@
 <!-- Content Wrapper -->
 <div id="content-wrapper" class="d-flex flex-column">
 
+
     <!-- Main Content -->
     <div id="content">
 
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 mt-2 shadow py-5 ">
+        <div class="text-left">
+        <img class="img-fluid" src="<?= base_url('assets/') ?>img/sejd.png" width="80%" >
+        </div>
+        <div class="text-center">
+        <img class="img-fluid" src="<?= base_url('assets/') ?>img/rdtl.png" width="75%" >
+        </div>
+        <div class="text-right">
+        <img class="img-fluid" src="<?= base_url('assets/') ?>img/apftl.png" width="80%" >
+        </div>
+       
+       
+       
 
             <!-- Sidebar Toggle (Topbar) -->
             <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                 <i class="fa fa-bars"></i>
             </button>
+
+
 
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
@@ -38,6 +53,7 @@
                 </li>
 
             </ul>
+            
 
         </nav>
         <!-- End of Topbar -->

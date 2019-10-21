@@ -1,39 +1,39 @@
 
-var ctx1 = document.getElementById('aileu').getContext('2d');
-var data_aileu = [];
-var data_registeraileu = [];
-var data_selectedaileu = [];
-var data_candidateaileu = [];
-$.post("election/getaileu",
-    function(dataaileu) {
-        var obj = JSON.parse(dataaileu);
+var ctx4 = document.getElementById('bobonaro').getContext('2d');
+var data_bobonaro = [];
+var data_registerbobonaro = [];
+var data_selectedbobonaro = [];
+var data_candidatebobonaro = [];
+$.post("election/getbobonaro",
+    function(databobonaro) {
+        var obj = JSON.parse(databobonaro);
         $.each(obj, function(test, item) {
-            data_aileu.push(item.aileu);
-            data_registeraileu.push(item.registeraileu);
-            data_selectedaileu.push(item.selectedaileu);
-            data_candidateaileu.push(item.candidateaileu);
+            data_bobonaro.push(item.bobonaro);
+            data_registerbobonaro.push(item.registerbobonaro);
+            data_selectedbobonaro.push(item.selectedbobonaro);
+            data_candidatebobonaro.push(item.candidatebobonaro);
         });
-        var aileu = new Chart(ctx1, {
+        var bobonaro = new Chart(ctx4, {
             type: 'bar',
             data: {
-                labels: data_aileu,
+                labels: data_bobonaro,
                 datasets: [{
                         label: 'Register',
-                        data: data_registeraileu,
+                        data: data_registerbobonaro,
                         backgroundColor:'rgba(255, 87, 101, 1)',
                         borderColor:'rgba(203, 69, 82, 1)',
                         borderWidth: 1
                     },
                     {
                         label: 'Selected',
-                        data: data_selectedaileu,
+                        data: data_selectedbobonaro,
                         backgroundColor: 'rgba(92, 193, 224, 1)',
                         borderColor: 'rgba(69, 154, 179, 1)',
                         borderWidth: 1
                     },
                     {
                         label: 'Candidate',
-                        data: data_candidateaileu,
+                        data: data_candidatebobonaro,
                         backgroundColor: 'rgba(255, 255, 47, 1)',
                         borderColor: 'rgba(255, 172, 46, 1)',
                         borderWidth: 1

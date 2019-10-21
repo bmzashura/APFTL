@@ -9,6 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('assets/') ?>img/apftl.ico">
+
     <title>
         <?= $title; ?>
     </title>

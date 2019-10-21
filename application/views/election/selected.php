@@ -75,40 +75,83 @@
 
                    //creates PDF from img
                    var doc = new jsPDF('landscape');
+                   doc.setFontType('bold');
                    doc.setFontSize(20);
-                   doc.text(15, 15, "Cool Chart");
+                   doc.text(10, 10, "Selesionadu Elisaun PFN 2019");
+                   doc.setFontSize(14);
+                   doc.text(10, 25, "Total");
+                   doc.line(10, 27, 250, 27);
                    doc.addImage(totalImg, 'PNG', 10, 30, 140, 75);
                    doc.addImage(totalpieImg, 'PNG', 170, 30, 75, 65);
+                   doc.setFontSize(14);
+                   doc.text(10, 115, "Aileu");
+                   doc.line(10, 117, 250, 117);
                    doc.addImage(aileuImg, 'PNG', 10, 120, 140, 75);
                    doc.addImage(aileupieImg, 'PNG', 170, 120, 75, 65);
                    doc.addPage()
+                   doc.setFontSize(14);
+                   doc.text(10, 25, "Ainaro");
+                   doc.line(10, 27, 250, 27);
                    doc.addImage(ainaroImg, 'PNG', 10, 30, 140, 75);
                    doc.addImage(ainaropieImg, 'PNG', 170, 30, 75, 65);
+                   doc.setFontSize(14);
+                   doc.text(10, 115, "Baucau");
+                   doc.line(10, 117, 250, 117);
                    doc.addImage(baucauImg, 'PNG', 10, 120, 140, 75);
                    doc.addImage(baucaupieImg, 'PNG', 170, 120, 75, 65);
                    doc.addPage()
+                   doc.setFontSize(14);
+                   doc.text(10, 25, "Bobonaro");
+                   doc.line(10, 27, 250, 27);
                    doc.addImage(bobonaroImg, 'PNG', 10, 30, 140, 75);
                    doc.addImage(bobonaropieImg, 'PNG', 170, 30, 75, 65);
+                   doc.setFontSize(14);
+                   doc.text(10, 115, "Covalima");
+                   doc.line(10, 117, 250, 117);
                    doc.addImage(covalimaImg, 'PNG', 10, 120, 140, 75);
                    doc.addImage(covalimapieImg, 'PNG', 170, 120, 75, 65);
                    doc.addPage()
+                   doc.setFontSize(14);
+                   doc.text(10, 25, "Dili");
+                   doc.line(10, 27, 250, 27);
                    doc.addImage(diliImg, 'PNG', 10, 30, 140, 75);
                    doc.addImage(dilipieImg, 'PNG', 170, 30, 75, 65);
+                   doc.setFontSize(14);
+                   doc.text(10, 115, "Ermera");
+                   doc.line(10, 117, 250, 117);
                    doc.addImage(ermeraImg, 'PNG', 10, 120, 140, 75);
                    doc.addImage(ermerapieImg, 'PNG', 170, 120, 75, 65);
                    doc.addPage()
+                   doc.setFontSize(14);
+                   doc.text(10, 25, "Lautem");
+                   doc.line(10, 27, 250, 27);
                    doc.addImage(lautemImg, 'PNG', 10, 30, 140, 75);
                    doc.addImage(lautempieImg, 'PNG', 170, 30, 75, 65);
+                   doc.setFontSize(14);
+                   doc.text(10, 115, "Liquica");
+                   doc.line(10, 117, 250, 117);
                    doc.addImage(liquicaImg, 'PNG', 10, 120, 140, 75);
                    doc.addImage(liquicapieImg, 'PNG', 170, 120, 75, 65);
                    doc.addPage()
+                   doc.setFontSize(14);
+                   doc.text(10, 25, "Manufahi");
+                   doc.line(10, 27, 250, 27);
                    doc.addImage(manufahiImg, 'PNG', 10, 30, 140, 75);
                    doc.addImage(manufahipieImg, 'PNG', 170, 30, 75, 65);
+                   doc.setFontSize(14);
+                   doc.text(10, 115, "Manatuto");
+                   doc.line(10, 117, 250, 117);
                    doc.addImage(manatutoImg, 'PNG', 10, 120, 140, 75);
                    doc.addImage(manatutopieImg, 'PNG', 170, 120, 75, 65);
                    doc.addPage()
+                   doc.setFontSize(14);
+                   doc.text(10, 25, "Raeoa - Oecussi");
+                   doc.line(10, 27, 250, 27);
                    doc.addImage(raeoaImg, 'PNG', 10, 30, 140, 75);
                    doc.addImage(raeoapieImg, 'PNG', 170, 30, 75, 65);
+                   doc.setFontSize(14);
+                   doc.text(10, 115, "Viqueque");
+                   doc.line(10, 117, 250, 117);
                    doc.addImage(viquequeImg, 'PNG', 10, 120, 140, 75);
                    doc.addImage(viquequepieImg, 'PNG', 170, 120, 75, 65);
                    doc.save('selesaun.pdf');

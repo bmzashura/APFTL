@@ -32,7 +32,7 @@ class Apftl_chart extends CI_Model
 
     public function get_data_baucau()
     {
-        $sum = "SELECT b.subdistric as baucau, SUM(a.total_register) as registercbaucau, SUM(a.total_selected) as selectedbaucau, SUM(a.total_candidate) as candidatebaucau  from apftl_election as a
+        $sum = "SELECT b.subdistric as baucau, SUM(a.total_register) as registerbaucau, SUM(a.total_selected) as selectedbaucau, SUM(a.total_candidate) as candidatebaucau  from apftl_election as a
         left join subdistric as b on b.id=a.id_subdistric WHERE b.id_distric = 3 GROUP BY a.id_subdistric ORDER BY
         subdistric ASC ";
         return $this->db->query($sum)->result();
