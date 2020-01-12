@@ -46,7 +46,7 @@ class Apftl_election extends CI_Controller
 		);
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
-		$this->load->view('templates/topbar', $data);
+		$this->load->view('templates/topbar_elisaun', $data);
 		$this->load->view('apftl_election/apftl_election_list', $page);
 		$this->load->view('templates/footer');
 	}
@@ -89,7 +89,7 @@ class Apftl_election extends CI_Controller
 			);
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/sidebar', $data);
-			$this->load->view('templates/topbar', $data);
+			$this->load->view('templates/topbar_elisaun', $data);
 			$this->load->view('apftl_election/apftl_election_read', $page);
 			$this->load->view('templates/footer');
 		} else {
@@ -137,7 +137,7 @@ class Apftl_election extends CI_Controller
 		$page['distric'] = $this->Apftl_election_model->get_distric_query();
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
-		$this->load->view('templates/topbar', $data);
+		$this->load->view('templates/topbar_elisaun', $data);
 		$this->load->view('apftl_election/apftl_election_form', $page);
 		$this->load->view('templates/footer');
 	}
@@ -227,7 +227,7 @@ class Apftl_election extends CI_Controller
 			$page['distric'] = $this->Apftl_election_model->get_distric_query();
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/sidebar', $data);
-			$this->load->view('templates/topbar', $data);
+			$this->load->view('templates/topbar_elisaun', $data);
 			$this->load->view('apftl_election/apftl_election_form', $page);
 			$this->load->view('templates/footer');
 		} else {

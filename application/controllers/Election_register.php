@@ -23,7 +23,7 @@ class Election_register extends CI_Controller
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
+        $this->load->view('templates/topbar_elisaun', $data);
         $this->load->view('election/register', $data);
         $this->load->view('templates/footer');
     }

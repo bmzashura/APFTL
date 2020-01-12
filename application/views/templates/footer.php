@@ -110,6 +110,7 @@
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url('assets/') ?>js/bootstrap-datepicker.js"></script>
 <script src="<?= base_url('assets/') ?>js/sb-admin-2.js"></script>
+<script src="<?= base_url('assets/') ?>ckeditor/ckeditor.js">  </script>
 
 
 <script>

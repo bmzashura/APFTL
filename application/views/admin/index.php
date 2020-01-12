@@ -91,138 +91,84 @@
                        </div>
                    </div>
                </div>
+           </div>
 
-               <!-- Content Row -->
-               <div class="row">
-
-                   <div class="col-xl-8 col-lg-7">
-
-                       <div class="card shadow mb-4">
-                           <div class="card-header py-3">
-                               <h6 class="m-0 font-weight-bold text-primary">Chart Total Participant</h6>
-                           </div>
-                           <div class="card-body">
-                               <div class="chart-bar">
-                                   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                                   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-                                   <canvas id="myChartbar"></canvas>
-                                   <script>
-                                       var ctx = document.getElementById('myChartbar').getContext('2d');
-                                       var data_distric = [];
-                                       var data_total = [];
-                                       var data_feto = [];
-                                       var data_mane = [];
-                                       $.post("<?= base_url('admin/gettotal') ?>",
-                                           function(datatotal) {
-                                               var obj = JSON.parse(datatotal);
-                                               $.each(obj, function(test, item) {
-                                                   data_distric.push(item.distric);
-                                                   data_total.push(item.total);
-                                                   data_feto.push(item.feto);
-                                                   data_mane.push(item.mane);
-                                               });
-                                               var myChartbar = new Chart(ctx, {
-                                                   type: 'bar',
-                                                   data: {
-                                                       labels: data_distric,
-                                                       datasets: [{
-                                                               label: 'Total',
-                                                               data: data_total,
-                                                               backgroundColor: 'rgba(6, 166, 10, 0.2)',
-                                                               borderColor: 'rgba(6, 166, 10, 1)',
-                                                               borderWidth: 1
-                                                           },
-                                                           {
-                                                               label: 'Feto',
-                                                               data: data_feto,
-                                                               backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                                                               borderColor: 'rgba(255, 99, 132, 1)',
-                                                               borderWidth: 1
-                                                           },
-                                                           {
-                                                               label: 'Mane',
-                                                               data: data_mane,
-                                                               backgroundColor: 'rgba(7, 98, 150, 0.2)',
-                                                               borderColor: 'rgba(7, 98, 150, 1)',
-                                                               borderWidth: 1
-                                                           }
-                                                       ]
-                                                   },
-                                                   options: {
-                                                       scales: {
-                                                           yAxes: [{
-                                                               ticks: {
-                                                                   beginAtZero: true
-                                                               }
-                                                           }]
-                                                       }
-                                                   }
-                                               });
+           <!-- Content Row -->
+           <div class="row">
+               <div class="col-xl-12 col-lg-2">
+                   <div class="card shadow mb-8">
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Chart Total Participant</h6>
+                       </div>
+                       <div class="card-body ">
+                           <div class="chart-bar">
+                               <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                               <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+                               <canvas id="myChartbar"></canvas>
+                               <script>
+                                   var ctx = document.getElementById('myChartbar').getContext('2d');
+                                   var data_distric = [];
+                                   var data_total = [];
+                                   var data_feto = [];
+                                   var data_mane = [];
+                                   $.post("<?= base_url('admin/gettotal') ?>",
+                                       function(datatotal) {
+                                           var obj = JSON.parse(datatotal);
+                                           $.each(obj, function(test, item) {
+                                               data_distric.push(item.distric);
+                                               data_total.push(item.total);
+                                               data_feto.push(item.feto);
+                                               data_mane.push(item.mane);
                                            });
-                                   </script>
-                               </div>
-                               <hr>
-                               Styling for the area chart can be found in the <code>/js/demo/chart-area-demo.js</code> file.
-                           </div>
-                       </div>
-
-                       <!-- Bar Chart -->
-                       <div class="card shadow mb-4">
-                           <div class="card-header py-3">
-                               <h6 class="m-0 font-weight-bold text-primary">example</h6>
-                           </div>
-                           <div class="card-body">
-                               <div class="chart-pie">
-                                   <canvas id="myChartdoughnut"></canvas>
-                                   <script>
-                                       var ctx2 = document.getElementById('myChartdoughnut').getContext('2d');
-
-                                       var myChartdoughnut = new Chart(ctx2, {
-                                           type: 'doughnut',
-                                           data: {
-                                               labels: ["Tokyo", "Mumbai", "Mexico City", "Shanghai"],
-                                               datasets: [{
-                                                   data: [500, 50, 2424, 14040], // Specify the data values array
-
-                                                   borderColor: ['#ff5765', '#f443368c', '#3f51b570', '#00968896'], // Add custom color border 
-                                                   backgroundColor: ['#ff5765', '#f443368c', '#3f51b570', '#00968896'], // Add custom color background (Points and Fill)
-                                                   borderWidth: 1 // Specify bar border width
-                                               }]
-                                           },
-                                           options: {
-                                               responsive: true, // Instruct chart js to respond nicely.
-                                               maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height 
-                                           }
+                                           var myChartbar = new Chart(ctx, {
+                                               type: 'bar',
+                                               data: {
+                                                   labels: data_distric,
+                                                   datasets: [{
+                                                           label: 'Total',
+                                                           data: data_total,
+                                                           backgroundColor: 'rgba(6, 166, 10, 0.2)',
+                                                           borderColor: 'rgba(6, 166, 10, 1)',
+                                                           borderWidth: 1
+                                                       },
+                                                       {
+                                                           label: 'Feto',
+                                                           data: data_feto,
+                                                           backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                                           borderColor: 'rgba(255, 99, 132, 1)',
+                                                           borderWidth: 1
+                                                       },
+                                                       {
+                                                           label: 'Mane',
+                                                           data: data_mane,
+                                                           backgroundColor: 'rgba(7, 98, 150, 0.2)',
+                                                           borderColor: 'rgba(7, 98, 150, 1)',
+                                                           borderWidth: 1
+                                                       }
+                                                   ]
+                                               },
+                                               options: {
+                                                   responsive: true, // Instruct chart js to respond nicely.
+                                                   maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height
+                                                   scales: {
+                                                       yAxes: [{
+                                                           ticks: {
+                                                               beginAtZero: true
+                                                           }
+                                                       }]
+                                                   }
+                                               }
+                                           });
                                        });
-                                   </script>
-                               </div>
-                               <hr>
-                               Styling for the bar chart can be found in the <code>/js/demo/chart-bar-demo.js</code> file.
+                               </script>
                            </div>
-                       </div>
-
-                   </div>
-
-                   <!-- Donut Chart -->
-                   <div class="col-xl-4 col-lg-5">
-                       <div class="card shadow mb-4">
-                           <!-- Card Header - Dropdown -->
-                           <div class="card-header py-3">
-                               <h6 class="m-0 font-weight-bold text-primary">Donut Chart</h6>
-                           </div>
-                           <!-- Card Body -->
-                           <div class="card-body">
-                               <div class="chart-pie pt-4">
-                                   <canvas id="myPieChart"></canvas>
-                               </div>
-                               <hr>
-                               Styling for the donut chart can be found in the <code>/js/demo/chart-pie-demo.js</code> file.
-                           </div>
+                           <hr>
                        </div>
                    </div>
                </div>
-
            </div>
+
+
            <!-- /.container-fluid -->
 
        </div>
