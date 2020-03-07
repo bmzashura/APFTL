@@ -32,46 +32,68 @@ class Auth extends CI_Controller
 
         $user = $this->db->get_where('user', ['email' => $email])->row_array();
 
-        //check  user on database
-        if ($user) {
-            //check user activation
-            if ($user['is_active'] == 1) {
-                //check password
-                if (password_verify($password, $user['password'])) {
-                    $data = [
-                        'email' => $user['email'],
-                        'role_id' => $user['role_id']
-                    ];
-                    $this->session->set_userdata($data);
-                    if ($user['role_id'] == 1) {
-                        redirect('admin');
-                    } elseif  ($user['role_id'] == 3) {
-                        redirect('election');
-                    }  
-                    else {
-                        redirect('user');
+        $recaptchaResponse = trim($this->input->post('g-recaptcha-response'));
+
+        $userIp = $this->input->ip_address();
+
+        $secret = $this->config->item('google_secret');
+
+        $url = "https://www.google.com/recaptcha/api/siteverify?secret=" . $secret . "&response=" . $recaptchaResponse . "&remoteip=" . $userIp;
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $output = curl_exec($ch);
+        curl_close($ch);
+
+        $status = json_decode($output, true);
+
+        //check  user on 
+        if ($status['success']) {
+            if ($user) {
+                //check user activation
+                if ($user['is_active'] == 1) {
+                    //check password
+                    if (password_verify($password, $user['password'])) {
+                        $data = [
+                            'email' => $user['email'],
+                            'role_id' => $user['role_id']
+                        ];
+                        $this->session->set_userdata($data);
+                        if ($user['role_id'] == 1) {
+                            redirect('admin');
+                        } elseif ($user['role_id'] == 3) {
+                            redirect('election');
+                        } else {
+                            redirect('admin');
+                        }
+                    } else {
+                        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                    Wrong password!
+                 </div>');
+                        redirect('auth');
                     }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-                    Wrong password!
-                 </div>');
+         This email hs been not activated!
+      </div>');
                     redirect('auth');
                 }
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-         This email hs been not activated!
+        Email is not registered!
       </div>');
                 redirect('auth');
             }
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-        Email is not registered!
-      </div>');
+    CAPTCHA error
+  </div>');
             redirect('auth');
         }
     }
 
-   /*  public function  registration()
+    public function  registration()
     {
         $this->form_validation->set_rules('name1', 'First Name', 'required|trim');
         $this->form_validation->set_rules('name2', 'Last Name', 'required|trim');
@@ -97,17 +119,41 @@ class Auth extends CI_Controller
                 'image' => 'default.jpg',
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
                 'role_id' => 2,
-                'is_active' => 1,
+                'is_active' => 0,
                 'date_created' => time()
             ];
-            $this->db->insert('user', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            $recaptchaResponse = trim($this->input->post('g-recaptcha-response'));
+
+            $userIp = $this->input->ip_address();
+
+            $secret = $this->config->item('google_secret');
+
+            $url = "https://www.google.com/recaptcha/api/siteverify?secret=" . $secret . "&response=" . $recaptchaResponse . "&remoteip=" . $userIp;
+
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            $output = curl_exec($ch);
+            curl_close($ch);
+
+            $status = json_decode($output, true);
+
+            if ($status['success']) {
+
+                $this->db->insert('user', $data);
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
             Congratulation! Your account has been created, please login.
           </div>');
-            redirect('auth');
+                redirect('auth');
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+        CAPTCHA error
+      </div>');
+                redirect('auth');
+            }
         }
     }
- */
+
     public function logout()
     {
         $this->session->unset_userdata('email');
@@ -117,6 +163,28 @@ class Auth extends CI_Controller
             You has been logout!
           </div>');
         redirect('auth');
+    }
+
+    public function guest()
+    {
+
+        $email = 'guest@mail.com';
+        $user = $this->db->get_where('user', ['email' => $email])->row_array();
+
+        //check  user on database
+        if ($user) {
+            //check user activation
+            if ($user['is_active'] == 1) {
+                $data = [
+                    'email' => $user['email'],
+                    'role_id' => $user['role_id']
+                ];
+                $this->session->set_userdata($data);
+                if ($user['role_id'] == 2) {
+                    redirect('admin');
+                }
+            }
+        }
     }
 
 

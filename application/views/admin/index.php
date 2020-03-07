@@ -3,8 +3,90 @@
 
        <div class="container-fluid">
 
+           <div class="text-right">
+               <button class="btn btn-primary btn-sm dropdown-toggle mb-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   municipio
+               </button>
+               <div class="dropdown-menu">
+                   <a class="dropdown-item" href="<?php echo site_url('admin'); ?>">hot-hotu</a>
+                   <a class="dropdown-item" href="<?php echo site_url('admin/aileu'); ?>">Aileu</a>
+                   <a class="dropdown-item" href="<?php echo site_url('admin/ainaro'); ?>">Ainaro</a>
+                   <a class="dropdown-item" href="<?php echo site_url('admin/baucau'); ?>">Baucau</a>
+                   <a class="dropdown-item" href="<?php echo site_url('admin/bobonaro'); ?>">Bobonaro</a>
+                   <a class="dropdown-item" href="<?php echo site_url('admin/covalima'); ?>">Covalima</a>
+                   <a class="dropdown-item" href="<?php echo site_url('admin/dili'); ?>">Dili</a>
+                   <a class="dropdown-item" href="<?php echo site_url('admin/ermera'); ?>">Ermera</a>
+                   <a class="dropdown-item" href="<?php echo site_url('admin/lautem'); ?>">Lautem</a>
+                   <a class="dropdown-item" href="<?php echo site_url('admin/liquica'); ?>">Liquica</a>
+                   <a class="dropdown-item" href="<?php echo site_url('admin/manatuto'); ?>">Manatuto</a>
+                   <a class="dropdown-item" href="<?php echo site_url('admin/manufahi'); ?>">manufahi</a>
+                   <a class="dropdown-item" href="<?php echo site_url('admin/raeoa'); ?>">Raeoa</a>
+                   <a class="dropdown-item" href="<?php echo site_url('admin/viqueque'); ?>">Viqueque</a>
+               </div>
+           </div>
+
+
+           <script type="text/javascript">
+               $(function() {
+
+                   var dadus = [
+                       ['tl-dl', <?php echo $dili; ?>],
+                       ['tl-am', <?php echo $raeoa; ?>],
+                       ['tl-bb', <?php echo $bobonaro; ?>],
+                       ['tl-cl', <?php echo $covalima; ?>],
+                       ['tl-er', <?php echo $ermera; ?>],
+                       ['tl-mt', <?php echo $manatuto; ?>],
+                       ['tl-mf', <?php echo $manufahi; ?>],
+                       ['tl-vq', <?php echo $viqueque; ?>],
+                       ['tl-bt', <?php echo $lautem; ?>],
+                       ['tl-lq', <?php echo $liquica; ?>],
+                       ['tl-al', <?php echo $aileu; ?>],
+                       ['tl-an', <?php echo $ainaro; ?>],
+                       ['tl-bc', <?php echo $baucau; ?>]
+                   ];
+
+                   // Create the chart
+                   Highcharts.mapChart('container', {
+                       chart: {
+                           map: 'countries/tl/tl-all'
+                       },
+
+                       title: {
+                           text: ''
+                       },
+                       mapNavigation: {
+                           enabled: true,
+                           enableMouseWheelZoom: false,
+                           buttonOptions: {
+                               verticalAlign: 'bottom'
+                           }
+                       },
+
+                       colorAxis: {
+                           min: 0
+                       },
+
+                       series: [{
+                           data: dadus,
+                           name: 'Programa',
+                           states: {
+                               hover: {
+                                   color: '#BADA55'
+                               }
+                           },
+                           dataLabels: {
+                               enabled: true,
+                               format: '{point.name}'
+                           }
+                       }]
+                   });
+               });
+           </script>
+
+
+
            <!-- Page Heading -->
-           <h1 class="h3 mb-2 text-gray-800">Dashborad APFTL</h1>
+           <h1 class="h3 mb-2 text-gray-800"><?php echo $title ?></h1>
            <div class="row">
 
 
@@ -13,8 +95,12 @@
                        <div class="card-body">
                            <div class="row no-gutters align-items-center">
                                <div class="col mr-2">
-                                   <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Participant</div>
-                                   <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $sum; ?></div>
+                                   <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Partisipante</div>
+                                   <?php if ($sum != null) : ?>
+                                       <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $sum; ?></div>
+                                   <?php else : ?>
+                                       <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                                   <?php endif; ?>
                                </div>
                                <div class="col-auto">
                                    <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -50,11 +136,19 @@
                                    <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Partisipante Feto</div>
                                    <div class="row no-gutters align-items-center">
                                        <div class="col-auto">
-                                           <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo round(($feto / $sum) * 100) . '%' ?></div>
+                                           <?php if ($feto != null) : ?>
+                                               <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo round(($feto / $sum) * 100) . '%' ?></div>
+                                           <?php else : ?>
+                                               <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">0%</div>
+                                           <?php endif; ?>
                                        </div>
                                        <div class="col">
                                            <div class="progress progress-sm mr-2">
-                                               <div class="progress-bar bg-danger" role="progressbar" style="width: <?php echo round(($feto / $sum) * 100) . '%' ?>" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                               <?php if ($feto != null) : ?>
+                                                   <div class="progress-bar bg-danger" role="progressbar" style="width: <?php echo round(($feto / $sum) * 100) . '%' ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                                               <?php else : ?>
+                                                   <div class="progress-bar bg-danger" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                               <?php endif; ?>
                                            </div>
                                        </div>
                                    </div>
@@ -75,11 +169,19 @@
                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Partisipante Mane</div>
                                    <div class="row no-gutters align-items-center">
                                        <div class="col-auto">
-                                           <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo round(($mane / $sum) * 100) . '%' ?></div>
+                                           <?php if ($mane != null) : ?>
+                                               <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo round(($mane / $sum) * 100) . '%' ?></div>
+                                           <?php else : ?>
+                                               <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">0%</div>
+                                           <?php endif; ?>
                                        </div>
                                        <div class="col">
                                            <div class="progress progress-sm mr-2">
-                                               <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo round(($mane / $sum) * 100) . '%' ?>" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                               <?php if ($mane != null) : ?>
+                                                   <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo round(($mane / $sum) * 100) . '%' ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                                               <?php else : ?>
+                                                   <div class="progress-bar bg-info" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                               <?php endif; ?>
                                            </div>
                                        </div>
                                    </div>
@@ -93,74 +195,60 @@
                </div>
            </div>
 
-           <!-- Content Row -->
-           <div class="row">
-               <div class="col-xl-12 col-lg-2">
-                   <div class="card shadow mb-8">
-                       <div class="card-header py-3">
-                           <h6 class="m-0 font-weight-bold text-primary">Chart Total Participant</h6>
+           <div class="row mb-6">
+
+               <div class="col-xl-12 col-lg-12 ">
+                   <div class="card shadow ">
+                       <div class="card-header py-3  bg-primary">
+                           <h6 class="m-0 font-weight-bold text-white">Programa APFTL tuir Municipiu</h6>
+                       </div>
+                       <div class="card-body ">
+                           <div id="container"></div>
+                           <hr>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+           <div class="row mb-3">
+               <div class="col-xl-7 col-lg-7">
+                   <div class="card shadow ">
+                       <div class="card-header py-3  bg-primary">
+                           <h6 class="m-0 font-weight-bold text-white">Total Partisipante tuir Kategoria kada Tinan</h6>
                        </div>
                        <div class="card-body ">
                            <div class="chart-bar">
-                               <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                               <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-                               <canvas id="myChartbar"></canvas>
-                               <script>
-                                   var ctx = document.getElementById('myChartbar').getContext('2d');
-                                   var data_distric = [];
-                                   var data_total = [];
-                                   var data_feto = [];
-                                   var data_mane = [];
-                                   $.post("<?= base_url('admin/gettotal') ?>",
-                                       function(datatotal) {
-                                           var obj = JSON.parse(datatotal);
-                                           $.each(obj, function(test, item) {
-                                               data_distric.push(item.distric);
-                                               data_total.push(item.total);
-                                               data_feto.push(item.feto);
-                                               data_mane.push(item.mane);
-                                           });
-                                           var myChartbar = new Chart(ctx, {
-                                               type: 'bar',
-                                               data: {
-                                                   labels: data_distric,
-                                                   datasets: [{
-                                                           label: 'Total',
-                                                           data: data_total,
-                                                           backgroundColor: 'rgba(6, 166, 10, 0.2)',
-                                                           borderColor: 'rgba(6, 166, 10, 1)',
-                                                           borderWidth: 1
-                                                       },
-                                                       {
-                                                           label: 'Feto',
-                                                           data: data_feto,
-                                                           backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                                                           borderColor: 'rgba(255, 99, 132, 1)',
-                                                           borderWidth: 1
-                                                       },
-                                                       {
-                                                           label: 'Mane',
-                                                           data: data_mane,
-                                                           backgroundColor: 'rgba(7, 98, 150, 0.2)',
-                                                           borderColor: 'rgba(7, 98, 150, 1)',
-                                                           borderWidth: 1
-                                                       }
-                                                   ]
-                                               },
-                                               options: {
-                                                   responsive: true, // Instruct chart js to respond nicely.
-                                                   maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height
-                                                   scales: {
-                                                       yAxes: [{
-                                                           ticks: {
-                                                               beginAtZero: true
-                                                           }
-                                                       }]
-                                                   }
-                                               }
-                                           });
-                                       });
-                               </script>
+                               <canvas id="totalcat"></canvas>
+                           </div>
+                           <hr>
+                       </div>
+                   </div>
+               </div>
+               <div class="col-xl-5 col-lg-5">
+                   <div class="card shadow flex-fill">
+                       <div class="card-header py-3 bg-primary">
+                           <h6 class="m-0 font-weight-bold text-white">Total Partisipante tuir Kategoria </h6>
+                       </div>
+                       <div class="card-body flex-fill">
+                           <div class="chart-pie">
+                               <canvas id="totalpersen"></canvas>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+           <!-- Content Row -->
+           <div class="row mb-3">
+
+               <div class="col-xl-12 col-lg-12 ">
+                   <div class="card shadow ">
+                       <div class="card-header py-3 bg-primary">
+                           <h6 class="m-0 font-weight-bold text-white">Total Partisipante tuir Tinan</h6>
+                       </div>
+                       <div class="card-body ">
+                           <div class="chart-bar">
+                               <canvas id="totalyear"></canvas>
                            </div>
                            <hr>
                        </div>
@@ -169,7 +257,13 @@
            </div>
 
 
+
+
            <!-- /.container-fluid -->
 
        </div>
        <!-- End of Main Content -->
+
+
+       <script src="<?= base_url('assets/') ?>js/programa/total/year.js"></script>
+       <script src="<?= base_url('assets/') ?>js/programa/total/cat.js"></script>

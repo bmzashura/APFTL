@@ -68,9 +68,12 @@ class Apftl_election_model extends CI_Model
 	// get total rows
 	function total_rows($q = NULL)
 	{
-		$this->db->like('id', $q);
-		$this->db->or_like('id_distric', $q);
-		$this->db->or_like('id_subdistric', $q);
+		$this->db->select('apftl_election.*, distric.distric as distric');
+		$this->db->select('apftl_election.*, subdistric.subdistric as subdistric');
+		$this->db->join('distric', 'distric.id = apftl_election.id_distric', 'left');
+		$this->db->join('subdistric', 'subdistric.id = apftl_election.id_subdistric', 'left');
+		$this->db->or_like('distric', $q);
+		$this->db->or_like('subdistric', $q);
 		$this->db->or_like('election_period', $q);
 		$this->db->or_like('female_register', $q);
 		$this->db->or_like('male_register', $q);
@@ -102,10 +105,14 @@ class Apftl_election_model extends CI_Model
 	// get data with limit and search
 	function get_limit_data($limit, $start = 0, $q = NULL)
 	{
+		$this->db->select('apftl_election.*, distric.distric as distric');
+		$this->db->select('apftl_election.*, subdistric.subdistric as subdistric');
+		$this->db->join('distric', 'distric.id = apftl_election.id_distric', 'left');
+		$this->db->join('subdistric', 'subdistric.id = apftl_election.id_subdistric', 'left');
 		$this->db->order_by($this->id, $this->order);
 		$this->db->like('id', $q);
-		$this->db->or_like('id_distric', $q);
-		$this->db->or_like('id_subdistric', $q);
+		$this->db->or_like('distric', $q);
+		$this->db->or_like('subdistric', $q);
 		$this->db->or_like('election_period', $q);
 		$this->db->or_like('female_register', $q);
 		$this->db->or_like('male_register', $q);

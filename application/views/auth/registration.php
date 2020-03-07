@@ -4,8 +4,7 @@
           <div class="card-body p-0">
               <!-- Nested Row within Card Body -->
               <div class="row">
-                  <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
-                  <div class="col-lg-7">
+                  <div class="col-lg-12">
                       <div class="p-5">
                           <div class="text-center">
                               <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
@@ -21,9 +20,11 @@
                                       <?= form_error('name2', '<small class="text-danger pl-3">', '</small>'); ?>
                                   </div>
                               </div>
-                              <div class="form-group">
+                              <div class="form-group row">
+                              <div class="col-sm-6">
                                   <input type="text" class="form-control form-control-user" id="email" name="email" placeholder="Email Address" value="<?= set_value('email'); ?>">
                                   <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
+                              </div>
                               </div>
                               <div class="form-group row">
                                   <div class="col-sm-6 mb-3 mb-sm-0">
@@ -34,19 +35,16 @@
                                       <input type="password" class="form-control form-control-user" id="password2" name="password2" placeholder="Repeat Password">
                                   </div>
                               </div>
-                              <button type="submit" class="btn btn-primary btn-user btn-block">
+                              <div class="g-recaptcha" data-sitekey="<?php echo $this->config->item('google_key') ?>"></div>
+                              <button type="submit" class="btn btn-primary btn-user btn-block mt-3">
                                   Register Account
                               </button>
                           </form>
                           <hr>
                           <div class="text-center">
-                              <a class="small" href="forgot-password.html">Forgot Password?</a>
-                          </div>
-                          <div class="text-center">
                               <a class="small" href="<?= base_url("auth/"); ?>">Already have an account? Login!</a>
                           </div>
                       </div>
-                  </div>
               </div>
           </div>
       </div>

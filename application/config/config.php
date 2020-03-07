@@ -434,7 +434,7 @@ $config['standardize_newlines'] = FALSE;
 |          for backwards compatibility purposes!
 |
 */
-$config['global_xss_filtering'] = FALSE;
+$config['global_xss_filtering'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------
@@ -523,3 +523,6 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+
+$config['google_key'] = '6LfpitAUAAAAAPsxXkKfK2RHqAo364lRdlcp6zT_';
+$config['google_secret'] = '6LfpitAUAAAAAGeao0L8PpKtwtcYGnkOI_PncTZv';

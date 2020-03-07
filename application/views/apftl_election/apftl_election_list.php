@@ -31,7 +31,7 @@
 		</div>
 	</div>
 	<div class="table-responsive">
-		<table class="table table-hover table-bordered " style="margin-bottom: 10px">
+		<table class="table table-hover table-bordered" style="margin-bottom: 10px" >
 			<thead class="thead-dark">
 				<tr>
 					<th rowspan="2" class="text-nowrap align-middle">No</th>
@@ -105,11 +105,11 @@
 				<td class="text-nowrap"><?php echo $apftl_election->email_female ?></td>
 				<td class="text-nowrap " style="text-align:center">
 					<?php
-						echo anchor(site_url('apftl_election/read/' . $apftl_election->id), 'Lee');
+						echo anchor(site_url('apftl_election/read/' . $apftl_election->id), 'Lee', 'class="badge badge-success"');
 						echo ' | ';
-						echo anchor(site_url('apftl_election/update/' . $apftl_election->id), 'Edit');
+						echo anchor(site_url('apftl_election/update/' . $apftl_election->id), 'Edit', 'class="badge badge-info"');
 						echo ' | ';
-						echo anchor(site_url('apftl_election/delete/' . $apftl_election->id), 'Hamoos', 'onclick="javasciprt: return confirm(\'Konfirma paa hamoos ?\')"');
+						echo anchor(site_url('apftl_election/delete/' . $apftl_election->id), 'Hamoos', 'class="badge badge-danger"', 'onclick="javasciprt: return confirm(\'Konfirma paa hamoos ?\')"');
 						?>
 				</td>
 			</tr>
@@ -118,12 +118,12 @@
 			?>
 		</table>
 	</div>
-	<div class="row">
+	<div class="row mt-3">
 		<div class="col-md-6">
 			<a href="#" class="btn btn-primary">Total Dadus : <?php echo $total_rows ?></a>
 		</div>
 		<div class="col-md-6 text-right">
-			<?php echo $pagination ?>
+		<?php echo $this->pagination->create_links(); ?>
 		</div>
 	</div>
 </div>

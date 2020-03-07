@@ -98,7 +98,7 @@ class Apftl_member extends CI_Controller
             'photo' => set_value('photo'),
             'f_name' => set_value('f_name'),
             'l_name' => set_value('l_name'),
-            'gender' => set_value('gender'),
+            'id_gender' => set_value('id_gender'),
             'status' => set_value('status'),
             'birth_p' => set_value('birth_p'),
             'birth_d' => set_value('birth_d'),
@@ -106,6 +106,7 @@ class Apftl_member extends CI_Controller
             'email' => set_value('email'),
             'phone_n' => set_value('phone_n'),
             'periodu' => set_value('periodu'),
+            'gender' => $this->db->get('apftl_gender')->result(),
         );
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -121,11 +122,10 @@ class Apftl_member extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->create();
         } else {
-            $general = array(
-                'photo' => $this->input->post('photo', TRUE),
+            $data = array(
                 'f_name' => $this->input->post('f_name', TRUE),
                 'l_name' => $this->input->post('l_name', TRUE),
-                'gender' => $this->input->post('gender', TRUE),
+                'id_gender' => $this->input->post('id_gender', TRUE),
                 'status' => $this->input->post('status', TRUE),
                 'birth_p' => $this->input->post('birth_p', TRUE),
                 'birth_d' => $this->input->post('birth_d', TRUE),
@@ -135,7 +135,25 @@ class Apftl_member extends CI_Controller
                 'periodu' => $this->input->post('periodu', TRUE),
             );
 
-            $this->Apftl_member_model->insert($general);
+            $upload_image = $_FILES['photo']['name'];
+			if ($upload_image) {
+				$config['allowed_types'] = 'jpg|png';
+				$config['max_size']      = '1024';
+				$config['upload_path'] = './assets/img/profile/';
+				$this->load->library('upload', $config);
+				if ($this->upload->do_upload('photo')) {
+					$old_image = $data['photo'];
+					if ($old_image != 'default.jpg') {
+						unlink(FCPATH . 'assets/img/profile/' . $old_image);
+					}
+					$new_image = $this->upload->data('file_name');
+					$this->db->set('photo', $new_image);
+				} else {
+					echo $this->upload->dispay_errors();
+				}
+			}
+
+            $this->Apftl_member_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
             redirect(site_url('apftl_member'));
         }
@@ -157,7 +175,7 @@ class Apftl_member extends CI_Controller
                 'photo' => set_value('photo', $row->photo),
                 'f_name' => set_value('f_name', $row->f_name),
                 'l_name' => set_value('l_name', $row->l_name),
-                'gender' => set_value('gender', $row->gender),
+                'id_gender' => set_value('id_gender', $row->gender),
                 'status' => set_value('status', $row->status),
                 'birth_p' => set_value('birth_p', $row->birth_p),
                 'birth_d' => set_value('birth_d', $row->birth_d),
@@ -165,6 +183,7 @@ class Apftl_member extends CI_Controller
                 'email' => set_value('email', $row->email),
                 'phone_n' => set_value('phone_n', $row->phone_n),
                 'periodu' => set_value('periodu', $row->periodu),
+                'gender' => $this->db->get('apftl_gender')->result(),
             );
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
@@ -185,10 +204,9 @@ class Apftl_member extends CI_Controller
             $this->update($this->input->post('id', TRUE));
         } else {
             $data = array(
-                'photo' => $this->input->post('photo', TRUE),
                 'f_name' => $this->input->post('f_name', TRUE),
                 'l_name' => $this->input->post('l_name', TRUE),
-                'gender' => $this->input->post('gender', TRUE),
+                'id_gender' => $this->input->post('id_gender', TRUE),
                 'status' => $this->input->post('status', TRUE),
                 'birth_p' => $this->input->post('birth_p', TRUE),
                 'birth_d' => $this->input->post('birth_d', TRUE),
@@ -197,6 +215,24 @@ class Apftl_member extends CI_Controller
                 'phone_n' => $this->input->post('phone_n', TRUE),
                 'periodu' => $this->input->post('periodu', TRUE),
             );
+
+            $upload_image = $_FILES['photo']['name'];
+			if ($upload_image) {
+				$config['allowed_types'] = 'jpg|png';
+				$config['max_size']      = '1024';
+				$config['upload_path'] = './assets/img/profile/';
+				$this->load->library('upload', $config);
+				if ($this->upload->do_upload('photo')) {
+					$old_image = $data['photo'];
+					if ($old_image != 'default.jpg') {
+						unlink(FCPATH . 'assets/img/profile/' . $old_image);
+					}
+					$new_image = $this->upload->data('file_name');
+					$this->db->set('photo', $new_image);
+				} else {
+					echo $this->upload->dispay_errors();
+				}
+			}
 
             $this->Apftl_member_model->update($this->input->post('id', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');
@@ -220,10 +256,9 @@ class Apftl_member extends CI_Controller
 
     public function _rules()
     {
-        $this->form_validation->set_rules('photo', 'photo', 'trim|required');
         $this->form_validation->set_rules('f_name', 'f name', 'trim|required');
         $this->form_validation->set_rules('l_name', 'l name', 'trim|required');
-        $this->form_validation->set_rules('gender', 'gender', 'trim|required');
+        $this->form_validation->set_rules('id_gender', 'id_gender', 'trim|required');
         $this->form_validation->set_rules('status', 'status', 'trim|required');
         $this->form_validation->set_rules('birth_p', 'birth p', 'trim|required');
         $this->form_validation->set_rules('birth_d', 'birth d', 'trim|required');

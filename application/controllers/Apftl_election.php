@@ -29,7 +29,23 @@ class Apftl_election extends CI_Controller
 			$config['first_url'] = base_url() . 'apftl_election/index.html';
 		}
 
-		$config['per_page'] = 10;
+		$config['full_tag_open'] = '<ul class="pagination">';
+        $config['full_tag_close'] = '</ul>';
+        $config['num_tag_open'] = '<li class="page-item">';
+        $config['num_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['next_tag_open'] = '<li class="page-item">';
+        $config['next_tagl_close'] = '</a></li>';
+        $config['prev_tag_open'] = '<li class="page-item">';
+        $config['prev_tagl_close'] = '</li>';
+        $config['first_tag_open'] = '<li class="page-item">';
+        $config['first_tagl_close'] = '</li>';
+        $config['last_tag_open'] = '<li class="page-item">';
+        $config['last_tagl_close'] = '</a></li>';
+		$config['attributes'] = array('class' => 'page-link');
+		
+		$config['per_page'] = 5;
 		$config['page_query_string'] = TRUE;
 		$config['total_rows'] = $this->Apftl_election_model->total_rows($q);
 		$apftl_election = $this->Apftl_election_model->get_all($config['per_page'], $start, $q);
@@ -362,63 +378,63 @@ class Apftl_election extends CI_Controller
 			->setKeywords("Dadus ELisaun PFN");
 		// Variable to store Header Style
 		$style_col = array(
-			'font' => array('bold' => true), 
+			'font' => array('bold' => true),
 			'alignment' => array(
 				'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
-				'vertical' => PHPExcel_Style_Alignment::VERTICAL_CENTER 
+				'vertical' => PHPExcel_Style_Alignment::VERTICAL_CENTER
 			),
 			'borders' => array(
-				'top' => array('style'  => PHPExcel_Style_Border::BORDER_THIN), 
-				'right' => array('style'  => PHPExcel_Style_Border::BORDER_THIN),  
-				'bottom' => array('style'  => PHPExcel_Style_Border::BORDER_THIN), 
-				'left' => array('style'  => PHPExcel_Style_Border::BORDER_THIN) 
+				'top' => array('style'  => PHPExcel_Style_Border::BORDER_THIN),
+				'right' => array('style'  => PHPExcel_Style_Border::BORDER_THIN),
+				'bottom' => array('style'  => PHPExcel_Style_Border::BORDER_THIN),
+				'left' => array('style'  => PHPExcel_Style_Border::BORDER_THIN)
 			)
 		);
 		// Variable to store Table Style
 		$style_row = array(
 			'alignment' => array(
-				'vertical' => PHPExcel_Style_Alignment::VERTICAL_CENTER 
+				'vertical' => PHPExcel_Style_Alignment::VERTICAL_CENTER
 			),
 			'borders' => array(
-				'top' => array('style'  => PHPExcel_Style_Border::BORDER_THIN), 
-				'right' => array('style'  => PHPExcel_Style_Border::BORDER_THIN),  
-				'bottom' => array('style'  => PHPExcel_Style_Border::BORDER_THIN), 
+				'top' => array('style'  => PHPExcel_Style_Border::BORDER_THIN),
+				'right' => array('style'  => PHPExcel_Style_Border::BORDER_THIN),
+				'bottom' => array('style'  => PHPExcel_Style_Border::BORDER_THIN),
 				'left' => array('style'  => PHPExcel_Style_Border::BORDER_THIN)
 			)
 		);
-		$excel->setActiveSheetIndex(0)->setCellValue('A1', "Dadus Elisaun PFN "); 
-		$excel->getActiveSheet()->mergeCells('A1:E1'); 
-		$excel->getActiveSheet()->getStyle('A1')->getFont()->setBold(TRUE); 
-		$excel->getActiveSheet()->getStyle('A1')->getFont()->setSize(15); 
-		$excel->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER); 
+		$excel->setActiveSheetIndex(0)->setCellValue('A1', "Dadus Elisaun PFN ");
+		$excel->getActiveSheet()->mergeCells('A1:E1');
+		$excel->getActiveSheet()->getStyle('A1')->getFont()->setBold(TRUE);
+		$excel->getActiveSheet()->getStyle('A1')->getFont()->setSize(15);
+		$excel->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 
 		$excel->getActiveSheet()->freezePane('C4');
 		// Header row 3
-		$excel->setActiveSheetIndex(0)->setCellValue('A3', "No"); 
+		$excel->setActiveSheetIndex(0)->setCellValue('A3', "No");
 		$excel->setActiveSheetIndex(0)->setCellValue('B3', "Municipu");
-		$excel->setActiveSheetIndex(0)->setCellValue('C3', "Postu"); 
-		$excel->setActiveSheetIndex(0)->setCellValue('D3', "Periodu Elisaun"); 
-		$excel->setActiveSheetIndex(0)->setCellValue('E3', "Aplikante Feto"); 
+		$excel->setActiveSheetIndex(0)->setCellValue('C3', "Postu");
+		$excel->setActiveSheetIndex(0)->setCellValue('D3', "Periodu Elisaun");
+		$excel->setActiveSheetIndex(0)->setCellValue('E3', "Aplikante Feto");
 		$excel->setActiveSheetIndex(0)->setCellValue('F3', "Aplikante Mane");
 		$excel->setActiveSheetIndex(0)->setCellValue('G3', "Total Aplikante");
 		$excel->setActiveSheetIndex(0)->setCellValue('H3', "Selesiona Feto");
 		$excel->setActiveSheetIndex(0)->setCellValue('I3', "Selesiona Mane");
 		$excel->setActiveSheetIndex(0)->setCellValue('J3', "Total Selesiona");
-		$excel->setActiveSheetIndex(0)->setCellValue('K3', "Candidata"); 
+		$excel->setActiveSheetIndex(0)->setCellValue('K3', "Candidata");
 		$excel->setActiveSheetIndex(0)->setCellValue('L3', "Candidatu");
-		$excel->setActiveSheetIndex(0)->setCellValue('M3', "Total Candidata/u"); 
-		$excel->setActiveSheetIndex(0)->setCellValue('N3', "Naran Kompletu"); 
-		$excel->setActiveSheetIndex(0)->setCellValue('O3', "Edukasaun"); 
-		$excel->setActiveSheetIndex(0)->setCellValue('P3', "Fatin Moris"); 
-		$excel->setActiveSheetIndex(0)->setCellValue('Q3', "Data Moris"); 
-		$excel->setActiveSheetIndex(0)->setCellValue('R3', "Adresu"); 
-		$excel->setActiveSheetIndex(0)->setCellValue('S3', "Mobile"); 
-		$excel->setActiveSheetIndex(0)->setCellValue('T3', "Email"); 
-		$excel->setActiveSheetIndex(0)->setCellValue('U3', "Naran Kompletu"); 
-		$excel->setActiveSheetIndex(0)->setCellValue('V3', "Edukasaun"); 
-		$excel->setActiveSheetIndex(0)->setCellValue('W3', "Fatin Moris"); 
-		$excel->setActiveSheetIndex(0)->setCellValue('X3', "Data Moris"); 
-		$excel->setActiveSheetIndex(0)->setCellValue('Y3', "Adresu"); 
+		$excel->setActiveSheetIndex(0)->setCellValue('M3', "Total Candidata/u");
+		$excel->setActiveSheetIndex(0)->setCellValue('N3', "Naran Kompletu");
+		$excel->setActiveSheetIndex(0)->setCellValue('O3', "Edukasaun");
+		$excel->setActiveSheetIndex(0)->setCellValue('P3', "Fatin Moris");
+		$excel->setActiveSheetIndex(0)->setCellValue('Q3', "Data Moris");
+		$excel->setActiveSheetIndex(0)->setCellValue('R3', "Adresu");
+		$excel->setActiveSheetIndex(0)->setCellValue('S3', "Mobile");
+		$excel->setActiveSheetIndex(0)->setCellValue('T3', "Email");
+		$excel->setActiveSheetIndex(0)->setCellValue('U3', "Naran Kompletu");
+		$excel->setActiveSheetIndex(0)->setCellValue('V3', "Edukasaun");
+		$excel->setActiveSheetIndex(0)->setCellValue('W3', "Fatin Moris");
+		$excel->setActiveSheetIndex(0)->setCellValue('X3', "Data Moris");
+		$excel->setActiveSheetIndex(0)->setCellValue('Y3', "Adresu");
 		$excel->setActiveSheetIndex(0)->setCellValue('Z3', "Mobile");
 		$excel->setActiveSheetIndex(0)->setCellValue('AA3', "Email");
 		// Apply style header 
@@ -514,15 +530,15 @@ class Apftl_election extends CI_Controller
 			$numrow++; // add 1 row when looping
 		}
 		// Set width auto
-		$excel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true); 
-		$excel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true); 
-		$excel->getActiveSheet()->getColumnDimension('C')->setAutoSize(true); 
-		$excel->getActiveSheet()->getColumnDimension('D')->setAutoSize(true); 
-		$excel->getActiveSheet()->getColumnDimension('E')->setAutoSize(true); 
-		$excel->getActiveSheet()->getColumnDimension('F')->setAutoSize(true); 
+		$excel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
+		$excel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
+		$excel->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
+		$excel->getActiveSheet()->getColumnDimension('D')->setAutoSize(true);
+		$excel->getActiveSheet()->getColumnDimension('E')->setAutoSize(true);
+		$excel->getActiveSheet()->getColumnDimension('F')->setAutoSize(true);
 		$excel->getActiveSheet()->getColumnDimension('G')->setAutoSize(true);
-		$excel->getActiveSheet()->getColumnDimension('H')->setAutoSize(true); 
-		$excel->getActiveSheet()->getColumnDimension('I')->setAutoSize(true); 
+		$excel->getActiveSheet()->getColumnDimension('H')->setAutoSize(true);
+		$excel->getActiveSheet()->getColumnDimension('I')->setAutoSize(true);
 		$excel->getActiveSheet()->getColumnDimension('J')->setAutoSize(true);
 		$excel->getActiveSheet()->getColumnDimension('K')->setAutoSize(true);
 		$excel->getActiveSheet()->getColumnDimension('L')->setAutoSize(true);
@@ -550,9 +566,9 @@ class Apftl_election extends CI_Controller
 		$excel->getActiveSheet(0)->setTitle("Report Dadus Elisaun PFN");
 		$excel->setActiveSheetIndex(0);
 		// Process file excel
-		$filename="Dadus Elisaun PFN - ".date("d-m-Y").'.xlsx';
+		$filename = "Dadus Elisaun PFN - " . date("d-m-Y") . '.xlsx';
 		header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-		header('Content-Disposition: attachment; filename="'.$filename.'"'); // Set nama file excel nya
+		header('Content-Disposition: attachment; filename="' . $filename . '"'); // Set nama file excel nya
 		header('Cache-Control: max-age=0');
 		$write = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
 		$write->save('php://output');

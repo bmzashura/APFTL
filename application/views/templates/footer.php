@@ -40,6 +40,17 @@
 
 <!-- Bootstrap core JavaScript-->
 <script src="<?= base_url('assets/') ?>vendor/jquery/jquery.js"></script>
+
+<script>
+    $('.custom-file-input').on('change', function() {
+        let fileName = $(this).val().split('\\').pop();
+        $(this).next('.custom-file-label').addClass("selected").html(fileName);
+    });
+    $(function() {
+        $('.datepicker').datepicker()
+    });
+</script>
+
 <script>
     $('.form-group').on('input', '.prc', function() {
         var totalSum = 0;
@@ -110,18 +121,8 @@
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url('assets/') ?>js/bootstrap-datepicker.js"></script>
 <script src="<?= base_url('assets/') ?>js/sb-admin-2.js"></script>
-<script src="<?= base_url('assets/') ?>ckeditor/ckeditor.js">  </script>
+<script src="<?= base_url('assets/') ?>ckeditor/ckeditor.js"> </script>
 
-
-<script>
-    $('.custom-file-input').on('change', function() {
-        let fileName = $(this).val().split('\\').pop();
-        $(this).next('.custom-file-label').addClass("selected").html(fileName);
-    });
-    $(function() {
-        $('.datepicker').datepicker()
-    });
-</script>
 
 </body>
 

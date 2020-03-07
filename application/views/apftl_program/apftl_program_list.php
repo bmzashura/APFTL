@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <td>
+    <td class="text-nowrap">
         <a href="<?php echo site_url('apftl_program/create'); ?>" class="badge badge-success">Add Program</a>
         <a href="<?php echo site_url('apftl_c_program/index'); ?>" class="badge badge-success">Add Category</a>
         <a href="<?php echo site_url('apftl_activity/index'); ?>" class="badge badge-success">Add Activity</a>
@@ -24,62 +24,70 @@
                     <span class="input-group-btn">
                         <?php
                         if ($q <> '') {
-                            ?>
+                        ?>
                             <a href="<?php echo site_url('apftl_program'); ?>" class="btn btn-default">Reset</a>
                         <?php
-                    }
-                    ?>
+                        }
+                        ?>
                         <button class="btn btn-primary" type="submit">Search</button>
                     </span>
                 </div>
             </form>
         </div>
     </div>
-    <table class="table table-bordered" style="margin-bottom: 10px">
-        <tr>
-            <th>No</th>
-            <th>Category</th>
-            <th>Activity</th>
-            <th>Partner</th>
-            <th>Date</th>
-            <th>Distric</th>
-            <th>Male</th>
-            <th>Female</th>
-            <th>Total</th>
-            <th>Action</th>
-        </tr><?php
-                foreach ($apftl_program_data as $apftl_program) {
-                    ?>
-            <tr>
-                <td width="80px"><?php echo ++$start ?></td>
-                <td><?php echo $apftl_program->category ?></td>
-                <td><?php echo $apftl_program->activity ?></td>
-                <td><?php echo $apftl_program->partner ?></td>
-                <td><?php echo $apftl_program->date ?></td>
-                <td><?php echo $apftl_program->distric ?></td>
-                <td><?php echo $apftl_program->participant_m ?></td>
-                <td><?php echo $apftl_program->participant_f ?></td>
-                <td><?php echo $apftl_program->participant_sum ?></td>
-                <td style="text-align:center" width="200px">
-                    <?php
-                    echo anchor(site_url('apftl_program/read/' . $apftl_program->id), 'Read');
-                    echo ' | ';
-                    echo anchor(site_url('apftl_program/update/' . $apftl_program->id), 'Update');
-                    echo ' | ';
-                    echo anchor(site_url('apftl_program/delete/' . $apftl_program->id), 'Delete', 'onclick="javasciprt: return confirm(\'Are You Sure ?\')"');
-                    ?>
-                </td>
-            </tr>
-        <?php
-    }
-    ?>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered" style="margin-bottom: 10px">
+            <thead class="thead-dark">
+                <tr>
+                    <th rowspan="2" class="text-nowrap align-middle text-center">No</th>
+                    <th rowspan="2" class="align-middle text-center">Kategoria Programa</th>
+                    <th rowspan="2" class="text-nowrap align-middle text-center">Aktifidade</th>
+                    <th rowspan="2" class="text-nowrap align-middle text-center">Parseiru</th>
+                    <th rowspan="2" class="text-nowrap align-middle text-center">Data</th>
+                    <th rowspan="2" class="text-nowrap align-middle text-center">Municipiu</th>
+                    <th colspan="3" class="text-nowrap align-middle text-center">Partisipante</th>
+                    <th rowspan="2" class="text-nowrap align-middle text-center">Action</th>
+                </tr>
+                <tr>
+                    <th class="text-nowrap align-middle text-center">Feto</th>
+                    <th class="text-nowrap align-middle text-center">Mane</th>
+                    <th class="text-nowrap align-middle text-center">Total</th>
+                </tr>
+            </thead>
+            <?php
+            foreach ($apftl_program_data as $apftl_program) {
+            ?>
+                <tr>
+                    <td width="80px"><?php echo ++$start ?></td>
+                    <td class="text-nowrap"><?php echo $apftl_program->category ?></td>
+                    <td class="text-nowrap"><?php echo $apftl_program->activity ?></td>
+                    <td class="text-nowrap"><?php echo $apftl_program->partner ?></td>
+                    <td class="text-nowrap"><?php echo $apftl_program->date ?></td>
+                    <td class="text-nowrap"><?php echo $apftl_program->distric ?></td>
+                    <td class="text-nowrap"><?php echo $apftl_program->participant_m ?></td>
+                    <td class="text-nowrap"><?php echo $apftl_program->participant_f ?></td>
+                    <td class="text-nowrap"><?php echo $apftl_program->participant_sum ?></td>
+                    <td class="text-nowrap" style="text-align:center" width="200px">
+                        <?php
+                        echo anchor(site_url('apftl_program/read/' . $apftl_program->id), 'Read', 'class="badge badge-success"');
+                        echo ' | ';
+                        echo anchor(site_url('apftl_program/update/' . $apftl_program->id), 'Update', 'class="badge badge-info"');
+                        echo ' | ';
+                        echo anchor(site_url('apftl_program/delete/' . $apftl_program->id), 'Delete', 'class="badge badge-danger"', 'onclick="javasciprt: return confirm(\'Are You Sure ?\')"', 'class="badge badge-danger"');
+                        ?>
+                    </td>
+                </tr>
+            <?php
+            }
+            ?>
+        </table>
+    </div>
     <div class="row">
         <div class="col-md-6">
             <a href="#" class="btn btn-primary">Total Record : <?php echo $total_rows ?></a>
         </div>
         <div class="col-md-6 text-right">
-            <?php echo $pagination ?>
+            <?php echo $this->pagination->create_links(); ?>
         </div>
     </div>
 </div>

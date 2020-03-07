@@ -1,49 +1,50 @@
 <div class="container-fluid">
-    <h2 style="margin-top:0px">Apftl_program Read</h2>
+<h2 style="margin-top:0px">Programa APFTL | <?php echo $distric; ?></h2>
     <table class="table">
         <tr>
-            <td>Id Category</td>
+            <td>Kategoria</td>
             <td><?php echo $category; ?></td>
         </tr>
         <tr>
-            <td>Activity</td>
+            <td>Aktividade</td>
             <td><?php echo $activity; ?></td>
         </tr>
         <tr>
-            <td>Id Partner</td>
+            <td>Parseiru</td>
             <td><?php echo $partner; ?></td>
         </tr>
         <tr>
-            <td>Date</td>
+            <td>Data</td>
             <td><?php echo $date; ?></td>
         </tr>
         <tr>
-            <td>Id Distric</td>
+            <td>Municipu</td>
             <td><?php echo $distric; ?></td>
         </tr>
         <tr>
-            <td>Description</td>
+            <td>Deskrisaun</td>
             <td><?php echo $description; ?></td>
         </tr>
         <tr>
-            <td>Objective</td>
+            <td>Objectivu</td>
             <td><?php echo $objective; ?></td>
         </tr>
         <tr>
-            <td>Participant M</td>
+            <td>Partisipante Mane</td>
             <td><?php echo $participant_m; ?></td>
         </tr>
         <tr>
-            <td>Participant F</td>
+            <td>Partisipante Feto</td>
             <td><?php echo $participant_f; ?></td>
         </tr>
         <tr>
-            <td>Participant Sum</td>
+            <td>Total Patispante</td>
             <td><?php echo $participant_sum; ?></td>
         </tr>
+   
         <tr>
             <td></td>
-            <td><a href="<?php echo site_url('apftl_program') ?>" class="btn btn-default">Cancel</a></td>
+            <td><a href="<?php echo site_url('apftl_program') ?>" class="btn btn-danger">Cancel</a></td>
         </tr>
     </table>
 </div>

@@ -6,12 +6,12 @@
     <form action="<?php echo $action; ?>" method="post">
         <div class="col-md-10">
             <div class="form-row">
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-8">
                     <label for="int">Category <?php echo form_error('id_category') ?></label>
-                    <select name="id_category" id="id_category" class="form-control">
-                        <option>--select--</option>
+                    <select name="id_category" id="id_category" class="form-control" >
+                        <option value="" >--select--</option>
                         <?php foreach ($program_category as $pc) : ?>
-                            <option value="<?php echo $pc->id ?>">
+                            <option value="<?php echo $pc->id?>" <?php echo ($id_category == $pc->id) ? 'selected' : '' ?>>
                                 <?php echo $pc->category ?>
                             </option>
                         <?php endforeach ?>
@@ -20,9 +20,9 @@
                 <div class="form-group col-md-4">
                     <label for="int">Partner <?php echo form_error('id_partner') ?></label>
                     <select name="id_partner" id="id_partner" class="form-control">
-                        <option>--select--</option>
+                        <option value="">--select--</option>
                         <?php foreach ($partner as $p) : ?>
-                            <option value="<?php echo $p->id ?>">
+                            <option value="<?php echo $p->id?>" <?php echo ($id_partner == $p->id) ? 'selected' : '' ?>>
                                 <?php echo $p->partner ?>
                             </option>
                         <?php endforeach ?>
@@ -32,9 +32,9 @@
             <div class="form-group">
                 <label for="int">Activity <?php echo form_error('id_activity') ?></label>
                 <select name="id_activity" id="id_activity" class="form-control">
-                    <option>--select--</option>
+                    <option value="">--select--</option>
                     <?php foreach ($activity as $ac) : ?>
-                        <option value="<?php echo $ac->id ?>">
+                        <option value="<?php echo $ac->id?>" <?php echo ($id_activity == $ac->id) ? 'selected' : '' ?>>
                             <?php echo $ac->activity ?>
                         </option>
                     <?php endforeach ?>
@@ -51,14 +51,14 @@
             <div class="form-row">
                 <div class="form-group col-md-3 mr-2">
                     <label for="int">Date <?php echo form_error('date') ?></label>
-                    <input class="datepicker" name="date" readonly id="date" data-date-format="yyyy-mm-dd">
+                    <input class="datepicker" name="date" readonly id="date" data-date-format="yyyy-mm-dd" value="<?php echo $date; ?>">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="int">Distric <?php echo form_error('id_distric') ?></label>
                     <select name="id_distric" id="id_distric" class="form-control">
                         <option>--select--</option>
                         <?php foreach ($distric as $d) : ?>
-                            <option value="<?php echo $d->id ?>">
+                            <option value="<?php echo $d->id?>" <?php echo ($id_distric == $d->id) ? 'selected' : '' ?>>
                                 <?php echo $d->distric ?>
                             </option>
                         <?php endforeach ?>
@@ -76,7 +76,7 @@
                 </div>
                 <div class="form-group col-md-3">
                     <label for="int">Total <?php echo form_error('participant_sum') ?></label>
-                    <input type="number" class="form-control" name="participant_sum" readonly id="participant_sum" />
+                    <input type="number" class="form-control" name="participant_sum" value="<?php echo $participant_sum; ?>" readonly id="participant_sum" />
                 </div>
             </div>
             <input type="hidden" name="id" value="<?php echo $id; ?>" />

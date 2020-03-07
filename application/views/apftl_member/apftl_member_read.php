@@ -3,7 +3,7 @@
     <table class="table">
         <tr>
             <td>Photo</td>
-            <td><?php echo $photo; ?></td>
+            <td><img src="<?= base_url('assets/img/profile/') . $photo; ?>" class="img-thumbnail"></td>
         </tr>
         <tr>
             <td>F Name</td>

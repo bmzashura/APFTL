@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <h2 style="margin-top:0px"><?php echo $button ?> Elisaun</h2>
-    <form action="<?php echo $action; ?>" enctype="multipart/form-data" method="post">
+    <form action="<?php echo $action; ?>"  method="post">
         <div class="col-md-10">
             <div class="form-row">
                 <div class="form-group col-md-4">
@@ -8,7 +8,7 @@
                     <select name="id_distric" id="id_distric" class="form-control">
                         <option>--select--</option>
                         <?php foreach ($distric as $d) : ?>
-                            <option value="<?php echo $d->id ?>" <?=$d->id == $id_distric ? "selected" : null ?>>
+                            <option value="<?php echo $d->id ?>" <?= $id_distric == $d->id ? "selected" : null ?>>
                                 <?php echo $d->distric ?>
                             </option>
                         <?php endforeach ?>
